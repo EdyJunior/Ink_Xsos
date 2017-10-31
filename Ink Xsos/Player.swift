@@ -6,8 +6,6 @@
 //  Copyright © 2017 Edvaldo Junior. All rights reserved.
 //
 
-import Foundation
-
 struct Player<symbolType> {
     
     var symbol: symbolType
