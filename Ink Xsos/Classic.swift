@@ -11,16 +11,23 @@ import Foundation
 class Classic: Xsos {
 
     var player = [Player<symbolType>]()
-    var turn: Int = 0
+    var turn: Int = -1
     var time: TimeInterval = 0
     var grid = [[symbolType]]()
     var winner: Int = -1
 
     typealias symbolType = String
     
+    init() {
+        for _ in 0...2 {
+            grid.append(["-", "-", "-"])
+        }
+    }
+    
     func checkRow (_ line: Int) -> Bool {
         
         let s = grid[line][0]
+        if s == "-" { return false }
         
         for item in grid[line] {
             if item != s { return false }
@@ -31,6 +38,7 @@ class Classic: Xsos {
     func checkColumn (_ col: Int) -> Bool {
         
         let s = grid[0][col]
+        if s == "-" { return false }
         
         for line in 0..<(grid.count) {
             if grid[line][col] != s { return false }
@@ -42,6 +50,7 @@ class Classic: Xsos {
         
         var col = 0, l = line
         let s = grid[line][col]
+        if s == "-" { return false }
         
         while (col < grid.count) {
             col += 1;
@@ -99,5 +108,7 @@ class Classic: Xsos {
     
     func updateGrid () {
         
+        turn += 1;
+        turn %= player.count
     }
 }
