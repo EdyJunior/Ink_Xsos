@@ -19,6 +19,6 @@ protocol Xsos {
     var grid: [[symbolType]] { get set }
     var winner: Int { get set }
     
-    func isGameOver ()
+    func isGameOver () -> Bool
     func updateGrid ()
 }
