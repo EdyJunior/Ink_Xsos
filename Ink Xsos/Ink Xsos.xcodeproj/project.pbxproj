@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE6404A91FA895AA00B01022 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404A81FA895AA00B01022 /* Player.swift */; };
 		CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AA1FA89D5800B01022 /* PaintScreen.swift */; };
+		CE6404AD1FA8A0E700B01022 /* Xsos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AC1FA8A0E700B01022 /* Xsos.swift */; };
 		CEB27EB61FA76945004511BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB27EB51FA76945004511BD /* AppDelegate.swift */; };
 		CEB27EB81FA76945004511BD /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EB71FA76945004511BD /* GameScene.sks */; };
 		CEB27EBA1FA76945004511BD /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EB91FA76945004511BD /* Actions.sks */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		CE6404A81FA895AA00B01022 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CE6404AA1FA89D5800B01022 /* PaintScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintScreen.swift; sourceTree = "<group>"; };
+		CE6404AC1FA8A0E700B01022 /* Xsos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xsos.swift; sourceTree = "<group>"; };
 		CEB27EB21FA76945004511BD /* Ink Xsos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ink Xsos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB27EB51FA76945004511BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB27EB71FA76945004511BD /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 			children = (
 				CE6404A81FA895AA00B01022 /* Player.swift */,
 				CE6404AA1FA89D5800B01022 /* PaintScreen.swift */,
+				CE6404AC1FA8A0E700B01022 /* Xsos.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				CEB27EBC1FA76945004511BD /* GameScene.swift in Sources */,
 				CEB27EBE1FA76945004511BD /* GameViewController.swift in Sources */,
 				CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */,
+				CE6404AD1FA8A0E700B01022 /* Xsos.swift in Sources */,
 				CEB27EB61FA76945004511BD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

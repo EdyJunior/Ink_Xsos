@@ -9,10 +9,10 @@
 import SpriteKit
 
 protocol PaintScreen {
-    
+
     var maxSplashes: [Int] { get set }
     var splashes: [SKSpriteNode] { get set }
-    
+
     func clearScreen ()
     func splash (position: CGPoint)
 }

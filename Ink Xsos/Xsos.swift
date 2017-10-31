@@ -6,4 +6,19 @@
 //  Copyright © 2017 Edvaldo Junior. All rights reserved.
 //
 
+import SpriteKit
 import Foundation
+
+protocol Xsos {
+
+    associatedtype symbolType
+
+    var player: [Player<symbolType>] { get set }
+    var turn: Int { get set }
+    var time: TimeInterval { get set }
+    var grid: [[symbolType]] { get set }
+    var winner: Int { get set }
+    
+    func isGameOver ()
+    func updateGrid ()
+}
