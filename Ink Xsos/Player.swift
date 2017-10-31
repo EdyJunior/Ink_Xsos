@@ -6,8 +6,11 @@
 //  Copyright © 2017 Edvaldo Junior. All rights reserved.
 //
 
+import SpriteKit
+
 struct Player<symbolType> {
     
     var symbol: symbolType
     var number: Int
+    var brush: UIColor
 }
