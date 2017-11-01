@@ -20,5 +20,5 @@ protocol Xsos {
     var winner: Int { get set }
     
     func isGameOver () -> Bool
-    func updateGrid ()
+    func updateGrid (number: Int, symb: String, pos: [Int]) -> Bool
 }
