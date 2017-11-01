@@ -19,9 +19,7 @@ class Classic: Xsos {
     typealias symbolType = String
     
     init() {
-        for _ in 0...2 {
-            grid.append(["-", "-", "-"])
-        }
+        for _ in 0...2 { grid.append(["-", "-", "-"]) }
     }
     
     func checkRow (_ line: Int) -> Bool {
@@ -69,6 +67,7 @@ class Classic: Xsos {
                 return
             }
         }
+        winner = -1
     }
 
     func isGameOver () -> Bool {
@@ -103,12 +102,14 @@ class Classic: Xsos {
                 return true
             }
         }
+        if turn == grid.count * grid.count - 1 {
+            getWinner(symbol: "Draw")
+            return true;
+        }
         return false;
     }
     
     func updateGrid () {
-        
         turn += 1;
-        turn %= player.count
     }
 }
