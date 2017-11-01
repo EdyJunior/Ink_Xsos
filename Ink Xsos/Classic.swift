@@ -11,7 +11,7 @@ import Foundation
 class Classic: Xsos {
 
     var player = [Player<symbolType>]()
-    var turn: Int = -1
+    var turn: Int = 1
     var time: TimeInterval = 0
     var grid = [[symbolType]]()
     var winner: Int = -1
@@ -109,7 +109,14 @@ class Classic: Xsos {
         return false;
     }
     
-    func updateGrid () {
-        turn += 1;
+    func updateGrid (number: Int, symb: String, pos: [Int]) -> Bool {
+        
+        if (turn & 1 == 0 && number == 2 ||
+            turn & 1 == 1 && number == 1) {
+                grid[pos[0]][pos[1]] = symb
+                turn += 1;
+                return true
+        }
+        return false
     }
 }
