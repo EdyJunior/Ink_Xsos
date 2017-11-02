@@ -12,9 +12,6 @@
 		CE6404AD1FA8A0E700B01022 /* Xsos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AC1FA8A0E700B01022 /* Xsos.swift */; };
 		CE6404B01FA8A6B600B01022 /* Classic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AF1FA8A6B600B01022 /* Classic.swift */; };
 		CEB27EB61FA76945004511BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB27EB51FA76945004511BD /* AppDelegate.swift */; };
-		CEB27EB81FA76945004511BD /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EB71FA76945004511BD /* GameScene.sks */; };
-		CEB27EBA1FA76945004511BD /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EB91FA76945004511BD /* Actions.sks */; };
-		CEB27EBC1FA76945004511BD /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB27EBB1FA76945004511BD /* GameScene.swift */; };
 		CEB27EBE1FA76945004511BD /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB27EBD1FA76945004511BD /* GameViewController.swift */; };
 		CEB27EC11FA76945004511BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EBF1FA76945004511BD /* Main.storyboard */; };
 		CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EC21FA76945004511BD /* Assets.xcassets */; };
@@ -28,9 +25,6 @@
 		CE6404AF1FA8A6B600B01022 /* Classic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classic.swift; sourceTree = "<group>"; };
 		CEB27EB21FA76945004511BD /* Ink Xsos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ink Xsos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB27EB51FA76945004511BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEB27EB71FA76945004511BD /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		CEB27EB91FA76945004511BD /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		CEB27EBB1FA76945004511BD /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		CEB27EBD1FA76945004511BD /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CEB27EC01FA76945004511BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEB27EC21FA76945004511BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,9 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				CEB27EB51FA76945004511BD /* AppDelegate.swift */,
-				CEB27EB71FA76945004511BD /* GameScene.sks */,
-				CEB27EB91FA76945004511BD /* Actions.sks */,
-				CEB27EBB1FA76945004511BD /* GameScene.swift */,
 				CEB27EBD1FA76945004511BD /* GameViewController.swift */,
 				CEB27EBF1FA76945004511BD /* Main.storyboard */,
 				CEB27EC21FA76945004511BD /* Assets.xcassets */,
@@ -162,10 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEB27EC11FA76945004511BD /* Main.storyboard in Resources */,
-				CEB27EB81FA76945004511BD /* GameScene.sks in Resources */,
 				CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */,
 				CEB27EC61FA76945004511BD /* LaunchScreen.storyboard in Resources */,
-				CEB27EBA1FA76945004511BD /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6404A91FA895AA00B01022 /* Player.swift in Sources */,
-				CEB27EBC1FA76945004511BD /* GameScene.swift in Sources */,
 				CEB27EBE1FA76945004511BD /* GameViewController.swift in Sources */,
 				CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */,
 				CE6404AD1FA8A0E700B01022 /* Xsos.swift in Sources */,
