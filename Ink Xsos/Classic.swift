@@ -29,7 +29,7 @@ class Classic: Xsos {
         player.append(p2)
     }
     
-    func checkRow (_ row: Int) -> Bool {
+    private func checkRow (_ row: Int) -> Bool {
         
         let s = grid[row][1]
         if s == "-" { return false }
@@ -37,11 +37,10 @@ class Classic: Xsos {
         for item in 2...3 {
             if grid[row][item] != s { return false }
         }
-        print("ROW")
         return true
     }
     
-    func checkColumn (_ col: Int) -> Bool {
+    private func checkColumn (_ col: Int) -> Bool {
         
         let s = grid[1][col]
         if s == "-" { return false }
@@ -49,11 +48,10 @@ class Classic: Xsos {
         for line in 2...3 {
             if grid[line][col] != s { return false }
         }
-        print("COLUMN")
         return true
     }
     
-    func checkDiagonal (row: Int, inc: Int) -> Bool {
+    private func checkDiagonal (row: Int, inc: Int) -> Bool {
         
         var col = 1, l = row
         let s = grid[row][col]
@@ -64,11 +62,10 @@ class Classic: Xsos {
             l += inc
             col += 1;
         }
-        print("DIAGONAL")
         return true
     }
 
-    func getWinner(symbol s: String) {
+    private func getWinner(symbol s: String) {
 
         for p in player {
             if p.symbol == s {
