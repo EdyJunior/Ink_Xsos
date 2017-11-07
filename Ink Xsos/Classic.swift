@@ -19,91 +19,98 @@ class Classic: Xsos {
     typealias symbolType = String
     
     init() {
-        for _ in 0...2 { grid.append(["-", "-", "-"]) }
+        
+        for _ in 0...3 { grid.append(["-", "-", "-", "-"]) }
+        
+        let p1 = Player(symbol: "X", number: 1, brush: .black)
+        let p2 = Player(symbol: "O", number: 2, brush: .black)
+        
+        player.append(p1)
+        player.append(p2)
     }
     
-    func checkRow (_ line: Int) -> Bool {
+    func checkRow (_ row: Int) -> Bool {
         
-        let s = grid[line][0]
+        let s = grid[row][1]
         if s == "-" { return false }
         
-        for item in grid[line] {
-            if item != s { return false }
+        for item in 2...3 {
+            if grid[row][item] != s { return false }
         }
+        print("ROW")
         return true
     }
     
     func checkColumn (_ col: Int) -> Bool {
         
-        let s = grid[0][col]
+        let s = grid[1][col]
         if s == "-" { return false }
         
-        for line in 0..<(grid.count) {
+        for line in 2...3 {
             if grid[line][col] != s { return false }
         }
+        print("COLUMN")
         return true
     }
     
-    func checkDiagonal (line: Int, inc: Int) -> Bool {
+    func checkDiagonal (row: Int, inc: Int) -> Bool {
         
-        var col = 0, l = line
-        let s = grid[line][col]
+        var col = 1, l = row
+        let s = grid[row][col]
         if s == "-" { return false }
         
-        while (col < grid.count) {
-            col += 1;
-            l += inc
-            
+        while (col < 4) {
             if grid[l][col] != s { return false }
+            l += inc
+            col += 1;
         }
+        print("DIAGONAL")
         return true
     }
 
     func getWinner(symbol s: String) {
 
-        for (i, p) in player.enumerated() {
+        for p in player {
             if p.symbol == s {
-                winner = i
+                winner = p.number
                 return
             }
         }
-        winner = -1
+        winner = 0
     }
 
     func isGameOver () -> Bool {
         
-        let count = grid.count
-        
-        for line in 0..<count {
-            let flag = checkRow(line)
+        for row in 1...3 {
+            let flag = checkRow(row)
             if flag {
-                let s = grid[line][0]
+                let s = grid[row][1]
                 getWinner(symbol: s)
                 return true
             }
         }
-        for col in 0..<count {
+        for col in 1...3 {
             let flag = checkColumn(col)
             if flag {
-                let s = grid[0][col]
+                let s = grid[1][col]
                 getWinner(symbol: s)
                 return true
             }
         }
-        var a = [(line: Int, inc: Int)]()
-        a.append((0, -1))
-        a.append((count - 1, 1))
+        var a = [(row: Int, inc: Int)]()
+        a.append((1, 1))
+        a.append((3, -1))
         
         for item in a {
-            let flag = checkDiagonal(line: item.line, inc: item.inc)
+            let flag = checkDiagonal(row: item.row, inc: item.inc)
             if flag {
-                let s = grid[item.line][0]
+                let s = grid[item.row][1]
                 getWinner(symbol: s)
                 return true
             }
         }
-        if turn == grid.count * grid.count - 1 {
-            getWinner(symbol: "Draw")
+        if turn == 10 {
+            getWinner(symbol: "DRAW")
             return true;
         }
         return false;
