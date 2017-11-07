@@ -27,6 +27,7 @@ class GameScene: SKScene {
         buildBackButton()
         buildModeLabel(text: "numerical")
         buildMessageLabel()
+        buildGrid()
     }
     
     private func buildTimer() {
@@ -87,5 +88,19 @@ class GameScene: SKScene {
         messageLabel.fontColor = UIColor(red: 97.0/255, green: 216.0/255, blue: 54.0/255, alpha: 1.0)
         
         addChild(messageLabel)
+    }
+    
+    func buildGrid() {
+        
+        let sceneFrame = scene!.frame
+        let gridWidth = sceneFrame.width * 0.8
+        
+        let texture = SKTexture(imageNamed: "grid")
+        let gridSize = CGSize(width: gridWidth, height: gridWidth / 1.0593)
+        
+        let grid = SKSpriteNode(texture: texture, color: .white, size: gridSize)
+        grid.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.midY)
+        
+        addChild(grid)
     }
 }
