@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE02C3561FAC001500CD07F3 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C3551FAC001500CD07F3 /* ButtonNode.swift */; };
+		CE02C3561FAC001500CD07F3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C3551FAC001500CD07F3 /* Button.swift */; };
 		CE4908021FAAB3F2006D3A59 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4908011FAAB3F2006D3A59 /* GameScene.swift */; };
 		CE6404A91FA895AA00B01022 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404A81FA895AA00B01022 /* Player.swift */; };
 		CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AA1FA89D5800B01022 /* PaintScreen.swift */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE02C3551FAC001500CD07F3 /* ButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
+		CE02C3551FAC001500CD07F3 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CE4908011FAAB3F2006D3A59 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		CE6404A81FA895AA00B01022 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CE6404AA1FA89D5800B01022 /* PaintScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintScreen.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 				CE6404A81FA895AA00B01022 /* Player.swift */,
 				CE6404AA1FA89D5800B01022 /* PaintScreen.swift */,
 				CE6404AC1FA8A0E700B01022 /* Xsos.swift */,
-				CE02C3551FAC001500CD07F3 /* ButtonNode.swift */,
+				CE02C3551FAC001500CD07F3 /* Button.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -182,7 +182,7 @@
 				CE6404A91FA895AA00B01022 /* Player.swift in Sources */,
 				CEB27EBE1FA76945004511BD /* GameViewController.swift in Sources */,
 				CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */,
-				CE02C3561FAC001500CD07F3 /* ButtonNode.swift in Sources */,
+				CE02C3561FAC001500CD07F3 /* Button.swift in Sources */,
 				CE6404AD1FA8A0E700B01022 /* Xsos.swift in Sources */,
 				CEB27EB61FA76945004511BD /* AppDelegate.swift in Sources */,
 				CE4908021FAAB3F2006D3A59 /* GameScene.swift in Sources */,

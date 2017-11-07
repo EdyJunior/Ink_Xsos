@@ -109,10 +109,10 @@ class Classic: Xsos {
         return false;
     }
     
-    func updateGrid (number: Int, symb: String, pos: [Int]) -> Bool {
+    func updateGrid (playerNumber: Int, symb: String, pos: [Int]) -> Bool {
         
-        if (turn & 1 == 0 && number == 2 ||
-            turn & 1 == 1 && number == 1) {
+        if (turn & 1 == 0 && playerNumber == 2 ||
+            turn & 1 == 1 && playerNumber == 1) {
                 grid[pos[0]][pos[1]] = symb
                 turn += 1;
                 return true
