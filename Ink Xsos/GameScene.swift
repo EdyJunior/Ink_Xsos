@@ -13,6 +13,8 @@ class GameScene: SKScene {
     var modeLabel = SKLabelNode(text: "Mode: ")
     var messageLabel = SKLabelNode(text: "It’s your turn!")
     var timeLabel = SKLabelNode(text: "30")
+    
+    var grid = SKSpriteNode()
 
     override func didMove(to view: SKView) {
         
@@ -98,7 +100,7 @@ class GameScene: SKScene {
         let texture = SKTexture(imageNamed: "grid")
         let gridSize = CGSize(width: gridWidth, height: gridWidth / 1.0593)
         
-        let grid = SKSpriteNode(texture: texture, color: .white, size: gridSize)
+        grid = SKSpriteNode(texture: texture, color: .white, size: gridSize)
         grid.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.midY)
         
         addChild(grid)

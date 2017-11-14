@@ -8,19 +8,21 @@
 
 import SpriteKit
 
-class ClassicScene: SKScene {
+class ClassicScene: GameScene {
 
     var playerNumber = 1;
     var classic = Classic()
     
     override func didMove(to view: SKView) {
+        
+        super.didMove(to: view)
         buildScene()
     }
     
     func buildScene() {
         
         buildPlayerButton()
-        buildGrid()
+        buildCellButtons()
     }
     
     func buildPlayerButton() {
@@ -43,27 +45,35 @@ class ClassicScene: SKScene {
         print(playerNumber)
     }
     
-    func buildGrid() {
+    func buildCellButton(inCell cell: [Int], inPos pos: CGPoint) {
+        
+        let button = Button(defaultButtonImage: "spot", activeButtonImage: "spot", buttonAction: touchCell)
+
+        let buttonSize = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
+
+        button.setSizeAndPosition(buttonSize, position: pos, areaFactor: 1.0)
+        button.zPosition = 1
+        button.name = "\(cell[0]) \(cell[1])"
+        button.touchableArea.alpha = 0.01
+
+        self.addChild(button)
+    }
+    
+    func buildCellButtons() {
         
         for i in 1...3 {
             for j in 1...3 {
-                buildCellButton(inPos: [i, j])
+                var x = CGFloat((2 * j - 1))
+                x *= grid.frame.width / 4.75
+                
+                var y = (grid.frame.midY - grid.frame.height / 2)
+                let yAux = CGFloat(2 * (4 - i) - 1)
+                y += (grid.frame.height *  yAux / 6.0)
+                
+                let point = CGPoint(x: x, y: y)
+                buildCellButton(inCell: [i, j], inPos: point)
             }
         }
-    }
-    
-    func buildCellButton(inPos pos: [Int]) {
-        
-        let button = Button(defaultButtonImage: "spot", activeButtonImage: "spot", buttonAction: touchCell)
-        
-        let buttonPos = CGPoint(x: CGFloat(pos[1]) * self.frame.width / 3.0,y: CGFloat(4 - pos[0]) * self.frame.height / 3.0)
-        let buttonSize = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
-        
-        button.setSizeAndPosition(buttonSize, position: buttonPos, areaFactor: 1.0)
-        button.zPosition = 1
-        button.name = "\(pos[0]) \(pos[1])"
-        
-        self.addChild(button)
     }
     
     func touchCell(_ button: Button) {
