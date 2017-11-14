@@ -45,13 +45,13 @@ class ClassicScene: GameScene {
         }
         classic = Classic()
         playerNumber = 1
+        messageLabel.text = "It’s X turn!"
     }
     
     func changePlayerNumber() {
         
         if playerNumber == 1 { playerNumber = 2 }
         else { playerNumber = 1 }
-        print(playerNumber)
         messageLabel.text = "It’s \(classic.getSymbol(fromPlayer: playerNumber)) turn!"
     }
     
@@ -89,29 +89,26 @@ class ClassicScene: GameScene {
     func touchCell(_ button: Button) {
 
         let btnName = button.name!
-
-        var pos = btnName.components(separatedBy: " ").flatMap { Int($0) }
-        print("\(pos[0]); \(pos[1])")
+        let pos = btnName.components(separatedBy: " ").flatMap { Int($0) }
 
         let success = classic.updateGrid(playerNumber: playerNumber, symb: (playerNumber == 1 ? "X" : "O"), pos: pos)
 
         if !success { print("Não é sua vez!") }
         else {
-            for row in classic.grid {
-                print(row)
-            }
             let s = classic.getSymbol(fromPlayer: playerNumber)
             let size = grid.frame.width / 5.0
 
             draw(text: s, atPosition: button.touchableArea.position, withSize: size, withColor: .black)
-            if classic.isGameOver() == .finishedWithWinner {
-                let winner = classic.winner
-                let message = "Winner = \(winner)"
-                print(message)
-            } else if classic.isGameOver() == .draw {
+            let state = classic.isGameOver()
+            if state == .finishedWithWinner {
+                let message = "Winner = \(s)"
+                messageLabel.text = message
+            } else if state == .draw {
                 let message = "Draw"
-                print(message)
-            } else { changePlayerNumber() }
+                messageLabel.text = message
+            } else if state == .onGoing {
+                changePlayerNumber()
+            }
         }
     }
 }
