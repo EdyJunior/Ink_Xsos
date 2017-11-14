@@ -39,6 +39,10 @@ class ClassicScene: GameScene {
     }
     
     func changePlayerNumber(_ button: Button) {
+        changePlayerNumber()
+    }
+    
+    func changePlayerNumber() {
         
         if playerNumber == 1 { playerNumber = 2 }
         else { playerNumber = 1 }
@@ -75,27 +79,33 @@ class ClassicScene: GameScene {
             }
         }
     }
-    
+
     func touchCell(_ button: Button) {
-        
+
         let btnName = button.name!
-        
+
         var pos = btnName.components(separatedBy: " ").flatMap { Int($0) }
         print("\(pos[0]); \(pos[1])")
-        
+
         let success = classic.updateGrid(playerNumber: playerNumber, symb: (playerNumber == 1 ? "X" : "O"), pos: pos)
-        
-        for row in classic.grid {
-            print(row)
-        }
-        
+
         if !success { print("Não é sua vez!") }
-        
-        if classic.isGameOver() {
-            let winner = classic.winner
-            let message = (winner == 0 ? "Draw" : "Winner = \(classic.winner)")
-            
-            print(message)
+        else {
+            for row in classic.grid {
+                print(row)
+            }
+            let s = classic.getSymbol(fromPlayer: playerNumber)
+            let size = grid.frame.width / 5.0
+
+            draw(text: s, atPosition: button.touchableArea.position, withSize: size, withColor: .black)
+            if classic.isGameOver() {
+                let winner = classic.winner
+                let message = (winner == 0 ? "Draw" : "Winner = \(classic.winner)")
+                
+                print(message)
+            } else {
+                changePlayerNumber()
+            }
         }
     }
 }
