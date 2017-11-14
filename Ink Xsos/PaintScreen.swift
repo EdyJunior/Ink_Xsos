@@ -10,7 +10,7 @@ import SpriteKit
 
 protocol PaintScreen {
 
-    var maxSplashes: [Int] { get set }
+    var maxSplashes: Int { get set }
     var splashes: [SKSpriteNode] { get set }
 
     func clearScreen ()
