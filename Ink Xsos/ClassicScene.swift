@@ -21,13 +21,13 @@ class ClassicScene: GameScene {
     
     func buildScene() {
         
-        buildPlayerButton()
+        buildResetButton()
         buildCellButtons()
     }
     
-    func buildPlayerButton() {
+    func buildResetButton() {
         
-        let button = Button(defaultButtonImage: "spot", activeButtonImage: "spot", buttonAction: changePlayerNumber)
+        let button = Button(defaultButtonImage: "spot", activeButtonImage: "spot", buttonAction: resetGame)
         
         let buttonPos = CGPoint(x: self.frame.midX,y: self.frame.midY / 6)
         let buttonSize = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
@@ -38,8 +38,13 @@ class ClassicScene: GameScene {
         self.addChild(button)
     }
     
-    func changePlayerNumber(_ button: Button) {
-        changePlayerNumber()
+    func resetGame(_ button: Button) {
+        
+        for s in symbols {
+            s.removeFromParent()
+        }
+        classic = Classic()
+        playerNumber = 1
     }
     
     func changePlayerNumber() {
