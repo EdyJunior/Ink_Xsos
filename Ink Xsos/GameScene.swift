@@ -11,7 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
 
     var modeLabel = SKLabelNode(text: "Mode: ")
-    var messageLabel = SKLabelNode(text: "It’s your turn!")
+    var messageLabel = SKLabelNode(text: "It’s X turn!")
     var timeLabel = SKLabelNode(text: "30")
     var symbols = [SKLabelNode]()
 
@@ -28,7 +28,7 @@ class GameScene: SKScene {
         
         buildTimer()
         buildBackButton()
-        buildModeLabel(text: "numerical")
+        buildModeLabel(text: "classic")
         buildMessageLabel()
         buildGrid()
     }

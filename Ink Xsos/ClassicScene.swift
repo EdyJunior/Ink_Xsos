@@ -52,6 +52,7 @@ class ClassicScene: GameScene {
         if playerNumber == 1 { playerNumber = 2 }
         else { playerNumber = 1 }
         print(playerNumber)
+        messageLabel.text = "It’s \(classic.getSymbol(fromPlayer: playerNumber)) turn!"
     }
     
     func buildCellButton(inCell cell: [Int], inPos pos: CGPoint) {
@@ -108,9 +109,7 @@ class ClassicScene: GameScene {
                 let message = (winner == 0 ? "Draw" : "Winner = \(classic.winner)")
                 
                 print(message)
-            } else {
-                changePlayerNumber()
-            }
+            } else { changePlayerNumber() }
         }
     }
 }
