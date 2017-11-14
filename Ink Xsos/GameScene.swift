@@ -93,16 +93,37 @@ class GameScene: SKScene {
     }
     
     func buildGrid() {
-        
+
         let sceneFrame = scene!.frame
         let gridWidth = sceneFrame.width * 0.8
-        
+
         let texture = SKTexture(imageNamed: "grid")
         let gridSize = CGSize(width: gridWidth, height: gridWidth / 1.0593)
-        
+
         grid = SKSpriteNode(texture: texture, color: .white, size: gridSize)
         grid.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.midY)
-        
+
         addChild(grid)
+    }
+
+    func draw(texture: SKTexture, atPosition pos: CGPoint, withSize textureSize: CGSize, withAlpha alpha: CGFloat = 1.0, withZPosition zPos: CGFloat = -1.0) {
+
+        let image = SKSpriteNode(texture: texture, color: .white, size: textureSize)
+        image.position = pos
+        image.alpha = alpha
+        image.zPosition = zPos
+
+        addChild(image)
+    }
+
+    func draw(text: String, atPosition pos: CGPoint, withSize fontSize: CGFloat, withColor color: UIColor) {
+
+        let label = SKLabelNode(text: text)
+        label.fontSize = fontSize
+        label.position = pos
+        label.zPosition = self.grid.zPosition + 1
+        label.fontColor = color
+        
+        addChild(label)
     }
 }
