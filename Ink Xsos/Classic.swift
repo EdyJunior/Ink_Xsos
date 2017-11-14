@@ -29,6 +29,12 @@ class Classic: Xsos {
         player.append(p2)
     }
     
+    func getSymbol(fromPlayer p: Int) -> String {
+        
+        let desiredPlayer = player.filter() { $0.number == p }
+        return desiredPlayer[0].symbol
+    }
+    
     private func checkRow (_ row: Int) -> Bool {
         
         let s = grid[row][1]
