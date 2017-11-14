@@ -9,20 +9,21 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    
+
     var modeLabel = SKLabelNode(text: "Mode: ")
     var messageLabel = SKLabelNode(text: "It’s your turn!")
     var timeLabel = SKLabelNode(text: "30")
-    
+    var symbols = [SKLabelNode]()
+
     var grid = SKSpriteNode()
 
     override func didMove(to view: SKView) {
-        
+
         super.didMove(to: view)
-        
+
         self.buildScene()
     }
-    
+
     private func buildScene() {
         
         buildTimer()
@@ -123,6 +124,8 @@ class GameScene: SKScene {
         label.position = pos
         label.zPosition = self.grid.zPosition + 1
         label.fontColor = color
+        
+        symbols.append(label)
         
         addChild(label)
     }
