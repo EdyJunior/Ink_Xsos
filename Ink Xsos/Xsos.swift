@@ -9,6 +9,10 @@
 import SpriteKit
 import Foundation
 
+enum MatchState {
+    case finishedWithWinner, onGoing, draw
+}
+
 protocol Xsos {
 
     associatedtype symbolType
@@ -19,6 +23,6 @@ protocol Xsos {
     var grid: [[symbolType]] { get set }
     var winner: Int { get set }
     
-    func isGameOver () -> Bool
+    func isGameOver () -> MatchState
     func updateGrid (playerNumber: Int, symb: String, pos: [Int]) -> Bool
 }

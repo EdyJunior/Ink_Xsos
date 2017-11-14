@@ -66,7 +66,7 @@ class Classic: Xsos {
         while (col < 4) {
             if grid[l][col] != s { return false }
             l += inc
-            col += 1;
+            col += 1
         }
         return true
     }
@@ -82,14 +82,14 @@ class Classic: Xsos {
         winner = 0
     }
 
-    func isGameOver () -> Bool {
+    func isGameOver () -> MatchState {
         
         for row in 1...3 {
             let flag = checkRow(row)
             if flag {
                 let s = grid[row][1]
                 getWinner(symbol: s)
-                return true
+                return .finishedWithWinner
             }
         }
         for col in 1...3 {
@@ -97,7 +97,7 @@ class Classic: Xsos {
             if flag {
                 let s = grid[1][col]
                 getWinner(symbol: s)
-                return true
+                return .finishedWithWinner
             }
         }
         var a = [(row: Int, inc: Int)]()
@@ -109,14 +109,11 @@ class Classic: Xsos {
             if flag {
                 let s = grid[item.row][1]
                 getWinner(symbol: s)
-                return true
+                return .finishedWithWinner
             }
         }
-        if turn == 10 {
-            getWinner(symbol: "DRAW")
-            return true;
-        }
-        return false;
+        if turn == 10 { return .draw }
+        return .onGoing
     }
     
     func updateGrid (playerNumber: Int, symb: String, pos: [Int]) -> Bool {
@@ -125,7 +122,7 @@ class Classic: Xsos {
            (turn & 1 == 0 && playerNumber == 2 ||
             turn & 1 == 1 && playerNumber == 1)) {
                 grid[pos[0]][pos[1]] = symb
-                turn += 1;
+                turn += 1
                 return true
         }
         return false

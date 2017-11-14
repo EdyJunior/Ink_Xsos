@@ -104,10 +104,12 @@ class ClassicScene: GameScene {
             let size = grid.frame.width / 5.0
 
             draw(text: s, atPosition: button.touchableArea.position, withSize: size, withColor: .black)
-            if classic.isGameOver() {
+            if classic.isGameOver() == .finishedWithWinner {
                 let winner = classic.winner
-                let message = (winner == 0 ? "Draw" : "Winner = \(classic.winner)")
-                
+                let message = "Winner = \(winner)"
+                print(message)
+            } else if classic.isGameOver() == .draw {
+                let message = "Draw"
                 print(message)
             } else { changePlayerNumber() }
         }
