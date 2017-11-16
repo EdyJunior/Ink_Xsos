@@ -6,7 +6,6 @@
 //  Copyright © 2016 Edvaldo Junior. All rights reserved.
 //
 
-import UIKit
 import SpriteKit
 
 class Button: SKNode {
@@ -23,6 +22,19 @@ class Button: SKNode {
             activeButton.isHidden = !pressed
             defaultButton.isHidden = pressed
         }
+    }
+    
+    init(defaultButtonSprite: SKSpriteNode, activeButtonSprite: SKSpriteNode = SKSpriteNode(), buttonAction: ((_ button: Button) -> Void)? = nil) {
+        
+        defaultButton = defaultButtonSprite
+        activeButton = (activeButtonSprite == SKSpriteNode() ? defaultButtonSprite : activeButtonSprite)
+        touchableArea = SKSpriteNode(color: .clear, size: defaultButton.size)
+        action = buttonAction
+        pressed = false
+        
+        super.init()
+        
+        isUserInteractionEnabled = true
     }
     
     init(defaultButtonImage: String, activeButtonImage: String, buttonAction: ((_ button: Button) -> Void)? = nil) {
