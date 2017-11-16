@@ -16,6 +16,14 @@ class MenuScene: SKScene {
     var configurationsButton: Button!
     var moreGamesButton: Button!
     
+    var menuButtonSize: CGSize {
+        
+        let width = self.size.width * 0.45
+        let height = width * 0.75
+        
+        return CGSize(width: width, height: height)
+    }
+    
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
@@ -25,6 +33,7 @@ class MenuScene: SKScene {
     private func setup() {
         
         self.setupGameLabel()
+        self.setupButtons()
     }
     
     private func setupGameLabel() {
@@ -38,4 +47,74 @@ class MenuScene: SKScene {
         self.addChild(self.gameLabel)
     }
     
+    private func setupButtons() {
+        
+        let width = self.menuButtonSize.width
+        let height = self.menuButtonSize.height
+        
+        let midHeight = self.frame.midY
+        let widthOffset = (self.size.width - 2 * width) / 3
+        
+        let left = widthOffset + width / 2
+        let right = 2 * widthOffset + 3 * width / 2
+        let top = midHeight
+        let bottom = midHeight - height - widthOffset
+        
+        let buttonPositions = [
+            CGPoint(x: left,  y: top),    // top left
+            CGPoint(x: right, y: top),    // top right
+            CGPoint(x: left,  y: bottom), // bottom left
+            CGPoint(x: right, y: bottom)  // bottom right
+        ]
+        
+        self.setupRandomGameButton(atPosition: buttonPositions[0])
+        self.setupSelectModeButton(atPosition: buttonPositions[1])
+        self.setupConfigurationsButton(atPosition: buttonPositions[2])
+        self.setupMoreGamesButton(atPosition: buttonPositions[3])
+    }
+    
+    private func setupRandomGameButton(atPosition position: CGPoint) {
+        
+        let sprite = SKSpriteNode(color: .red, size: self.menuButtonSize)
+        
+        self.randomGameButton = Button(sprite: sprite) { _ in print("Random game") }
+        self.randomGameButton.position = position
+        
+        self.addChild(self.randomGameButton)
+    }
+    
+    private func setupSelectModeButton(atPosition position: CGPoint) {
+        
+        let sprite = SKSpriteNode(color: .blue, size: self.menuButtonSize)
+        
+        self.selectModeButton = Button(sprite: sprite) { _ in print("Select mode") }
+        self.selectModeButton.position = position
+        
+        self.addChild(self.selectModeButton)
+    }
+    
+    private func setupConfigurationsButton(atPosition position: CGPoint) {
+        
+        let sprite = SKSpriteNode(color: .green, size: self.menuButtonSize)
+        
+        self.configurationsButton = Button(sprite: sprite) { _ in print("Configurations") }
+        self.configurationsButton.position = position
+        
+        self.addChild(self.configurationsButton)
+    }
+    
+    private func setupMoreGamesButton(atPosition position: CGPoint) {
+        
+        let sprite = SKSpriteNode(color: .black, size: self.menuButtonSize)
+        
+        self.moreGamesButton = Button(sprite: sprite) { _ in print("More games") }
+        self.moreGamesButton.position = position
+        
+        self.addChild(self.moreGamesButton)
+    }
+    
 }
+
+
+
+
