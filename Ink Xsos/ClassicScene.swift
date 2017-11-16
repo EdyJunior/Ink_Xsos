@@ -29,10 +29,8 @@ class ClassicScene: GameScene {
         
         let button = Button(defaultButtonImage: "spot", activeButtonImage: "spot", buttonAction: resetGame)
         
-        let buttonPos = CGPoint(x: self.frame.midX,y: self.frame.midY / 6)
-        let buttonSize = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
-        
-        button.setSizeAndPosition(buttonSize, position: buttonPos, areaFactor: 1.0)
+        button.size = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
+        button.position = CGPoint(x: self.frame.midX, y: self.frame.midY / 6)
         button.zPosition = 1
         button.name = "Button"
         self.addChild(button)
@@ -58,10 +56,9 @@ class ClassicScene: GameScene {
     func buildCellButton(inCell cell: [Int], inPos pos: CGPoint) {
         
         let button = Button(defaultButtonImage: "spot", activeButtonImage: "spot", buttonAction: touchCell)
-
-        let buttonSize = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
-
-        button.setSizeAndPosition(buttonSize, position: pos, areaFactor: 1.0)
+        
+        button.size = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
+        button.position = pos
         button.zPosition = 1
         button.name = "\(cell[0]) \(cell[1])"
         button.touchableArea.alpha = 0.01
@@ -103,7 +100,7 @@ class ClassicScene: GameScene {
             let s = classic.getSymbol(fromPlayer: playerNumber)
             let size = grid.frame.width / 5.0
 
-            draw(text: s, atPosition: button.touchableArea.position, withSize: size, withColor: .black)
+            draw(text: s, atPosition: button.position, withSize: size, withColor: .black)
             if classic.isGameOver() == .finishedWithWinner {
                 let winner = classic.winner
                 let message = "Winner = \(winner)"

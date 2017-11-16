@@ -24,6 +24,15 @@ class Button: SKNode {
         }
     }
     
+    var size: CGSize {
+        
+        didSet {
+            self.touchableArea.size = size
+            self.defaultButton.size = size
+            self.activeButton.size = size
+        }
+    }
+    
     init(defaultButtonSprite: SKSpriteNode, activeButtonSprite: SKSpriteNode, buttonAction: ((_ button: Button) -> Void)? = nil) {
         
         defaultButton = defaultButtonSprite.copy() as! SKSpriteNode
@@ -31,6 +40,7 @@ class Button: SKNode {
         touchableArea = SKSpriteNode(color: .clear, size: defaultButton.size)
         action = buttonAction
         pressed = false
+        size = defaultButtonSprite.size
         
         super.init()
         
@@ -54,6 +64,7 @@ class Button: SKNode {
         activeButton.isHidden = true
         action = buttonAction
         pressed = false
+        size = defaultButton.size
         
         super.init()
         
@@ -97,7 +108,7 @@ class Button: SKNode {
         )
         defaultButton.run(action)
     }
-    
+    /*
     func setSizeAndPosition(_ size: CGSize, position: CGPoint, areaFactor factor: CGFloat) {
         
         defaultButton.size = size
@@ -111,4 +122,5 @@ class Button: SKNode {
         touchableArea.addChild(activeButton)
         addChild(touchableArea)
     }
+    */
 }
