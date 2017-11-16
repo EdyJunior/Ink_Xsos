@@ -16,22 +16,26 @@ class MenuScene: SKScene {
     var configurationsButton: Button!
     var moreGamesButton: Button!
     
-    
-    
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
-        
         self.setup()
-        
-        print("Nasci")
     }
     
-    func setup() {
+    private func setup() {
         
-        
-        
+        self.setupGameLabel()
     }
     
+    private func setupGameLabel() {
+        
+        self.gameLabel = SKLabelNode(text: "Ink XsOs")
+        self.gameLabel.fontColor = .black
+        self.gameLabel.fontSize = 60
+        
+        self.gameLabel.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - self.gameLabel.frame.height * 1.75)
+        
+        self.addChild(self.gameLabel)
+    }
     
 }
