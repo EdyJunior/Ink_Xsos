@@ -58,10 +58,9 @@ class GameScene: SKScene {
         
         let backButton = Button(defaultButtonImage: "arrow", activeButtonImage: "arrow", buttonAction: backScene)
         
-        let sizeButton = CGSize(width: size.width * 0.12, height: size.width * 0.12)
-        let positionButton = CGPoint(x: size.width * 0.08, y: size.height * 0.93)
+        backButton.size = CGSize(width: size.width * 0.12, height: size.width * 0.12)
+        backButton.position = CGPoint(x: size.width * 0.08, y: size.height * 0.93)
         
-        backButton.setSizeAndPosition(sizeButton, position: positionButton, areaFactor: 1.0)
         backButton.touchableArea.zPosition = 1
         backButton.touchableArea.xScale *= -1
         
