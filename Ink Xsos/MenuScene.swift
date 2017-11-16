@@ -6,8 +6,32 @@
 //  Copyright © 2017 Edvaldo Junior. All rights reserved.
 //
 
-import UIKit
+import SpriteKit
 
 class MenuScene: SKScene {
-
+    
+    var gameLabel: SKLabelNode!
+    var randomGameButton: Button!
+    var selectModeButton: Button!
+    var configurationsButton: Button!
+    var moreGamesButton: Button!
+    
+    
+    
+    override func didMove(to view: SKView) {
+        
+        super.didMove(to: view)
+        
+        self.setup()
+        
+        print("Nasci")
+    }
+    
+    func setup() {
+        
+        
+        
+    }
+    
+    
 }
