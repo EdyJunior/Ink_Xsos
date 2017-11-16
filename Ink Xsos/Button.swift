@@ -24,10 +24,10 @@ class Button: SKNode {
         }
     }
     
-    init(defaultButtonSprite: SKSpriteNode, activeButtonSprite: SKSpriteNode = SKSpriteNode(), buttonAction: ((_ button: Button) -> Void)? = nil) {
+    init(defaultButtonSprite: SKSpriteNode, activeButtonSprite: SKSpriteNode, buttonAction: ((_ button: Button) -> Void)? = nil) {
         
-        defaultButton = defaultButtonSprite
-        activeButton = (activeButtonSprite == SKSpriteNode() ? defaultButtonSprite : activeButtonSprite)
+        defaultButton = defaultButtonSprite.copy() as! SKSpriteNode
+        activeButton = activeButtonSprite.copy() as! SKSpriteNode
         touchableArea = SKSpriteNode(color: .clear, size: defaultButton.size)
         action = buttonAction
         pressed = false
@@ -35,6 +35,15 @@ class Button: SKNode {
         super.init()
         
         isUserInteractionEnabled = true
+        
+        touchableArea.addChild(defaultButton)
+        touchableArea.addChild(activeButton)
+        self.addChild(touchableArea)
+    }
+    
+    convenience init(sprite: SKSpriteNode, action: ((_ button: Button) -> Void)? = nil) {
+        
+        self.init(defaultButtonSprite: sprite, activeButtonSprite: sprite, buttonAction: action)
     }
     
     init(defaultButtonImage: String, activeButtonImage: String, buttonAction: ((_ button: Button) -> Void)? = nil) {
@@ -49,6 +58,10 @@ class Button: SKNode {
         super.init()
         
         isUserInteractionEnabled = true
+        
+        touchableArea.addChild(defaultButton)
+        touchableArea.addChild(activeButton)
+        self.addChild(touchableArea)
     }
     
     required init(coder aDecoder: NSCoder) {
