@@ -16,6 +16,7 @@ class ClassicScene: GameScene {
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
+        backgroundColor = .white
         buildScene()
     }
     

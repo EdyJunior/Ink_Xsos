@@ -77,7 +77,14 @@ class MenuScene: SKScene {
         
         let sprite = SKSpriteNode(color: .red, size: self.menuButtonSize)
         
-        self.randomGameButton = Button(sprite: sprite) { _ in print("Random game") }
+        self.randomGameButton = Button(sprite: sprite) { _ in
+            print("Random game")
+            
+            guard let view = self.view else { return }
+            
+            let classicScene = ClassicScene(size: view.bounds.size)
+            view.presentScene(classicScene)
+        }
         self.randomGameButton.position = position
         
         self.addChild(self.randomGameButton)
