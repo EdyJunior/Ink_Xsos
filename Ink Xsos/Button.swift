@@ -25,6 +25,20 @@ class Button: SKNode {
         }
     }
     
+    init(buttonAction: ((_ button: Button) -> Void)? = nil) {
+        
+        defaultButton = SKSpriteNode()
+        activeButton = SKSpriteNode()
+        touchableArea = SKSpriteNode()
+        activeButton.isHidden = true
+        action = buttonAction
+        pressed = false
+        
+        super.init()
+        
+        isUserInteractionEnabled = true
+    }
+    
     init(defaultButtonImage: String, activeButtonImage: String, buttonAction: ((_ button: Button) -> Void)? = nil) {
         
         defaultButton = SKSpriteNode(imageNamed: defaultButtonImage)
