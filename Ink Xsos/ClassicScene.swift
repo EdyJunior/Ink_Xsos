@@ -23,6 +23,7 @@ class ClassicScene: GameScene {
         
         buildResetButton()
         buildCellButtons()
+        resetGame()
     }
     
     func buildResetButton() {
@@ -38,7 +39,7 @@ class ClassicScene: GameScene {
         self.addChild(button)
     }
     
-    func resetGame(_ button: Button) {
+    func resetGame() {
         
         for s in symbols {
             s.removeFromParent()
@@ -48,8 +49,12 @@ class ClassicScene: GameScene {
         }
         classic = Classic()
         playerNumber = 1
+        modeLabel.text = "classic"
         messageLabel.text = "It’s X turn!"
+        timeLabel.text = "15"
     }
+    
+    func resetGame(_ button: Button) { resetGame() }
     
     func changePlayerNumber() {
         
@@ -60,9 +65,9 @@ class ClassicScene: GameScene {
     
     func buildCellButton(inCell cell: [Int], inPos pos: CGPoint) {
         
-        let button = Button(defaultButtonImage: "black", activeButtonImage: "black", buttonAction: touchCell)
-
-        let buttonSize = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
+        let button = Button(buttonAction: touchCell)
+        let gridFrame = self.grid.frame
+        let buttonSize = CGSize(width: gridFrame.width / 3, height: gridFrame.height / 3)
 
         button.setSizeAndPosition(buttonSize, position: pos, areaFactor: 1.0)
         button.zPosition = 1
@@ -76,14 +81,19 @@ class ClassicScene: GameScene {
         
         for i in 1...3 {
             for j in 1...3 {
-                var x = CGFloat((2 * j - 1))
-                x *= grid.frame.width / 4.75
+                let gridFrame = self.grid.frame
+                let gridPosition = self.grid.position
+                let gridLeft = gridPosition.x - gridFrame.width / 2
+                
+                let x = gridLeft
+                var xAux = CGFloat((2 * j - 1))
+                xAux *= grid.frame.width / 6
                 
                 var y = (grid.frame.midY - grid.frame.height / 2)
                 let yAux = CGFloat(2 * (4 - i) - 1)
                 y += (grid.frame.height *  yAux / 6.0)
                 
-                let point = CGPoint(x: x, y: y)
+                let point = CGPoint(x: x + xAux, y: y)
                 buildCellButton(inCell: [i, j], inPos: point)
             }
         }
@@ -101,7 +111,9 @@ class ClassicScene: GameScene {
             let s = classic.getSymbol(fromPlayer: playerNumber)
             let size = grid.frame.width / 5.0
 
-            draw(text: s, atPosition: button.touchableArea.position, withSize: size, withColor: .black)
+            let symbolPosition = CGPoint(x: button.touchableArea.position.x,
+                                         y: button.touchableArea.position.y - size * 0.35)
+            draw(text: s, atPosition: symbolPosition, withSize: size, withColor: .black)
             let state = classic.isGameOver()
             if state == .finishedWithWinner {
                 let message = "Winner = \(s)"

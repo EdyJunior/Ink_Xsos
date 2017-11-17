@@ -17,9 +17,9 @@ enum VictoryLine {
 
 class GameScene: SKScene {
 
-    var modeLabel = SKLabelNode(text: "Mode: ")
-    var messageLabel = SKLabelNode(text: "It’s X turn!")
-    var timeLabel = SKLabelNode(text: "30")
+    var modeLabel = SKLabelNode(fontNamed: "DK Flagellum Dei")
+    var messageLabel = SKLabelNode(fontNamed: "DK Flagellum Dei")
+    var timeLabel = SKLabelNode(fontNamed: "DK Flagellum Dei")
     var symbols = [SKLabelNode]()
     var endGameSprites = [SKSpriteNode]()
     
@@ -36,9 +36,9 @@ class GameScene: SKScene {
         
         buildTimer()
         buildBackButton()
-        buildModeLabel(text: "classic")
-        buildMessageLabel()
+        buildModeLabel()
         buildGrid()
+        buildMessageLabel()
     }
     
     private func buildTimer() {
@@ -80,28 +80,17 @@ class GameScene: SKScene {
         print("Back")
     }
     
-    func buildModeLabel(text: String) {
+    private func buildModeLabel() {
         
         let sceneFrame = scene!.frame
         modeLabel.fontSize = sceneFrame.width * 0.08
         modeLabel.position = CGPoint(x: 0.9 * sceneFrame.midX, y: size.height * 0.915)
         modeLabel.fontColor = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
-        modeLabel.text = "Mode: \(text)"
     
         addChild(modeLabel)
     }
     
-    private func buildMessageLabel() {
-        
-        let sceneFrame = scene!.frame
-        messageLabel.fontSize = sceneFrame.width * 0.11
-        messageLabel.position = CGPoint(x: sceneFrame.midX, y: modeLabel.position.y - sceneFrame.height * 0.1)
-        messageLabel.fontColor = UIColor(red: 97.0/255, green: 216.0/255, blue: 54.0/255, alpha: 1.0)
-        
-        addChild(messageLabel)
-    }
-    
-    func buildGrid() {
+    private func buildGrid() {
 
         let sceneFrame = scene!.frame
         let gridWidth = sceneFrame.width * 0.8
@@ -113,6 +102,22 @@ class GameScene: SKScene {
         grid.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.midY)
 
         addChild(grid)
+    }
+    
+    private func buildMessageLabel() {
+        
+        let sceneFrame = scene!.frame
+        messageLabel.fontSize = sceneFrame.width * 0.11
+        
+        let gridFrame = self.grid.frame
+        let gridPosition = self.grid.position
+        let timerPosition = self.timeLabel.position
+        let gridTop = gridPosition.y + gridFrame.height / 2
+        
+        messageLabel.position = CGPoint(x: sceneFrame.midX, y: (timerPosition.y + gridTop) / 2.0)
+        messageLabel.fontColor = UIColor(red: 97.0/255, green: 216.0/255, blue: 54.0/255, alpha: 1.0)
+        
+        addChild(messageLabel)
     }
 
     func draw(texture: SKTexture, atPosition pos: CGPoint, withSize textureSize: CGSize, withAlpha alpha: CGFloat = 1.0, withZPosition zPos: CGFloat = -1.0) {
@@ -132,6 +137,7 @@ class GameScene: SKScene {
         label.position = pos
         label.zPosition = self.grid.zPosition + 1
         label.fontColor = color
+        label.fontName = "DK Flagellum Dei"
         
         symbols.append(label)
         
