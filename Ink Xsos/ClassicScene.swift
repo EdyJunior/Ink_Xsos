@@ -27,7 +27,7 @@ class ClassicScene: GameScene {
     
     func buildResetButton() {
         
-        let button = Button(defaultButtonImage: "spot", activeButtonImage: "spot", buttonAction: resetGame)
+        let button = Button(defaultButtonImage: "black", activeButtonImage: "black", buttonAction: resetGame)
         
         let buttonPos = CGPoint(x: self.frame.midX,y: self.frame.midY / 6)
         let buttonSize = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
@@ -43,6 +43,9 @@ class ClassicScene: GameScene {
         for s in symbols {
             s.removeFromParent()
         }
+        for e in endGameSprites {
+            e.removeFromParent()
+        }
         classic = Classic()
         playerNumber = 1
         messageLabel.text = "It’s X turn!"
@@ -57,7 +60,7 @@ class ClassicScene: GameScene {
     
     func buildCellButton(inCell cell: [Int], inPos pos: CGPoint) {
         
-        let button = Button(defaultButtonImage: "spot", activeButtonImage: "spot", buttonAction: touchCell)
+        let button = Button(defaultButtonImage: "black", activeButtonImage: "black", buttonAction: touchCell)
 
         let buttonSize = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
 
@@ -103,6 +106,7 @@ class ClassicScene: GameScene {
             if state == .finishedWithWinner {
                 let message = "Winner = \(s)"
                 messageLabel.text = message
+                endGame(victoryLine: classic.victoryLine!)
             } else if state == .draw {
                 let message = "Draw"
                 messageLabel.text = message

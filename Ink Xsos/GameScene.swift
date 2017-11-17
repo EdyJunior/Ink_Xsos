@@ -8,13 +8,21 @@
 
 import SpriteKit
 
+enum VictoryLine {
+    
+    case row(line: Int)
+    case column(line: Int)
+    case diagonal(main: Bool)
+}
+
 class GameScene: SKScene {
 
     var modeLabel = SKLabelNode(text: "Mode: ")
     var messageLabel = SKLabelNode(text: "It’s X turn!")
     var timeLabel = SKLabelNode(text: "30")
     var symbols = [SKLabelNode]()
-
+    var endGameSprites = [SKSpriteNode]()
+    
     var grid = SKSpriteNode()
 
     override func didMove(to view: SKView) {
@@ -38,7 +46,7 @@ class GameScene: SKScene {
         let sceneFrame = scene!.frame
         let spotWidth = sceneFrame.width * 0.2859
 
-        let texture = SKTexture(imageNamed: "spot")
+        let texture = SKTexture(imageNamed: "black")
         let spotTimerSize = CGSize(width: spotWidth, height: spotWidth / 1.0764)
         let spotTimerSprite = SKSpriteNode(texture: texture, color: .white, size: spotTimerSize)
         spotTimerSprite.position = CGPoint(x: 0.87 * sceneFrame.width, y: 0.93 * sceneFrame.height)
@@ -128,5 +136,35 @@ class GameScene: SKScene {
         symbols.append(label)
         
         addChild(label)
+    }
+    
+    func endGame(victoryLine vl: VictoryLine) {
+        
+        let splatterTexture = SKTexture(imageNamed: "blueSplatter")
+        let splatterSize = CGSize(width: scene!.frame.width * 0.2, height: scene!.frame.width * 1.3)
+        let splatter = SKSpriteNode(texture: splatterTexture, color: .blue, size: splatterSize)
+        
+        var splatterPosition = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY)
+        let gridFrame = self.grid.frame
+        let gridPosition = self.grid.position
+        let gridTop = gridPosition.y + gridFrame.height / 2
+        let gridLeft = gridPosition.x - gridFrame.width / 2
+        
+        switch vl {
+        case .row(let line):
+            splatter.zRotation = -CGFloat(Double.pi / 2)
+            let yAux = CGFloat(2.0 * Double(line) - 1.0)
+            splatterPosition = CGPoint(x: gridPosition.x - gridFrame.width * 0.1,
+                                       y: gridTop - yAux * gridFrame.height / 6.0)
+        case .column(let line):
+            let xAux = CGFloat(2.0 * Double(line) - 1.0)
+            splatterPosition = CGPoint(x: gridLeft + xAux * gridFrame.width / 6.0,
+                                       y: gridPosition.y - gridFrame.height * 0.15)
+        case .diagonal(let main):
+            splatter.zRotation = CGFloat(Double.pi / 4) * (main ? 1 : -1)
+        }
+        splatter.position = splatterPosition
+        endGameSprites.append(splatter)
+        addChild(splatter)
     }
 }

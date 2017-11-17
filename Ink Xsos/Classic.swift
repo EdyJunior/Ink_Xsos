@@ -15,6 +15,7 @@ class Classic: Xsos {
     var time: TimeInterval = 0
     var grid = [[symbolType]]()
     var winner: Int = -1
+    var victoryLine: VictoryLine?
 
     typealias symbolType = String
     
@@ -89,6 +90,7 @@ class Classic: Xsos {
             if flag {
                 let s = grid[row][1]
                 getWinner(symbol: s)
+                victoryLine = .row(line: row)
                 return .finishedWithWinner
             }
         }
@@ -97,11 +99,12 @@ class Classic: Xsos {
             if flag {
                 let s = grid[1][col]
                 getWinner(symbol: s)
+                victoryLine = .column(line: col)
                 return .finishedWithWinner
             }
         }
         var a = [(row: Int, inc: Int)]()
-        a.append((1, 1))
+        a.append((1,  1))
         a.append((3, -1))
         
         for item in a {
@@ -109,6 +112,7 @@ class Classic: Xsos {
             if flag {
                 let s = grid[item.row][1]
                 getWinner(symbol: s)
+                victoryLine = .diagonal(main: item.row == 1)
                 return .finishedWithWinner
             }
         }
