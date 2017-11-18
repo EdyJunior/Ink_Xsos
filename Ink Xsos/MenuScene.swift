@@ -16,6 +16,8 @@ class MenuScene: SKScene {
     var configurationsButton: Button!
     var moreGamesButton: Button!
     
+    var paintPalette: SKSpriteNode!
+    
     var menuButtonSize: CGSize {
         
         let width = self.size.width * 0.45
@@ -33,7 +35,8 @@ class MenuScene: SKScene {
     private func setup() {
         
         self.setupGameLabel()
-        self.setupButtons()
+        //self.setupButtons()
+        self.setupPaintPalette()
     }
     
     private func setupGameLabel() {
@@ -45,6 +48,19 @@ class MenuScene: SKScene {
         self.gameLabel.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - self.gameLabel.frame.height * 1.75)
         
         self.addChild(self.gameLabel)
+    }
+    
+    private func setupPaintPalette() {
+        
+        self.paintPalette = SKSpriteNode(imageNamed: "paint_palette")
+        
+        self.paintPalette.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        self.paintPalette.position = CGPoint(x: self.frame.midX, y: self.frame.minY)
+        
+        let proportion = self.paintPalette.size.width / self.paintPalette.size.height
+        self.paintPalette.size = CGSize(width: self.size.width, height: self.size.width / proportion)
+        
+        self.addChild(self.paintPalette)
     }
     
     private func setupButtons() {
