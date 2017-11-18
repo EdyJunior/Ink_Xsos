@@ -24,11 +24,12 @@ class ClassicScene: GameScene {
         
         buildResetButton()
         buildCellButtons()
+        resetGame()
     }
     
     func buildResetButton() {
         
-        let button = Button(defaultButtonImage: "spot", activeButtonImage: "spot", buttonAction: resetGame)
+        let button = Button(defaultButtonImage: "black", activeButtonImage: "black", buttonAction: resetGame)
         
         button.size = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
         button.position = CGPoint(x: self.frame.midX, y: self.frame.midY / 6)
@@ -37,28 +38,35 @@ class ClassicScene: GameScene {
         self.addChild(button)
     }
     
-    func resetGame(_ button: Button) {
+    func resetGame() {
         
         for s in symbols {
             s.removeFromParent()
         }
+        for e in endGameSprites {
+            e.removeFromParent()
+        }
         classic = Classic()
         playerNumber = 1
+        modeLabel.text = "classic"
+        messageLabel.text = "It’s X turn!"
+        timeLabel.text = "15"
     }
+    
+    func resetGame(_ button: Button) { resetGame() }
     
     func changePlayerNumber() {
         
         if playerNumber == 1 { playerNumber = 2 }
         else { playerNumber = 1 }
-        print(playerNumber)
         messageLabel.text = "It’s \(classic.getSymbol(fromPlayer: playerNumber)) turn!"
     }
     
     func buildCellButton(inCell cell: [Int], inPos pos: CGPoint) {
         
-        let button = Button(defaultButtonImage: "spot", activeButtonImage: "spot", buttonAction: touchCell)
-        
-        button.size = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
+        let button = Button(buttonAction: touchCell)
+        let gridFrame = self.grid.frame
+        button.size = CGSize(width: gridFrame.width / 3, height: gridFrame.height / 3)
         button.position = pos
         button.zPosition = 1
         button.name = "\(cell[0]) \(cell[1])"
@@ -71,14 +79,19 @@ class ClassicScene: GameScene {
         
         for i in 1...3 {
             for j in 1...3 {
-                var x = CGFloat((2 * j - 1))
-                x *= grid.frame.width / 4.75
+                let gridFrame = self.grid.frame
+                let gridPosition = self.grid.position
+                let gridLeft = gridPosition.x - gridFrame.width / 2
+                
+                let x = gridLeft
+                var xAux = CGFloat((2 * j - 1))
+                xAux *= grid.frame.width / 6
                 
                 var y = (grid.frame.midY - grid.frame.height / 2)
                 let yAux = CGFloat(2 * (4 - i) - 1)
                 y += (grid.frame.height *  yAux / 6.0)
                 
-                let point = CGPoint(x: x, y: y)
+                let point = CGPoint(x: x + xAux, y: y)
                 buildCellButton(inCell: [i, j], inPos: point)
             }
         }
@@ -87,29 +100,29 @@ class ClassicScene: GameScene {
     func touchCell(_ button: Button) {
 
         let btnName = button.name!
-
-        var pos = btnName.components(separatedBy: " ").flatMap { Int($0) }
-        print("\(pos[0]); \(pos[1])")
+        let pos = btnName.components(separatedBy: " ").flatMap { Int($0) }
 
         let success = classic.updateGrid(playerNumber: playerNumber, symb: (playerNumber == 1 ? "X" : "O"), pos: pos)
 
         if !success { print("Não é sua vez!") }
         else {
-            for row in classic.grid {
-                print(row)
-            }
             let s = classic.getSymbol(fromPlayer: playerNumber)
             let size = grid.frame.width / 5.0
 
-            draw(text: s, atPosition: button.position, withSize: size, withColor: .black)
-            if classic.isGameOver() == .finishedWithWinner {
-                let winner = classic.winner
-                let message = "Winner = \(winner)"
-                print(message)
-            } else if classic.isGameOver() == .draw {
+            let symbolPosition = CGPoint(x: button.position.x,
+                                         y: button.position.y - size * 0.35)
+            draw(text: s, atPosition: symbolPosition, withSize: size, withColor: .black)
+            let state = classic.isGameOver()
+            if state == .finishedWithWinner {
+                let message = "Winner = \(s)"
+                messageLabel.text = message
+                endGame(victoryLine: classic.victoryLine!)
+            } else if state == .draw {
                 let message = "Draw"
-                print(message)
-            } else { changePlayerNumber() }
+                messageLabel.text = message
+            } else if state == .onGoing {
+                changePlayerNumber()
+            }
         }
     }
 }

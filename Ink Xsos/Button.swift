@@ -33,6 +33,25 @@ class Button: SKNode {
         }
     }
     
+    init(buttonAction: ((_ button: Button) -> Void)? = nil) {
+        
+        defaultButton = SKSpriteNode()
+        activeButton = SKSpriteNode()
+        touchableArea = SKSpriteNode()
+        activeButton.isHidden = true
+        action = buttonAction
+        pressed = false
+        size = defaultButton.size
+        
+        super.init()
+        
+        isUserInteractionEnabled = true
+        
+        touchableArea.addChild(defaultButton)
+        touchableArea.addChild(activeButton)
+        self.addChild(touchableArea)
+    }
+    
     init(defaultButtonSprite: SKSpriteNode, activeButtonSprite: SKSpriteNode, buttonAction: ((_ button: Button) -> Void)? = nil) {
         
         defaultButton = defaultButtonSprite.copy() as! SKSpriteNode
@@ -41,6 +60,7 @@ class Button: SKNode {
         action = buttonAction
         pressed = false
         size = defaultButtonSprite.size
+        activeButton.isHidden = true
         
         super.init()
         

@@ -8,13 +8,21 @@
 
 import SpriteKit
 
+enum VictoryLine {
+    
+    case row(line: Int)
+    case column(line: Int)
+    case diagonal(main: Bool)
+}
+
 class GameScene: SKScene {
 
-    var modeLabel = SKLabelNode(text: "Mode: ")
-    var messageLabel = SKLabelNode(text: "It’s X turn!")
-    var timeLabel = SKLabelNode(text: "30")
+    var modeLabel = SKLabelNode(fontNamed: "DK Flagellum Dei")
+    var messageLabel = SKLabelNode(fontNamed: "DK Flagellum Dei")
+    var timeLabel = SKLabelNode(fontNamed: "DK Flagellum Dei")
     var symbols = [SKLabelNode]()
-
+    var endGameSprites = [SKSpriteNode]()
+    
     var grid = SKSpriteNode()
 
     override func didMove(to view: SKView) {
@@ -28,9 +36,9 @@ class GameScene: SKScene {
         
         buildTimer()
         buildBackButton()
-        buildModeLabel(text: "classic")
-        buildMessageLabel()
+        buildModeLabel()
         buildGrid()
+        buildMessageLabel()
     }
     
     private func buildTimer() {
@@ -38,7 +46,7 @@ class GameScene: SKScene {
         let sceneFrame = scene!.frame
         let spotWidth = sceneFrame.width * 0.2859
 
-        let texture = SKTexture(imageNamed: "spot")
+        let texture = SKTexture(imageNamed: "black")
         let spotTimerSize = CGSize(width: spotWidth, height: spotWidth / 1.0764)
         let spotTimerSprite = SKSpriteNode(texture: texture, color: .white, size: spotTimerSize)
         spotTimerSprite.position = CGPoint(x: 0.87 * sceneFrame.width, y: 0.93 * sceneFrame.height)
@@ -71,28 +79,17 @@ class GameScene: SKScene {
         print("Back")
     }
     
-    func buildModeLabel(text: String) {
+    private func buildModeLabel() {
         
         let sceneFrame = scene!.frame
         modeLabel.fontSize = sceneFrame.width * 0.08
         modeLabel.position = CGPoint(x: 0.9 * sceneFrame.midX, y: size.height * 0.915)
         modeLabel.fontColor = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
-        modeLabel.text = "Mode: \(text)"
     
         addChild(modeLabel)
     }
     
-    private func buildMessageLabel() {
-        
-        let sceneFrame = scene!.frame
-        messageLabel.fontSize = sceneFrame.width * 0.11
-        messageLabel.position = CGPoint(x: sceneFrame.midX, y: modeLabel.position.y - sceneFrame.height * 0.1)
-        messageLabel.fontColor = UIColor(red: 97.0/255, green: 216.0/255, blue: 54.0/255, alpha: 1.0)
-        
-        addChild(messageLabel)
-    }
-    
-    func buildGrid() {
+    private func buildGrid() {
 
         let sceneFrame = scene!.frame
         let gridWidth = sceneFrame.width * 0.8
@@ -104,6 +101,22 @@ class GameScene: SKScene {
         grid.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.midY)
 
         addChild(grid)
+    }
+    
+    private func buildMessageLabel() {
+        
+        let sceneFrame = scene!.frame
+        messageLabel.fontSize = sceneFrame.width * 0.11
+        
+        let gridFrame = self.grid.frame
+        let gridPosition = self.grid.position
+        let timerPosition = self.timeLabel.position
+        let gridTop = gridPosition.y + gridFrame.height / 2
+        
+        messageLabel.position = CGPoint(x: sceneFrame.midX, y: (timerPosition.y + gridTop) / 2.0)
+        messageLabel.fontColor = UIColor(red: 97.0/255, green: 216.0/255, blue: 54.0/255, alpha: 1.0)
+        
+        addChild(messageLabel)
     }
 
     func draw(texture: SKTexture, atPosition pos: CGPoint, withSize textureSize: CGSize, withAlpha alpha: CGFloat = 1.0, withZPosition zPos: CGFloat = -1.0) {
@@ -123,9 +136,40 @@ class GameScene: SKScene {
         label.position = pos
         label.zPosition = self.grid.zPosition + 1
         label.fontColor = color
+        label.fontName = "DK Flagellum Dei"
         
         symbols.append(label)
         
         addChild(label)
+    }
+    
+    func endGame(victoryLine vl: VictoryLine) {
+        
+        let splatterTexture = SKTexture(imageNamed: "blueSplatter")
+        let splatterSize = CGSize(width: scene!.frame.width * 0.2, height: scene!.frame.width * 1.3)
+        let splatter = SKSpriteNode(texture: splatterTexture, color: .blue, size: splatterSize)
+        
+        var splatterPosition = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY)
+        let gridFrame = self.grid.frame
+        let gridPosition = self.grid.position
+        let gridTop = gridPosition.y + gridFrame.height / 2
+        let gridLeft = gridPosition.x - gridFrame.width / 2
+        
+        switch vl {
+        case .row(let line):
+            splatter.zRotation = -CGFloat(Double.pi / 2)
+            let yAux = CGFloat(2.0 * Double(line) - 1.0)
+            splatterPosition = CGPoint(x: gridPosition.x - gridFrame.width * 0.1,
+                                       y: gridTop - yAux * gridFrame.height / 6.0)
+        case .column(let line):
+            let xAux = CGFloat(2.0 * Double(line) - 1.0)
+            splatterPosition = CGPoint(x: gridLeft + xAux * gridFrame.width / 6.0,
+                                       y: gridPosition.y - gridFrame.height * 0.15)
+        case .diagonal(let main):
+            splatter.zRotation = CGFloat(Double.pi / 4) * (main ? 1 : -1)
+        }
+        splatter.position = splatterPosition
+        endGameSprites.append(splatter)
+        addChild(splatter)
     }
 }
