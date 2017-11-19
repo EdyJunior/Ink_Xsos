@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C507456A1FC1017E00C84B2C /* SKScene+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50745691FC1017E00C84B2C /* SKScene+Extensions.swift */; };
 		C546B0221FBB86A10042978F /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C546B0211FBB86A10042978F /* MenuScene.swift */; };
 		CE02C3561FAC001500CD07F3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C3551FAC001500CD07F3 /* Button.swift */; };
 		CE4908021FAAB3F2006D3A59 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4908011FAAB3F2006D3A59 /* GameScene.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C50745691FC1017E00C84B2C /* SKScene+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKScene+Extensions.swift"; sourceTree = "<group>"; };
 		C546B0211FBB86A10042978F /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		CE02C3551FAC001500CD07F3 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CE4908011FAAB3F2006D3A59 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C50745681FC1016C00C84B2C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C50745691FC1017E00C84B2C /* SKScene+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CE4908001FAAB39A006D3A59 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +95,7 @@
 		CEB27EA91FA76945004511BD = {
 			isa = PBXGroup;
 			children = (
+				C50745681FC1016C00C84B2C /* Extensions */,
 				CE4908001FAAB39A006D3A59 /* Scenes */,
 				CE6404AE1FA8A67D00B01022 /* Controllers */,
 				CE6404A71FA8959400B01022 /* Utils */,
@@ -191,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6404A91FA895AA00B01022 /* Player.swift in Sources */,
+				C507456A1FC1017E00C84B2C /* SKScene+Extensions.swift in Sources */,
 				CEB27EBE1FA76945004511BD /* GameViewController.swift in Sources */,
 				CEA9B6351FB1EE2400A4E391 /* ClassicScene.swift in Sources */,
 				CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */,
