@@ -29,6 +29,7 @@ class MenuScene: SKScene {
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
+        self.backgroundColor = .white
         self.setup()
     }
     
