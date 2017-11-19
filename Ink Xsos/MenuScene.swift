@@ -10,7 +10,7 @@ import SpriteKit
 
 class MenuScene: SKScene {
     
-    var gameLabel: SKLabelNode!
+    var gameName: SKSpriteNode!
     var paintPalette: SKSpriteNode!
     
     var randomGameButton: Button!
@@ -35,20 +35,22 @@ class MenuScene: SKScene {
     
     private func setup() {
         
-        self.setupGameLabel()
+        self.setupGameName()
         self.setupPaintPalette()
         self.setupButtons()
     }
     
-    private func setupGameLabel() {
+    private func setupGameName() {
         
-        self.gameLabel = SKLabelNode(text: "Ink XsOs")
-        self.gameLabel.fontColor = .black
-        self.gameLabel.fontSize = 60
+        self.gameName = SKSpriteNode(imageNamed: "ink_xsos")
+        self.gameName.anchorPoint = CGPoint(x: 0.5, y: 1.0)
+        self.gameName.position = CGPoint(x: self.frame.midX, y: self.frame.maxY * 0.95)
         
-        self.gameLabel.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - self.gameLabel.frame.height * 1.75)
+        let ratio = self.gameName.size.width / self.gameName.size.height
+        let width = self.size.width * 0.8
+        self.gameName.size = CGSize(width: width, height: width / ratio)
         
-        self.addChild(self.gameLabel)
+        self.addChild(self.gameName)
     }
     
     private func setupPaintPalette() {
