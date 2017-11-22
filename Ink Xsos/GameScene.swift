@@ -34,11 +34,20 @@ class GameScene: SKScene {
 
     private func buildScene() {
         
+        buildBackground()
         buildTimer()
         buildBackButton()
         buildModeLabel()
         buildGrid()
         buildMessageLabel()
+    }
+    
+    private func buildBackground() {
+        
+        let background = SKSpriteNode(texture: SKTexture(imageNamed: "whiteBackground"), color: .white, size: scene!.size)
+        background.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY)
+        background.zPosition = -2
+        addChild(background)
     }
     
     private func buildTimer() {
@@ -83,7 +92,7 @@ class GameScene: SKScene {
     private func buildModeLabel() {
         
         let sceneFrame = scene!.frame
-        modeLabel.fontSize = sceneFrame.width * 0.08
+        modeLabel.fontSize = sceneFrame.width * 0.1
         modeLabel.position = CGPoint(x: 0.9 * sceneFrame.midX, y: size.height * 0.915)
         modeLabel.fontColor = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
     
@@ -170,6 +179,9 @@ class GameScene: SKScene {
             splatter.zRotation = CGFloat(Double.pi / 4) * (main ? 1 : -1)
         }
         splatter.position = splatterPosition
+        splatter.zPosition = self.grid.zPosition + 2
+        splatter.alpha = 0.8
+        splatter.colorBlendFactor = 0.5
         endGameSprites.append(splatter)
         addChild(splatter)
     }
