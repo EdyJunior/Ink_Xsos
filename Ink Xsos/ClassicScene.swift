@@ -22,7 +22,7 @@ class ClassicScene: GameScene {
     
     func buildScene() {
         
-        buildResetButton()
+        //buildResetButton()
         buildCellButtons()
         resetGame()
     }
