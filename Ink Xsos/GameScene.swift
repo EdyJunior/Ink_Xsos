@@ -184,5 +184,45 @@ class GameScene: SKScene {
         splatter.colorBlendFactor = 0.5
         endGameSprites.append(splatter)
         addChild(splatter)
+        
+        animateEnd()
+    }
+    
+    func animateEnd() {
+        
+        let spotTexture = SKTexture(imageNamed: "bigBlackSpot")
+        let spotSize = CGSize(width: scene!.frame.width * 2.5, height: scene!.frame.width * 1.0)
+        let spotPosition = CGPoint(x: scene!.frame.width * 0.7, y: scene!.frame.midY)
+        let inkSpot = SKSpriteNode(texture: spotTexture, color: .black, size: spotSize)
+        inkSpot.position = spotPosition
+        inkSpot.zPosition = self.grid.zPosition + 3
+        
+        let firstMessage = SKLabelNode(text: "It's")
+        firstMessage.fontSize = inkSpot.frame.height * 0.25
+        firstMessage.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY + inkSpot.frame.height * 0.01)
+        firstMessage.zPosition = inkSpot.zPosition + 1
+        firstMessage.fontColor = .white
+        firstMessage.fontName = "DK Flagellum Dei"
+        
+        let secondMessage = SKLabelNode(text: "Over!")
+        secondMessage.fontSize = inkSpot.frame.height * 0.25
+        secondMessage.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY - inkSpot.frame.height * 0.2)
+        secondMessage.zPosition = inkSpot.zPosition + 1
+        secondMessage.fontColor = .white
+        secondMessage.fontName = "DK Flagellum Dei"
+        
+        let addSpot = SKAction.run {
+            self.addChild(inkSpot)
+        }
+        let addMessage1 = SKAction.run {
+            self.addChild(firstMessage)
+        }
+        let addMessage2 = SKAction.run {
+            self.addChild(secondMessage)
+        }
+        let wait = SKAction.wait(forDuration: 1)
+        let playSound = SKAction.playSoundFileNamed("endSound", waitForCompletion: false)
+        let seqAction = SKAction.sequence([wait, addSpot, wait, addMessage1, wait, addMessage2])
+        scene!.run(SKAction.group([playSound, seqAction]))
     }
 }
