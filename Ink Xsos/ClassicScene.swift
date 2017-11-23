@@ -16,6 +16,7 @@ class ClassicScene: GameScene {
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
+        backgroundColor = .white
         buildScene()
     }
     
@@ -24,7 +25,7 @@ class ClassicScene: GameScene {
         buildCellButtons()
         resetGame()
     }
-    
+
     func resetGame() {
         
         scene!.run (
@@ -54,9 +55,8 @@ class ClassicScene: GameScene {
         
         let button = Button(buttonAction: touchCell)
         let gridFrame = self.grid.frame
-        let buttonSize = CGSize(width: gridFrame.width / 3, height: gridFrame.height / 3)
-
-        button.setSizeAndPosition(buttonSize, position: pos, areaFactor: 1.0)
+        button.size = CGSize(width: gridFrame.width / 3, height: gridFrame.height / 3)
+        button.position = pos
         button.zPosition = 1
         button.name = "\(cell[0]) \(cell[1])"
         button.touchableArea.alpha = 0.01
@@ -98,8 +98,8 @@ class ClassicScene: GameScene {
             let s = classic.getSymbol(fromPlayer: playerNumber)
             let size = grid.frame.width / 5.0
 
-            let symbolPosition = CGPoint(x: button.touchableArea.position.x,
-                                         y: button.touchableArea.position.y - size * 0.35)
+            let symbolPosition = CGPoint(x: button.position.x,
+                                         y: button.position.y - size * 0.35)
             draw(text: s, atPosition: symbolPosition, withSize: size, withColor: .black)
             let state = classic.isGameOver()
             if state == .finishedWithWinner {

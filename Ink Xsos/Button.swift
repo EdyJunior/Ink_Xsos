@@ -6,7 +6,6 @@
 //  Copyright © 2016 Edvaldo Junior. All rights reserved.
 //
 
-import UIKit
 import SpriteKit
 
 class Button: SKNode {
@@ -25,6 +24,15 @@ class Button: SKNode {
         }
     }
     
+    var size: CGSize {
+        
+        didSet {
+            self.touchableArea.size = size
+            self.defaultButton.size = size
+            self.activeButton.size = size
+        }
+    }
+    
     init(buttonAction: ((_ button: Button) -> Void)? = nil) {
         
         defaultButton = SKSpriteNode()
@@ -33,10 +41,39 @@ class Button: SKNode {
         activeButton.isHidden = true
         action = buttonAction
         pressed = false
+        size = defaultButton.size
         
         super.init()
         
         isUserInteractionEnabled = true
+        
+        touchableArea.addChild(defaultButton)
+        touchableArea.addChild(activeButton)
+        self.addChild(touchableArea)
+    }
+    
+    init(defaultButtonSprite: SKSpriteNode, activeButtonSprite: SKSpriteNode, buttonAction: ((_ button: Button) -> Void)? = nil) {
+        
+        defaultButton = defaultButtonSprite.copy() as! SKSpriteNode
+        activeButton = activeButtonSprite.copy() as! SKSpriteNode
+        touchableArea = SKSpriteNode(color: .clear, size: defaultButton.size)
+        action = buttonAction
+        pressed = false
+        size = defaultButtonSprite.size
+        activeButton.isHidden = true
+        
+        super.init()
+        
+        isUserInteractionEnabled = true
+        
+        touchableArea.addChild(defaultButton)
+        touchableArea.addChild(activeButton)
+        self.addChild(touchableArea)
+    }
+    
+    convenience init(sprite: SKSpriteNode, action: ((_ button: Button) -> Void)? = nil) {
+        
+        self.init(defaultButtonSprite: sprite, activeButtonSprite: sprite, buttonAction: action)
     }
     
     init(defaultButtonImage: String, activeButtonImage: String, buttonAction: ((_ button: Button) -> Void)? = nil) {
@@ -47,10 +84,15 @@ class Button: SKNode {
         activeButton.isHidden = true
         action = buttonAction
         pressed = false
+        size = defaultButton.size
         
         super.init()
         
         isUserInteractionEnabled = true
+        
+        touchableArea.addChild(defaultButton)
+        touchableArea.addChild(activeButton)
+        self.addChild(touchableArea)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -86,7 +128,7 @@ class Button: SKNode {
         )
         defaultButton.run(action)
     }
-    
+    /*
     func setSizeAndPosition(_ size: CGSize, position: CGPoint, areaFactor factor: CGFloat) {
         
         defaultButton.size = size
@@ -100,4 +142,5 @@ class Button: SKNode {
         touchableArea.addChild(activeButton)
         addChild(touchableArea)
     }
+    */
 }

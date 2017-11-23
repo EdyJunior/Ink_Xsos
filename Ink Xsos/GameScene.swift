@@ -74,20 +74,17 @@ class GameScene: SKScene {
     
     private func buildBackButton() {
         
-        let backButton = Button(defaultButtonImage: "arrow", activeButtonImage: "arrow", buttonAction: backScene)
+        let backButton = Button(defaultButtonImage: "arrow", activeButtonImage: "arrow") { _ in
+            self.switchToScene(MenuScene.self)
+        }
         
-        let sizeButton = CGSize(width: size.width * 0.12, height: size.width * 0.12)
-        let positionButton = CGPoint(x: size.width * 0.08, y: size.height * 0.93)
+        backButton.size = CGSize(width: size.width * 0.12, height: size.width * 0.12)
+        backButton.position = CGPoint(x: size.width * 0.08, y: size.height * 0.93)
         
-        backButton.setSizeAndPosition(sizeButton, position: positionButton, areaFactor: 1.0)
         backButton.touchableArea.zPosition = 1
         backButton.touchableArea.xScale *= -1
         
         addChild(backButton)
-    }
-    
-    private func backScene(_ button: Button) {
-        print("Back")
     }
     
     private func buildModeLabel() {
