@@ -82,10 +82,10 @@ class MenuScene: SKScene {
         
         let buttonPositions = (0...3).map { index in CGPoint(x: xPositions[index], y: yPositions[index]) }
         
-        self.setupRandomGameButton(atPosition: buttonPositions[0])
+        //self.setupRandomGameButton(atPosition: buttonPositions[0])
         self.setupSelectModeButton(atPosition: buttonPositions[1])
         self.setupConfigurationsButton(atPosition: buttonPositions[2])
-        self.setupMoreGamesButton(atPosition: buttonPositions[3])
+        //self.setupMoreGamesButton(atPosition: buttonPositions[3])
     }
     
     private func setupRandomGameButton(atPosition position: CGPoint) {
