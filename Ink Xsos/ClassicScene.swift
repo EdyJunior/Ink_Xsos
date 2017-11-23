@@ -21,22 +21,8 @@ class ClassicScene: GameScene {
     
     func buildScene() {
         
-        //buildResetButton()
         buildCellButtons()
         resetGame()
-    }
-    
-    func buildResetButton() {
-        
-        let button = Button(defaultButtonImage: "black", activeButtonImage: "black", buttonAction: resetGame)
-        
-        let buttonPos = CGPoint(x: self.frame.midX,y: self.frame.midY / 6)
-        let buttonSize = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
-        
-        button.setSizeAndPosition(buttonSize, position: buttonPos, areaFactor: 1.0)
-        button.zPosition = 1
-        button.name = "Button"
-        self.addChild(button)
     }
     
     func resetGame() {
@@ -53,9 +39,7 @@ class ClassicScene: GameScene {
         messageLabel.text = "It’s X turn!"
         timeLabel.text = "15"
     }
-    
-    func resetGame(_ button: Button) { resetGame() }
-    
+
     func changePlayerNumber() {
         
         if playerNumber == 1 { playerNumber = 2 }
@@ -125,6 +109,13 @@ class ClassicScene: GameScene {
             } else if state == .onGoing {
                 changePlayerNumber()
             }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if classic.isGameOver() != .onGoing && finishedEndAnimation {
+            resetGame()
         }
     }
 }
