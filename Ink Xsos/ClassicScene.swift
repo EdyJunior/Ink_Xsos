@@ -27,6 +27,9 @@ class ClassicScene: GameScene {
     
     func resetGame() {
         
+        scene!.run (
+            SKAction.playSoundFileNamed("startSound", waitForCompletion: false)
+        )
         for s in symbols {
             s.removeFromParent()
         }
