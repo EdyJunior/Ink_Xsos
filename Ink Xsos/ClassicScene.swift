@@ -29,7 +29,7 @@ class ClassicScene: GameScene {
     
     func buildResetButton() {
         
-        let button = Button(defaultButtonImage: "black", activeButtonImage: "black", buttonAction: resetGame)
+        let button = Button(defaultButtonImage: Images.Spots.black, activeButtonImage: Images.Spots.black, buttonAction: resetGame)
         
         button.size = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
         button.position = CGPoint(x: self.frame.midX, y: self.frame.midY / 6)

@@ -17,9 +17,9 @@ enum VictoryLine {
 
 class GameScene: SKScene {
 
-    var modeLabel = SKLabelNode(fontNamed: "DK Flagellum Dei")
-    var messageLabel = SKLabelNode(fontNamed: "DK Flagellum Dei")
-    var timeLabel = SKLabelNode(fontNamed: "DK Flagellum Dei")
+    var modeLabel = SKLabelNode(fontNamed: Fonts.ink)
+    var messageLabel = SKLabelNode(fontNamed: Fonts.ink)
+    var timeLabel = SKLabelNode(fontNamed: Fonts.ink)
     var symbols = [SKLabelNode]()
     var endGameSprites = [SKSpriteNode]()
     
@@ -44,7 +44,7 @@ class GameScene: SKScene {
     
     private func buildBackground() {
         
-        let background = SKSpriteNode(texture: SKTexture(imageNamed: "whiteBackground"), color: .white, size: scene!.size)
+        let background = SKSpriteNode(texture: SKTexture(imageNamed: Images.background), color: .white, size: scene!.size)
         background.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY)
         background.zPosition = -2
         addChild(background)
@@ -55,7 +55,7 @@ class GameScene: SKScene {
         let sceneFrame = scene!.frame
         let spotWidth = sceneFrame.width * 0.2859
 
-        let texture = SKTexture(imageNamed: "black")
+        let texture = SKTexture(imageNamed: Images.Spots.black)
         let spotTimerSize = CGSize(width: spotWidth, height: spotWidth / 1.0764)
         let spotTimerSprite = SKSpriteNode(texture: texture, color: .white, size: spotTimerSize)
         spotTimerSprite.position = CGPoint(x: 0.87 * sceneFrame.width, y: 0.93 * sceneFrame.height)
@@ -73,7 +73,7 @@ class GameScene: SKScene {
     
     private func buildBackButton() {
         
-        let backButton = Button(defaultButtonImage: "arrow", activeButtonImage: "arrow") { _ in
+        let backButton = Button(defaultButtonImage: Images.arrow, activeButtonImage: Images.arrow) { _ in
             self.switchToScene(MenuScene.self)
         }
         
@@ -101,7 +101,7 @@ class GameScene: SKScene {
         let sceneFrame = scene!.frame
         let gridWidth = sceneFrame.width * 0.8
 
-        let texture = SKTexture(imageNamed: "grid")
+        let texture = SKTexture(imageNamed: Images.grid)
         let gridSize = CGSize(width: gridWidth, height: gridWidth / 1.0593)
 
         grid = SKSpriteNode(texture: texture, color: .white, size: gridSize)
@@ -143,7 +143,7 @@ class GameScene: SKScene {
         label.position = pos
         label.zPosition = self.grid.zPosition + 1
         label.fontColor = color
-        label.fontName = "DK Flagellum Dei"
+        label.fontName = Fonts.ink
         
         symbols.append(label)
         
@@ -152,7 +152,7 @@ class GameScene: SKScene {
     
     func endGame(victoryLine vl: VictoryLine) {
         
-        let splatterTexture = SKTexture(imageNamed: "blueSplatter")
+        let splatterTexture = SKTexture(imageNamed: Images.splatter)
         let splatterSize = CGSize(width: scene!.frame.width * 0.2, height: scene!.frame.width * 1.3)
         let splatter = SKSpriteNode(texture: splatterTexture, color: .blue, size: splatterSize)
         
@@ -187,7 +187,7 @@ class GameScene: SKScene {
     
     func animateEnd() {
         
-        let spotTexture = SKTexture(imageNamed: "bigBlackSpot")
+        let spotTexture = SKTexture(imageNamed: Images.Spots.bigBlack)
         let spotSize = CGSize(width: scene!.frame.width * 2.5, height: scene!.frame.width * 1.0)
         let spotPosition = CGPoint(x: scene!.frame.width * 0.7, y: scene!.frame.midY)
         let inkSpot = SKSpriteNode(texture: spotTexture, color: .black, size: spotSize)
@@ -199,14 +199,14 @@ class GameScene: SKScene {
         firstMessage.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY + inkSpot.frame.height * 0.01)
         firstMessage.zPosition = inkSpot.zPosition + 1
         firstMessage.fontColor = .white
-        firstMessage.fontName = "DK Flagellum Dei"
+        firstMessage.fontName = Fonts.ink
         
         let secondMessage = SKLabelNode(text: "Over!")
         secondMessage.fontSize = inkSpot.frame.height * 0.25
         secondMessage.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY - inkSpot.frame.height * 0.2)
         secondMessage.zPosition = inkSpot.zPosition + 1
         secondMessage.fontColor = .white
-        secondMessage.fontName = "DK Flagellum Dei"
+        secondMessage.fontName = Fonts.ink
         
         let addSpot = SKAction.run {
             self.addChild(inkSpot)
@@ -218,7 +218,7 @@ class GameScene: SKScene {
             self.addChild(secondMessage)
         }
         let wait = SKAction.wait(forDuration: 1)
-        let playSound = SKAction.playSoundFileNamed("endSound", waitForCompletion: false)
+        let playSound = SKAction.playSoundFileNamed(Sounds.end, waitForCompletion: false)
         let seqAction = SKAction.sequence([wait, addSpot, wait, addMessage1, wait, addMessage2])
         scene!.run(SKAction.group([playSound, seqAction]))
     }

@@ -42,7 +42,7 @@ class MenuScene: SKScene {
     
     private func setupGameName() {
         
-        self.gameName = SKSpriteNode(imageNamed: "ink_xsos")
+        self.gameName = SKSpriteNode(imageNamed: Images.gameName)
         self.gameName.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         self.gameName.position = CGPoint(x: self.frame.midX, y: self.frame.maxY * 0.95)
         
@@ -55,7 +55,7 @@ class MenuScene: SKScene {
     
     private func setupPaintPalette() {
         
-        self.paintPalette = SKSpriteNode(imageNamed: "paint_palette")
+        self.paintPalette = SKSpriteNode(imageNamed: Images.paintPallete)
         
         self.paintPalette.anchorPoint = CGPoint(x: 0.5, y: 0.0)
         self.paintPalette.position = CGPoint(x: self.frame.midX, y: self.frame.minY)
@@ -90,7 +90,7 @@ class MenuScene: SKScene {
     
     private func setupRandomGameButton(atPosition position: CGPoint) {
         
-        self.randomGameButton = Button(sprite: SKSpriteNode(imageNamed: "random_game_button")) { _ in
+        self.randomGameButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.randomGame)) { _ in
             self.switchToScene(ClassicScene.self)
         }
         self.randomGameButton.size = self.menuButtonSize
@@ -102,7 +102,7 @@ class MenuScene: SKScene {
     
     private func setupSelectModeButton(atPosition position: CGPoint) {
         
-        self.selectModeButton = Button(sprite: SKSpriteNode(imageNamed: "play_button")) { _ in
+        self.selectModeButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.play)) { _ in
             self.switchToScene(ClassicScene.self)
         }
         self.selectModeButton.size = self.menuButtonSize
@@ -114,7 +114,7 @@ class MenuScene: SKScene {
     
     private func setupConfigurationsButton(atPosition position: CGPoint) {
         
-        self.configurationsButton = Button(sprite: SKSpriteNode(imageNamed: "configurations_button")) { _ in
+        self.configurationsButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.configurations)) { _ in
             print("Configurations")
         }
         self.configurationsButton.size = self.menuButtonSize
@@ -126,7 +126,7 @@ class MenuScene: SKScene {
     
     private func setupMoreGamesButton(atPosition position: CGPoint) {
         
-        self.moreGamesButton = Button(sprite: SKSpriteNode(imageNamed: "more_games_button")) { _ in
+        self.moreGamesButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.moreGames)) { _ in
             print("More games")
         }
         self.moreGamesButton.size = self.menuButtonSize
