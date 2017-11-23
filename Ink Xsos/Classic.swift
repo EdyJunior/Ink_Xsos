@@ -72,7 +72,7 @@ class Classic: Xsos {
         return true
     }
 
-    private func getWinner(symbol s: String) {
+    private func setWinner(fromSymbol s: String)   {
 
         for p in player {
             if p.symbol == s {
@@ -89,7 +89,7 @@ class Classic: Xsos {
             let flag = checkRow(row)
             if flag {
                 let s = grid[row][1]
-                getWinner(symbol: s)
+                setWinner(fromSymbol: s)
                 victoryLine = .row(line: row)
                 return .finishedWithWinner
             }
@@ -98,7 +98,7 @@ class Classic: Xsos {
             let flag = checkColumn(col)
             if flag {
                 let s = grid[1][col]
-                getWinner(symbol: s)
+                setWinner(fromSymbol: s)
                 victoryLine = .column(line: col)
                 return .finishedWithWinner
             }
@@ -111,7 +111,7 @@ class Classic: Xsos {
             let flag = checkDiagonal(row: item.row, inc: item.inc)
             if flag {
                 let s = grid[item.row][1]
-                getWinner(symbol: s)
+                setWinner(fromSymbol: s)
                 victoryLine = .diagonal(main: item.row == 1)
                 return .finishedWithWinner
             }
