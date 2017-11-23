@@ -10,5 +10,6 @@ import Foundation
 
 enum Sounds {
     
+    static let start = "startSound"
     static let end = "endSound"
 }

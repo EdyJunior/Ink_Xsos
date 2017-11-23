@@ -22,24 +22,15 @@ class ClassicScene: GameScene {
     
     func buildScene() {
         
-        //buildResetButton()
         buildCellButtons()
         resetGame()
     }
-    
-    func buildResetButton() {
-        
-        let button = Button(defaultButtonImage: Images.Spots.black, activeButtonImage: Images.Spots.black, buttonAction: resetGame)
-        
-        button.size = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
-        button.position = CGPoint(x: self.frame.midX, y: self.frame.midY / 6)
-        button.zPosition = 1
-        button.name = "Button"
-        self.addChild(button)
-    }
-    
+
     func resetGame() {
         
+        scene!.run (
+            SKAction.playSoundFileNamed(Sounds.start, waitForCompletion: false)
+        )
         for s in symbols {
             s.removeFromParent()
         }
@@ -52,9 +43,7 @@ class ClassicScene: GameScene {
         messageLabel.text = "It’s X turn!"
         timeLabel.text = "15"
     }
-    
-    func resetGame(_ button: Button) { resetGame() }
-    
+
     func changePlayerNumber() {
         
         if playerNumber == 1 { playerNumber = 2 }
@@ -123,6 +112,13 @@ class ClassicScene: GameScene {
             } else if state == .onGoing {
                 changePlayerNumber()
             }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if classic.isGameOver() != .onGoing && finishedEndAnimation {
+            resetGame()
         }
     }
 }

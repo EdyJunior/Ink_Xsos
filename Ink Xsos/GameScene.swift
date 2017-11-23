@@ -21,9 +21,10 @@ class GameScene: SKScene {
     var messageLabel = SKLabelNode(fontNamed: Fonts.ink)
     var timeLabel = SKLabelNode(fontNamed: Fonts.ink)
     var symbols = [SKLabelNode]()
-    var endGameSprites = [SKSpriteNode]()
+    var endGameSprites = [SKNode]()
     
     var grid = SKSpriteNode()
+    var finishedEndAnimation = true
 
     override func didMove(to view: SKView) {
 
@@ -152,7 +153,10 @@ class GameScene: SKScene {
     
     func endGame(victoryLine vl: VictoryLine) {
         
+        finishedEndAnimation = false
+        
         let splatterTexture = SKTexture(imageNamed: Images.splatter)
+
         let splatterSize = CGSize(width: scene!.frame.width * 0.2, height: scene!.frame.width * 1.3)
         let splatter = SKSpriteNode(texture: splatterTexture, color: .blue, size: splatterSize)
         
@@ -181,7 +185,7 @@ class GameScene: SKScene {
         splatter.colorBlendFactor = 0.5
         endGameSprites.append(splatter)
         addChild(splatter)
-        
+
         animateEnd()
     }
     
@@ -210,16 +214,22 @@ class GameScene: SKScene {
         
         let addSpot = SKAction.run {
             self.addChild(inkSpot)
+            self.endGameSprites.append(inkSpot)
         }
         let addMessage1 = SKAction.run {
             self.addChild(firstMessage)
+            self.endGameSprites.append(firstMessage)
         }
         let addMessage2 = SKAction.run {
             self.addChild(secondMessage)
+            self.endGameSprites.append(secondMessage)
         }
         let wait = SKAction.wait(forDuration: 1)
         let playSound = SKAction.playSoundFileNamed(Sounds.end, waitForCompletion: false)
         let seqAction = SKAction.sequence([wait, addSpot, wait, addMessage1, wait, addMessage2])
-        scene!.run(SKAction.group([playSound, seqAction]))
+        let group = SKAction.group([playSound, seqAction])
+        let finish = SKAction.run { self.finishedEndAnimation = true }
+        
+        scene!.run(SKAction.sequence([group, finish]))
     }
 }
