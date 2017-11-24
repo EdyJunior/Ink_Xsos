@@ -27,8 +27,8 @@ enum Images {
     
     enum Spots {
         
-        static let black    = "black"
-        static let bigBlack = "bigBlackSpot"
+        static let bigBlack = "big_black_spot"
+        static let black    = "black_spot"
     }
     
 }
