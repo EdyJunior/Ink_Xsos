@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C507456A1FC1017E00C84B2C /* SKScene+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50745691FC1017E00C84B2C /* SKScene+Extensions.swift */; };
+		C53FCF431FC8C1C00079C508 /* PaintNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53FCF421FC8C1C00079C508 /* PaintNode.swift */; };
 		C546B0221FBB86A10042978F /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C546B0211FBB86A10042978F /* MenuScene.swift */; };
 		C5D65AE71FC72B4500AFA54C /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D65AE61FC72B4500AFA54C /* Images.swift */; };
 		C5D65AE91FC72C8A00AFA54C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D65AE81FC72C8A00AFA54C /* Fonts.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		C50745691FC1017E00C84B2C /* SKScene+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKScene+Extensions.swift"; sourceTree = "<group>"; };
+		C53FCF421FC8C1C00079C508 /* PaintNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintNode.swift; sourceTree = "<group>"; };
 		C546B0211FBB86A10042978F /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		C5D65AE61FC72B4500AFA54C /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		C5D65AE81FC72C8A00AFA54C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				CE6404AA1FA89D5800B01022 /* PaintScreen.swift */,
 				CE6404AC1FA8A0E700B01022 /* Xsos.swift */,
 				CE02C3551FAC001500CD07F3 /* Button.swift */,
+				C53FCF421FC8C1C00079C508 /* PaintNode.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			files = (
 				CE6404A91FA895AA00B01022 /* Player.swift in Sources */,
 				C5D65AE71FC72B4500AFA54C /* Images.swift in Sources */,
+				C53FCF431FC8C1C00079C508 /* PaintNode.swift in Sources */,
 				C5D65AE91FC72C8A00AFA54C /* Fonts.swift in Sources */,
 				C507456A1FC1017E00C84B2C /* SKScene+Extensions.swift in Sources */,
 				CEB27EBE1FA76945004511BD /* GameViewController.swift in Sources */,
