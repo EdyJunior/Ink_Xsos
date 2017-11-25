@@ -10,12 +10,11 @@ import SpriteKit
 
 extension SKScene {
     
-    func switchToScene(_ scene: SKScene.Type) {
+    func switchToScene(_ scene: SKScene.Type, withTransition transition: SKTransition = .fade(with: .white, duration: 1.0)) {
 
         guard let view = self.view else { return }
         
         let sceneInstance = scene.init(size: view.bounds.size)
-        view.presentScene(sceneInstance)
+        view.presentScene(sceneInstance, transition: transition)
     }
-    
 }
