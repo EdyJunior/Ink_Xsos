@@ -10,11 +10,15 @@ import SpriteKit
 
 class PaintNode: SKSpriteNode {
 
+    //MARK: Properties
+    
     private let maxSplashes: Int
     private let spotFormats: [SKSpriteNode]
     private let spotColors: [UIColor]
     
     private var splashes: [SKSpriteNode]
+    
+    //MARK: Initializers
     
     init(size: CGSize) {
         
@@ -32,6 +36,8 @@ class PaintNode: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: Main methods
     
     private func splash(atPosition position: CGPoint) {
         
@@ -53,6 +59,8 @@ class PaintNode: SKSpriteNode {
         self.addChild(spot)
     }
     
+    //MARK: Helper methods
+    
     private func randomSpot() -> SKSpriteNode {
         
         let random = Int(arc4random_uniform(UInt32(self.spotFormats.count)))
@@ -64,6 +72,8 @@ class PaintNode: SKSpriteNode {
         let random = Int(arc4random_uniform(UInt32(self.spotColors.count)))
         return self.spotColors[random]
     }
+    
+    //MARK: Touch methods
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
