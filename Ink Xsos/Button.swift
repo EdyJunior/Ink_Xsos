@@ -9,15 +9,16 @@
 import SpriteKit
 
 class Button: SKNode {
-    
+
     var defaultButton: SKSpriteNode
     var activeButton:  SKSpriteNode
     var touchableArea: SKSpriteNode
-    
+
     var action: ((_ button: Button) -> Void)?
-    
+
     var enabled: Bool = true
     var pressed: Bool {
+
         didSet {
             activeButton.isHidden = !pressed
             defaultButton.isHidden = pressed

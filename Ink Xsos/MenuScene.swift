@@ -115,7 +115,7 @@ class MenuScene: SKScene {
     private func setupConfigurationsButton(atPosition position: CGPoint) {
         
         self.configurationsButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.configurations)) { _ in
-            print("Configurations")
+            self.switchToScene(SettingsScene.self)
         }
         self.configurationsButton.size = self.menuButtonSize
         self.configurationsButton.position = position

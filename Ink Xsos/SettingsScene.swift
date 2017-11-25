@@ -8,12 +8,8 @@
 
 import SpriteKit
 
-class ConfigurationScene: SKScene {
+class SettingsScene: SKScene {
 
-    var configLabel = SKLabelNode(fontNamed: Fonts.ink)
-    var soundLabel = SKLabelNode(fontNamed: Fonts.ink)
-    var animationsLabel = SKLabelNode(fontNamed: Fonts.ink)
-    
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
@@ -23,52 +19,61 @@ class ConfigurationScene: SKScene {
     
     func buildScene() {
         
+        buildBackButton()
         buildLabels()
         buildButtons()
     }
     
+    private func buildBackButton() {
+        
+        let backButton = Button(defaultButtonImage: Images.arrow, activeButtonImage: Images.arrow) { _ in
+            self.switchToScene(MenuScene.self)
+        }
+        
+        backButton.size = CGSize(width: size.width * 0.12, height: size.width * 0.12)
+        backButton.position = CGPoint(x: size.width * 0.08, y: size.height * 0.93)
+        
+        backButton.touchableArea.zPosition = 1
+        backButton.touchableArea.xScale *= -1
+        
+        addChild(backButton)
+    }
+    
     func buildLabels() {
         
+        let sceneFrame = scene!.frame
         
+        let settingsLabel = SKLabelNode(fontNamed: Fonts.ink)
+        settingsLabel.text = "settings"
+        settingsLabel.fontSize = sceneFrame.width * 0.1
+        settingsLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.915)
+        settingsLabel.fontColor = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
+        addChild(settingsLabel)
+        
+        let soundLabel = SKLabelNode(fontNamed: Fonts.ink)
+        soundLabel.text = "sound"
+        soundLabel.fontSize = sceneFrame.width * 0.07
+        soundLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.8)
+        soundLabel.fontColor = .red
+        addChild(soundLabel)
+        
+        let animationsLabel = SKLabelNode(fontNamed: Fonts.ink)
+        animationsLabel.text = "animations"
+        animationsLabel.fontSize = sceneFrame.width * 0.07
+        animationsLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.415)
+        animationsLabel.fontColor = .green
+        addChild(animationsLabel)
     }
     
     func buildButtons() {
         
-        let sceneFrame = self.scene!.frame
-        let buttonSize = CGSize(width: sceneFrame.width * 0.3, height: sceneFrame.width * 0.3)
-        
-        var soundDefault = "soundOn", soundActive = "soundOff"
-        if let soundOn = UserDefaults.standard.value(forKey: defaults.soundOn) as? Bool {
-            if !soundOn {
-                soundDefault = "soundOff"
-                soundActive = "soundOn"
-            }
-        } else { UserDefaults.standard.set(true, forKey: defaults.soundOn) }
-        
-        let soundLabelPos = soundLabel.position
-        let soundYAux = sceneFrame.height * 0.1 + buttonSize.height * 0.5
-        
-        let soundButtonPosition = CGPoint(x: sceneFrame.midX, y: soundLabelPos.y - soundYAux)
-        let soundButton = Button(defaultButtonImage: soundDefault, activeButtonImage: soundActive, buttonAction: touchSound)
-        soundButton.size = buttonSize
-        soundButton.position = soundButtonPosition
-        addChild(soundButton)
-        
-        
-//        let animationButtonPosition = CGPoint(x: <#T##CGFloat#>, y: <#T##CGFloat#>)
-//        let animationButton = Button(buttonAction: touchAnimation)
-//        animationButton.size = buttonSize
-//        animationButton.position = animationButtonPosition
-//        addChild(animationButton)
     }
     
     func touchSound(_ button: Button) {
         
-        
     }
     
     func touchAnimation(_ button: Button) {
-        
         
     }
 }
