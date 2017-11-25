@@ -12,6 +12,7 @@ class SettingsScene: SKScene {
 
     var soundButton = Button()
     var animationsButton = Button()
+    var soundController: SoundController?
     
     override func didMove(to view: SKView) {
         
@@ -30,7 +31,12 @@ class SettingsScene: SKScene {
     private func buildBackButton() {
         
         let backButton = Button(defaultButtonImage: Images.arrow, activeButtonImage: Images.arrow) { _ in
-            self.switchToScene(MenuScene.self)
+            guard let view = self.view else { return }
+            
+            let sceneInstance = MenuScene(size: view.bounds.size)
+            sceneInstance.soundController = self.soundController
+            let transition = SKTransition.fade(with: .white, duration: 1.0)
+            view.presentScene(sceneInstance, transition: transition)
         }
         
         backButton.size = CGSize(width: size.width * 0.12, height: size.width * 0.12)
@@ -78,7 +84,13 @@ class SettingsScene: SKScene {
     
     func touchSound(_ button: Button) {
         
-        defaultsStandard.set(!defaultsStandard.soundOn(), forKey: Defaults.soundOn)
+        var isSoundOn = defaultsStandard.soundOn()
+        isSoundOn = !isSoundOn
+        defaultsStandard.set(isSoundOn, forKey: Defaults.soundOn)
+        
+        if isSoundOn { soundController?.playSound() }
+        else { soundController?.stopSound() }
+        
         updateButtons()
     }
     

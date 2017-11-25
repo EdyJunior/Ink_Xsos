@@ -25,6 +25,8 @@ class GameScene: SKScene {
     
     var grid = SKSpriteNode()
     var finishedEndAnimation = true
+    
+    var soundController: SoundController?
 
     override func didMove(to view: SKView) {
 
@@ -76,7 +78,15 @@ class GameScene: SKScene {
     private func buildBackButton() {
         
         let backButton = Button(defaultButtonImage: Images.arrow, activeButtonImage: Images.arrow) { _ in
-            self.switchToScene(MenuScene.self)
+            guard let view = self.view else { return }
+            
+            let sceneInstance = MenuScene(size: view.bounds.size)
+            sceneInstance.soundController = self.soundController
+            let transition = SKTransition.fade(with: .white, duration: 1.0)
+            if defaultsStandard.soundOn() {
+                self.soundController?.playSound()
+            }
+            view.presentScene(sceneInstance, transition: transition)
         }
         
         backButton.size = CGSize(width: size.width * 0.12, height: size.width * 0.12)

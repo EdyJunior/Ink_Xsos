@@ -19,6 +19,8 @@ class MenuScene: SKScene {
     var configurationsButton: Button!
     var moreGamesButton: Button!
     
+    var soundController: SoundController?
+    
     var menuButtonSize: CGSize {
         
         let width = self.size.width * 0.25
@@ -32,6 +34,10 @@ class MenuScene: SKScene {
         super.didMove(to: view)
         self.backgroundColor = .white
         self.setup()
+        
+//        if defaultsStandard.soundOn() {
+//            soundController?.playSound()
+//        }
     }
     
     private func setup() {
@@ -120,7 +126,14 @@ class MenuScene: SKScene {
     private func setupSelectModeButton(atPosition position: CGPoint) {
         
         self.selectModeButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.play)) { _ in
-            self.switchToScene(ClassicScene.self)
+            self.soundController?.stopSound()
+            
+            guard let view = self.view else { return }
+            
+            let sceneInstance = ClassicScene(size: view.bounds.size)
+            sceneInstance.soundController = self.soundController
+            let transition = SKTransition.fade(with: .white, duration: 1.0)
+            view.presentScene(sceneInstance, transition: transition)
         }
         self.selectModeButton.size = self.menuButtonSize
         self.selectModeButton.position = position
@@ -132,7 +145,12 @@ class MenuScene: SKScene {
     private func setupConfigurationsButton(atPosition position: CGPoint) {
         
         self.configurationsButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.configurations)) { _ in
-            self.switchToScene(SettingsScene.self)
+            guard let view = self.view else { return }
+            
+            let sceneInstance = SettingsScene(size: view.bounds.size)
+            sceneInstance.soundController = self.soundController
+            let transition = SKTransition.fade(with: .white, duration: 1.0)
+            view.presentScene(sceneInstance, transition: transition)
         }
         self.configurationsButton.size = self.menuButtonSize
         self.configurationsButton.position = position
