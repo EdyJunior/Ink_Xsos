@@ -12,6 +12,7 @@ class MenuScene: SKScene {
     
     var gameName: SKSpriteNode!
     var paintPalette: SKSpriteNode!
+    var paintNode: PaintNode!
     
     var randomGameButton: Button!
     var selectModeButton: Button!
@@ -37,6 +38,7 @@ class MenuScene: SKScene {
         
         self.setupGameName()
         self.setupPaintPalette()
+        self.setupPaintNode()
         self.setupButtons()
     }
     
@@ -64,6 +66,21 @@ class MenuScene: SKScene {
         self.paintPalette.size = CGSize(width: self.size.width, height: self.size.width / proportion)
         
         self.addChild(self.paintPalette)
+    }
+    
+    private func setupPaintNode() {
+        
+        let width = self.size.width
+        let height = self.gameName.frame.minY - self.paintPalette.frame.maxY
+        let paintSize = CGSize(width: width, height: height)
+        
+        self.paintNode = PaintNode(size: paintSize)
+        self.paintNode.zPosition = -1
+        self.paintNode.position = CGPoint(x: self.frame.midX, y: self.paintPalette.size.height + height / 2)
+        
+        self.paintNode.splashAutomatically(withInterval: 3)
+        
+        self.addChild(paintNode)
     }
     
     private func setupButtons() {
