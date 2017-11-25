@@ -77,6 +77,9 @@ class MenuScene: SKScene {
         self.paintNode = PaintNode(size: paintSize)
         self.paintNode.zPosition = -1
         self.paintNode.position = CGPoint(x: self.frame.midX, y: self.paintPalette.size.height + height / 2)
+        
+        self.paintNode.splashAutomatically(withInterval: 3)
+        
         self.addChild(paintNode)
     }
     

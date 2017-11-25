@@ -12,11 +12,17 @@ class PaintNode: SKSpriteNode {
 
     //MARK: Properties
     
+    private let splashActionKey = "splash_action"
+    
     private let maxSplashes: Int
     private let spotFormats: [SKSpriteNode]
     private let spotColors: [UIColor]
     
     private var splashes: [SKSpriteNode]
+    
+    public var isSplashingAutomatically: Bool {
+        return self.action(forKey: splashActionKey) != nil
+    }
     
     //MARK: Initializers
     
@@ -38,6 +44,21 @@ class PaintNode: SKSpriteNode {
     }
     
     //MARK: Main methods
+    
+    public func splashAutomatically(withInterval interval: TimeInterval) {
+        
+        let splashAction = SKAction.run {
+            self.splash(atPosition: self.randomPosition())
+        }
+        let waitAction = SKAction.wait(forDuration: interval)
+        let autoSplashAction = SKAction.sequence([waitAction, splashAction])
+        
+        self.run(SKAction.repeatForever(autoSplashAction), withKey: self.splashActionKey)
+    }
+    
+    public func stopSplashingAutomatically() {
+        self.removeAction(forKey: self.splashActionKey)
+    }
     
     private func splash(atPosition position: CGPoint) {
         
@@ -88,6 +109,14 @@ class PaintNode: SKSpriteNode {
         
         let random = Int(arc4random_uniform(UInt32(self.spotColors.count)))
         return self.spotColors[random]
+    }
+    
+    private func randomPosition() -> CGPoint {
+        
+        let x = CGFloat(arc4random_uniform(UInt32(self.size.width))) - self.size.width / 2
+        let y = CGFloat(arc4random_uniform(UInt32(self.size.height))) - self.size.height / 2
+        
+        return CGPoint(x: x, y: y)
     }
     
     //MARK: Touch methods
