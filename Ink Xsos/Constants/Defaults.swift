@@ -14,4 +14,4 @@ enum Defaults {
     static let animationsOn = "areAnimationsOn"
 }
 
-let defaults = UserDefaults.standard
+let defaultsStandard = UserDefaults.standard
