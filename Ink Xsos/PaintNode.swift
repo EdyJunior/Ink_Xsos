@@ -43,6 +43,12 @@ class PaintNode: SKSpriteNode {
         
         guard let scene = self.scene else { return }
         
+        while self.splashes.count >= self.maxSplashes {
+            
+            self.removeSplash(self.splashes.first!)
+            self.splashes.removeFirst()
+        }
+        
         let spot = randomSpot()
         
         let ratio = spot.size.width / spot.size.height
@@ -52,11 +58,22 @@ class PaintNode: SKSpriteNode {
         spot.zRotation = CGFloat(Double.pi * Double(Int(arc4random()) % 60) / 60.0)
         spot.position = position
         spot.blendMode = .subtract
+        spot.isUserInteractionEnabled = false
         
         let colorizeAction = SKAction.colorize(with: randomColor(), colorBlendFactor: 0.75, duration: 0.1)
         
         spot.run(colorizeAction)
         self.addChild(spot)
+        self.splashes.append(spot)
+    }
+    
+    private func removeSplash(_ splash: SKSpriteNode) {
+        
+        let fadeAction = SKAction.fadeOut(withDuration: 5.0)
+        let removeAction = SKAction.removeFromParent()
+        let action = SKAction.sequence([fadeAction, removeAction])
+        
+        splash.run(action)
     }
     
     //MARK: Helper methods
@@ -78,8 +95,15 @@ class PaintNode: SKSpriteNode {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         guard let touch = touches.first else { return }
+        guard let scene = self.scene else { return }
         
-        self.splash(atPosition: touch.location(in: self))
+        let position = touch.location(in: self)
+        let p = touch.location(in: scene)
+        
+        if  p.x >= self.frame.minX && p.x <= self.frame.maxX &&
+            p.y >= self.frame.minY && p.y <= self.frame.maxY {
+            self.splash(atPosition: position)
+        }
     }
     
 }
