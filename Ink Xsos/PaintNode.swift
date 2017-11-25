@@ -10,14 +10,18 @@ import SpriteKit
 
 class PaintNode: SKSpriteNode {
 
-    private let maxSplashes: Int = 10
-    private let spots: [SKSpriteNode]
+    private let maxSplashes: Int
+    private let spotFormats: [SKSpriteNode]
+    private let spotColors: [UIColor]
     
     private var splashes: [SKSpriteNode]
     
     init(size: CGSize) {
         
-        self.spots = []
+        self.maxSplashes = 25
+        self.spotFormats = [0,5].map { SKSpriteNode(imageNamed: "white_spot_\($0)") }
+        self.spotColors = [.red, .green, .blue, .yellow, .cyan, .orange, .purple]
+        
         self.splashes = []
         
         super.init(texture: nil, color: .clear, size: size)
@@ -31,10 +35,41 @@ class PaintNode: SKSpriteNode {
     
     private func splash(atPosition position: CGPoint) {
         
+        guard let scene = self.scene else { return }
+        
+        let spot = randomSpot()
+        
+        let ratio = spot.size.width / spot.size.height
+        let width = scene.size.width / 1.5
+        
+        spot.size = CGSize(width: width, height: width / ratio)
+        spot.zRotation = CGFloat(Double.pi * Double(Int(arc4random()) % 60) / 60.0)
+        spot.position = position
+        spot.blendMode = .subtract
+        
+        let colorizeAction = SKAction.colorize(with: randomColor(), colorBlendFactor: 0.75, duration: 0.1)
+        
+        spot.run(colorizeAction)
+        self.addChild(spot)
+    }
+    
+    private func randomSpot() -> SKSpriteNode {
+        
+        let random = Int(arc4random_uniform(UInt32(self.spotFormats.count)))
+        return self.spotFormats[random].copy() as! SKSpriteNode
+    }
+    
+    private func randomColor() -> UIColor {
+        
+        let random = Int(arc4random_uniform(UInt32(self.spotColors.count)))
+        return self.spotColors[random]
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Touched paintNode")
+        
+        guard let touch = touches.first else { return }
+        
+        self.splash(atPosition: touch.location(in: self))
     }
     
 }
