@@ -36,7 +36,7 @@ class GameScene: SKScene {
     private func buildScene() {
         
         buildBackground()
-        buildTimer()
+        //buildTimer()  It will be useful soon
         buildBackButton()
         buildModeLabel()
         buildGrid()
@@ -51,6 +51,7 @@ class GameScene: SKScene {
         addChild(background)
     }
     
+    //It will be useful soon
     private func buildTimer() {
 
         let sceneFrame = scene!.frame
@@ -91,7 +92,7 @@ class GameScene: SKScene {
         
         let sceneFrame = scene!.frame
         modeLabel.fontSize = sceneFrame.width * 0.1
-        modeLabel.position = CGPoint(x: 0.9 * sceneFrame.midX, y: size.height * 0.915)
+        modeLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.915)
         modeLabel.fontColor = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
     
         addChild(modeLabel)
@@ -118,10 +119,10 @@ class GameScene: SKScene {
         
         let gridFrame = self.grid.frame
         let gridPosition = self.grid.position
-        let timerPosition = self.timeLabel.position
+        let modePosition = self.modeLabel.position
         let gridTop = gridPosition.y + gridFrame.height / 2
         
-        messageLabel.position = CGPoint(x: sceneFrame.midX, y: (timerPosition.y + gridTop) / 2.0)
+        messageLabel.position = CGPoint(x: sceneFrame.midX, y: (modePosition.y + gridTop) / 2.0)
         messageLabel.fontColor = UIColor(red: 97.0/255, green: 216.0/255, blue: 54.0/255, alpha: 1.0)
         
         addChild(messageLabel)
