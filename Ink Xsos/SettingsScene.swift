@@ -60,20 +60,50 @@ class SettingsScene: SKScene {
         let animationsLabel = SKLabelNode(fontNamed: Fonts.ink)
         animationsLabel.text = "animations"
         animationsLabel.fontSize = sceneFrame.width * 0.07
-        animationsLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.415)
+        animationsLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.4)
         animationsLabel.fontColor = .green
         addChild(animationsLabel)
     }
     
     func buildButtons() {
         
+        let sceneFrame = self.scene!.frame
+        let buttonSize = CGSize(width: sceneFrame.width * 0.5, height: sceneFrame.width * 0.5)
+        
+        let soundButtonPosition = CGPoint(x: sceneFrame.midX, y: size.height * 0.65)
+        var soundDefault = "soundOn", soundActive = "soundOff"
+        if let soundOn = defaults.value(forKey: Defaults.soundOn) as? Bool {
+            if !soundOn {
+                soundDefault = "soundOff"
+                soundActive = "soundOn"
+            }
+        } else { defaults.set(true, forKey: Defaults.soundOn) }
+        let soundButton = Button(defaultButtonImage: soundDefault, activeButtonImage: soundActive, buttonAction: touchSound)
+        soundButton.size = buttonSize
+        soundButton.position = soundButtonPosition
+        addChild(soundButton)
+        
+        let animationsButtonPosition = CGPoint(x: sceneFrame.midX, y: size.height * 0.25)
+        var animationsDefault = "yes", animationsActive = "no"
+        if let animationsOn = defaults.value(forKey: Defaults.animationsOn) as? Bool {
+            if !animationsOn {
+                animationsDefault = "no"
+                animationsActive = "yes"
+            }
+        } else { defaults.set(true, forKey: Defaults.animationsOn) }
+        let animationsButton = Button(defaultButtonImage: animationsDefault, activeButtonImage: animationsActive, buttonAction: touchAnimation)
+        animationsButton.size = buttonSize
+        animationsButton.position = animationsButtonPosition
+        addChild(animationsButton)
     }
     
     func touchSound(_ button: Button) {
         
+        print("switch sound")
     }
     
     func touchAnimation(_ button: Button) {
         
+        print("switch animations")
     }
 }
