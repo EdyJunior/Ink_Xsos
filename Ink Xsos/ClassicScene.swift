@@ -124,4 +124,24 @@ class ClassicScene: GameScene {
             resetGame()
         }
     }
+    
+    override func endGame(victoryLine vl: VictoryLine) {
+        
+        super.endGame(victoryLine: vl)
+        
+        let sceneFrame = scene!.frame
+        let resetLabel = SKLabelNode(fontNamed: Fonts.ink)
+        resetLabel.fontSize = sceneFrame.width * 0.1
+        resetLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.1)
+        resetLabel.fontColor = .red
+        resetLabel.text = "tap to reset"
+        resetLabel.alpha = 0
+        
+        self.endGameSprites.append(resetLabel)
+        addChild(resetLabel)
+
+        let interval = defaultsStandard.animationsOn() ? 4.0 : 1.0
+        let fadeAction = SKAction.fadeAlpha(to: 1.0, duration: interval)
+        resetLabel.run(fadeAction)
+    }
 }
