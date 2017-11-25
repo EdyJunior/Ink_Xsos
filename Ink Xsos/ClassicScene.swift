@@ -17,6 +17,9 @@ class ClassicScene: GameScene {
         
         super.didMove(to: view)
         backgroundColor = .white
+        scene!.run (
+            SKAction.playSoundFileNamed(Sounds.start, waitForCompletion: false)
+        )
         buildScene()
     }
     
@@ -27,10 +30,7 @@ class ClassicScene: GameScene {
     }
 
     func resetGame() {
-        
-        scene!.run (
-            SKAction.playSoundFileNamed(Sounds.start, waitForCompletion: false)
-        )
+
         for s in symbols {
             s.removeFromParent()
         }
