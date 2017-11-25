@@ -17,9 +17,19 @@ class ClassicScene: GameScene {
         
         super.didMove(to: view)
         backgroundColor = .white
-        scene!.run (
-            SKAction.playSoundFileNamed(Sounds.start, waitForCompletion: false)
-        )
+        
+        if let soundOn = defaults.value(forKey: Defaults.soundOn) as? Bool {
+            if soundOn {
+                scene!.run (
+                    SKAction.playSoundFileNamed(Sounds.start, waitForCompletion: false)
+                )
+            }
+        } else {
+            defaults.set(true, forKey: Defaults.animationsOn)
+            scene!.run (
+                SKAction.playSoundFileNamed(Sounds.start, waitForCompletion: false)
+            )
+        }
         buildScene()
     }
     

@@ -10,6 +10,9 @@ import SpriteKit
 
 class SettingsScene: SKScene {
 
+    var soundButton = Button()
+    var animationsButton = Button()
+    
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
@@ -67,6 +70,30 @@ class SettingsScene: SKScene {
     
     func buildButtons() {
         
+        updateButtons()
+        
+        addChild(soundButton)
+        addChild(animationsButton)
+    }
+    
+    func touchSound(_ button: Button) {
+        
+        if let soundOn = defaults.value(forKey: Defaults.soundOn) as? Bool {
+            defaults.set(!soundOn, forKey: Defaults.soundOn)
+        }
+        updateButtons()
+    }
+    
+    func touchAnimation(_ button: Button) {
+        
+        if let animationsOn = defaults.value(forKey: Defaults.animationsOn) as? Bool {
+            defaults.set(!animationsOn, forKey: Defaults.animationsOn)
+        }
+        updateButtons()
+    }
+    
+    func updateButtons() {
+        
         let sceneFrame = self.scene!.frame
         let buttonSize = CGSize(width: sceneFrame.width * 0.5, height: sceneFrame.width * 0.5)
         
@@ -78,10 +105,9 @@ class SettingsScene: SKScene {
                 soundActive = "soundOn"
             }
         } else { defaults.set(true, forKey: Defaults.soundOn) }
-        let soundButton = Button(defaultButtonImage: soundDefault, activeButtonImage: soundActive, buttonAction: touchSound)
+        soundButton = Button(defaultButtonImage: soundDefault, activeButtonImage: soundActive, buttonAction: touchSound)
         soundButton.size = buttonSize
         soundButton.position = soundButtonPosition
-        addChild(soundButton)
         
         let animationsButtonPosition = CGPoint(x: sceneFrame.midX, y: size.height * 0.25)
         var animationsDefault = "yes", animationsActive = "no"
@@ -91,19 +117,8 @@ class SettingsScene: SKScene {
                 animationsActive = "yes"
             }
         } else { defaults.set(true, forKey: Defaults.animationsOn) }
-        let animationsButton = Button(defaultButtonImage: animationsDefault, activeButtonImage: animationsActive, buttonAction: touchAnimation)
+        animationsButton = Button(defaultButtonImage: animationsDefault, activeButtonImage: animationsActive, buttonAction: touchAnimation)
         animationsButton.size = buttonSize
         animationsButton.position = animationsButtonPosition
-        addChild(animationsButton)
-    }
-    
-    func touchSound(_ button: Button) {
-        
-        print("switch sound")
-    }
-    
-    func touchAnimation(_ button: Button) {
-        
-        print("switch animations")
     }
 }

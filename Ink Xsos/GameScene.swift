@@ -186,7 +186,13 @@ class GameScene: SKScene {
         endGameSprites.append(splatter)
         addChild(splatter)
 
-        animateEnd()
+        if let animationsOn = defaults.value(forKey: Defaults.animationsOn) as? Bool {
+            if animationsOn { animateEnd() }
+            else { self.finishedEndAnimation = true }
+        } else {
+            defaults.set(true, forKey: Defaults.animationsOn)
+            animateEnd()
+        }
     }
     
     func animateEnd() {
@@ -225,7 +231,12 @@ class GameScene: SKScene {
             self.endGameSprites.append(secondMessage)
         }
         let wait = SKAction.wait(forDuration: 1)
-        let playSound = SKAction.playSoundFileNamed(Sounds.end, waitForCompletion: false)
+        var playSound = SKAction()
+        if let soundOn = defaults.value(forKey: Defaults.soundOn) as? Bool {
+            if soundOn {
+                playSound = SKAction.playSoundFileNamed(Sounds.end, waitForCompletion: false)
+            }
+        }
         let seqAction = SKAction.sequence([wait, addSpot, wait, addMessage1, wait, addMessage2])
         let group = SKAction.group([playSound, seqAction])
         let finish = SKAction.run { self.finishedEndAnimation = true }
