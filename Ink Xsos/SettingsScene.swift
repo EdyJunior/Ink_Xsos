@@ -78,17 +78,13 @@ class SettingsScene: SKScene {
     
     func touchSound(_ button: Button) {
         
-        if let soundOn = defaults.value(forKey: Defaults.soundOn) as? Bool {
-            defaults.set(!soundOn, forKey: Defaults.soundOn)
-        }
+        defaultsStandard.set(!defaultsStandard.soundOn(), forKey: Defaults.soundOn)
         updateButtons()
     }
     
     func touchAnimation(_ button: Button) {
         
-        if let animationsOn = defaults.value(forKey: Defaults.animationsOn) as? Bool {
-            defaults.set(!animationsOn, forKey: Defaults.animationsOn)
-        }
+        defaultsStandard.set(!defaultsStandard.animationsOn(), forKey: Defaults.animationsOn)
         updateButtons()
     }
     
@@ -99,25 +95,25 @@ class SettingsScene: SKScene {
         
         let soundButtonPosition = CGPoint(x: sceneFrame.midX, y: size.height * 0.65)
         var soundDefault = "soundOn", soundActive = "soundOff"
-        if let soundOn = defaults.value(forKey: Defaults.soundOn) as? Bool {
-            if !soundOn {
-                soundDefault = "soundOff"
-                soundActive = "soundOn"
-            }
-        } else { defaults.set(true, forKey: Defaults.soundOn) }
-        soundButton = Button(defaultButtonImage: soundDefault, activeButtonImage: soundActive, buttonAction: touchSound)
+        if !defaultsStandard.soundOn() {
+            soundDefault = "soundOff"
+            soundActive = "soundOn"
+        }
+        soundButton = Button(defaultButtonImage: soundDefault,
+                             activeButtonImage: soundActive,
+                             buttonAction: touchSound)
         soundButton.size = buttonSize
         soundButton.position = soundButtonPosition
         
         let animationsButtonPosition = CGPoint(x: sceneFrame.midX, y: size.height * 0.25)
         var animationsDefault = "yes", animationsActive = "no"
-        if let animationsOn = defaults.value(forKey: Defaults.animationsOn) as? Bool {
-            if !animationsOn {
-                animationsDefault = "no"
-                animationsActive = "yes"
-            }
-        } else { defaults.set(true, forKey: Defaults.animationsOn) }
-        animationsButton = Button(defaultButtonImage: animationsDefault, activeButtonImage: animationsActive, buttonAction: touchAnimation)
+        if !defaultsStandard.animationsOn() {
+            animationsDefault = "no"
+            animationsActive = "yes"
+        }
+        animationsButton = Button(defaultButtonImage: animationsDefault,
+                                  activeButtonImage: animationsActive,
+                                  buttonAction: touchAnimation)
         animationsButton.size = buttonSize
         animationsButton.position = animationsButtonPosition
     }

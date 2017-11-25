@@ -13,9 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        if defaultsStandard.value(forKey: Defaults.soundOn) == nil {
+            defaultsStandard.set(true, forKey: Defaults.soundOn)
+        }
+        if defaultsStandard.value(forKey: Defaults.animationsOn) == nil {
+            defaultsStandard.set(true, forKey: Defaults.animationsOn)
+        }
         return true
     }
 
