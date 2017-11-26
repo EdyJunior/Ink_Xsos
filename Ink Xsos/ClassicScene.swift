@@ -112,6 +112,7 @@ class ClassicScene: GameScene {
             } else if state == .draw {
                 let message = "Draw"
                 messageLabel.text = message
+                addResetLabel()
             } else if state == .onGoing {
                 changePlayerNumber()
             }
@@ -128,6 +129,10 @@ class ClassicScene: GameScene {
     override func endGame(victoryLine vl: VictoryLine) {
         
         super.endGame(victoryLine: vl)
+        addResetLabel()
+    }
+    
+    func addResetLabel() {
         
         let sceneFrame = scene!.frame
         let resetLabel = SKLabelNode(fontNamed: Fonts.ink)
@@ -139,7 +144,7 @@ class ClassicScene: GameScene {
         
         self.endGameSprites.append(resetLabel)
         addChild(resetLabel)
-
+        
         let interval = defaultsStandard.animationsOn() ? 4.0 : 1.0
         let fadeAction = SKAction.fadeAlpha(to: 1.0, duration: interval)
         resetLabel.run(fadeAction)
