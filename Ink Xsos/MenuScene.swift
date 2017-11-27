@@ -15,8 +15,8 @@ class MenuScene: SKScene {
     var paintNode: PaintNode!
     
     var randomGameButton: Button!
-    var selectModeButton: Button!
-    var configurationsButton: Button!
+    var playButton: Button!
+    var settingsButton: Button!
     var moreGamesButton: Button!
     
     var soundController: SoundController?
@@ -106,8 +106,8 @@ class MenuScene: SKScene {
         let buttonPositions = (0...3).map { index in CGPoint(x: xPositions[index], y: yPositions[index]) }
         
         //self.setupRandomGameButton(atPosition: buttonPositions[0])
-        self.setupSelectModeButton(atPosition: buttonPositions[1])
-        self.setupConfigurationsButton(atPosition: buttonPositions[2])
+        self.setupPlayButton(atPosition: buttonPositions[1])
+        self.setupSettingsButton(atPosition: buttonPositions[2])
         //self.setupMoreGamesButton(atPosition: buttonPositions[3])
     }
     
@@ -123,9 +123,9 @@ class MenuScene: SKScene {
         self.paintPalette.addChild(self.randomGameButton)
     }
     
-    private func setupSelectModeButton(atPosition position: CGPoint) {
+    private func setupPlayButton(atPosition position: CGPoint) {
         
-        self.selectModeButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.play)) { _ in
+        self.playButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.play)) { _ in
             self.soundController?.stopSound()
             
             guard let view = self.view else { return }
@@ -135,16 +135,16 @@ class MenuScene: SKScene {
             let transition = SKTransition.fade(with: .white, duration: 1.0)
             view.presentScene(sceneInstance, transition: transition)
         }
-        self.selectModeButton.size = self.menuButtonSize
-        self.selectModeButton.position = position
-        self.selectModeButton.zPosition = 1
+        self.playButton.size = self.menuButtonSize
+        self.playButton.position = position
+        self.playButton.zPosition = 1
         
-        self.paintPalette.addChild(self.selectModeButton)
+        self.paintPalette.addChild(self.playButton)
     }
     
-    private func setupConfigurationsButton(atPosition position: CGPoint) {
+    private func setupSettingsButton(atPosition position: CGPoint) {
         
-        self.configurationsButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.configurations)) { _ in
+        self.settingsButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.configurations)) { _ in
             guard let view = self.view else { return }
             
             let sceneInstance = SettingsScene(size: view.bounds.size)
@@ -152,11 +152,11 @@ class MenuScene: SKScene {
             let transition = SKTransition.fade(with: .white, duration: 1.0)
             view.presentScene(sceneInstance, transition: transition)
         }
-        self.configurationsButton.size = self.menuButtonSize
-        self.configurationsButton.position = position
-        self.configurationsButton.zPosition = 1
+        self.settingsButton.size = self.menuButtonSize
+        self.settingsButton.position = position
+        self.settingsButton.zPosition = 1
         
-        self.paintPalette.addChild(self.configurationsButton)
+        self.paintPalette.addChild(self.settingsButton)
     }
     
     private func setupMoreGamesButton(atPosition position: CGPoint) {
