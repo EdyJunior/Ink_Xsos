@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        let scene = MenuScene(size: view.bounds.size)
+        let scene = MinimalistMenuScene(size: view.bounds.size)
         let skView = view as! SKView
         skView.showsFPS = false
         skView.showsNodeCount = false
