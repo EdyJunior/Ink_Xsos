@@ -88,8 +88,8 @@ class SettingsScene: SKScene {
         isSoundOn = !isSoundOn
         defaultsStandard.set(isSoundOn, forKey: Defaults.soundOn)
         
-        if isSoundOn { soundController?.playSound() }
-        else { soundController?.stopSound() }
+//        if isSoundOn { soundController?.playSound() }
+//        else { soundController?.stopSound() }
         
         updateButtons()
     }

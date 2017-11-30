@@ -83,9 +83,9 @@ class GameScene: SKScene {
             let sceneInstance = MinimalistMenuScene(size: view.bounds.size)
             sceneInstance.soundController = self.soundController
             let transition = SKTransition.fade(with: .white, duration: 1.0)
-            if defaultsStandard.soundOn() {
-                self.soundController?.playSound()
-            }
+//            if defaultsStandard.soundOn() {
+//                self.soundController?.playSound()
+//            }
             view.presentScene(sceneInstance, transition: transition)
         }
         

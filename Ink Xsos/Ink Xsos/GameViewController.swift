@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
         scene.backgroundColor = .white
         scene.soundController = self
         
-        if defaultsStandard.soundOn() { playMenuSound() }
+        //if defaultsStandard.soundOn() { playMenuSound() }
 
         skView.presentScene(scene)
     }

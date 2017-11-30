@@ -18,7 +18,6 @@
 		CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE2C6F231FC9E155003B30A0 /* startSound.wav */; };
 		CE2C6F261FC9E6EE003B30A0 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */; };
 		CE2C6F281FC9F8CB003B30A0 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */; };
-		CE2C6F2A1FCA0965003B30A0 /* menuSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE2C6F291FCA0965003B30A0 /* menuSound.wav */; };
 		CE4908021FAAB3F2006D3A59 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4908011FAAB3F2006D3A59 /* GameScene.swift */; };
 		CE5126031FCCFCE200E1A0C2 /* MinimalistMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5126021FCCFCE200E1A0C2 /* MinimalistMenuScene.swift */; };
 		CE6404A91FA895AA00B01022 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404A81FA895AA00B01022 /* Player.swift */; };
@@ -47,7 +46,6 @@
 		CE2C6F231FC9E155003B30A0 /* startSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = startSound.wav; sourceTree = "<group>"; };
 		CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
-		CE2C6F291FCA0965003B30A0 /* menuSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = menuSound.wav; sourceTree = "<group>"; };
 		CE4908011FAAB3F2006D3A59 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		CE5126021FCCFCE200E1A0C2 /* MinimalistMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalistMenuScene.swift; sourceTree = "<group>"; };
 		CE6404A81FA895AA00B01022 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 		CE0024B01FC6636B0077AB62 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				CE2C6F291FCA0965003B30A0 /* menuSound.wav */,
 				CE2C6F231FC9E155003B30A0 /* startSound.wav */,
 				CE0024B11FC663820077AB62 /* endSound.wav */,
 			);
@@ -238,7 +235,6 @@
 			files = (
 				CE0024B21FC663820077AB62 /* endSound.wav in Resources */,
 				CEB27EC11FA76945004511BD /* Main.storyboard in Resources */,
-				CE2C6F2A1FCA0965003B30A0 /* menuSound.wav in Resources */,
 				CE7236501FBF21B400D65F49 /* DK Flagellum Dei.otf in Resources */,
 				CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */,
 				CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */,
