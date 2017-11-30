@@ -24,7 +24,6 @@
 		CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AA1FA89D5800B01022 /* PaintScreen.swift */; };
 		CE6404AD1FA8A0E700B01022 /* Xsos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AC1FA8A0E700B01022 /* Xsos.swift */; };
 		CE6404B01FA8A6B600B01022 /* Classic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AF1FA8A6B600B01022 /* Classic.swift */; };
-		CE7236501FBF21B400D65F49 /* DK Flagellum Dei.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE72364F1FBF21B400D65F49 /* DK Flagellum Dei.otf */; };
 		CE85F41D1FC8F864002BCCF7 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85F41C1FC8F864002BCCF7 /* SettingsScene.swift */; };
 		CEA9B6351FB1EE2400A4E391 /* ClassicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA9B6341FB1EE2400A4E391 /* ClassicScene.swift */; };
 		CEB27EB61FA76945004511BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB27EB51FA76945004511BD /* AppDelegate.swift */; };
@@ -32,6 +31,7 @@
 		CEB27EC11FA76945004511BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EBF1FA76945004511BD /* Main.storyboard */; };
 		CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EC21FA76945004511BD /* Assets.xcassets */; };
 		CEB27EC61FA76945004511BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EC41FA76945004511BD /* LaunchScreen.storyboard */; };
+		CECA60991FD0C972007243AA /* Calligraphr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CECA60981FD0C972007243AA /* Calligraphr-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +52,6 @@
 		CE6404AA1FA89D5800B01022 /* PaintScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintScreen.swift; sourceTree = "<group>"; };
 		CE6404AC1FA8A0E700B01022 /* Xsos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xsos.swift; sourceTree = "<group>"; };
 		CE6404AF1FA8A6B600B01022 /* Classic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classic.swift; sourceTree = "<group>"; };
-		CE72364F1FBF21B400D65F49 /* DK Flagellum Dei.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Flagellum Dei.otf"; sourceTree = "<group>"; };
 		CE85F41C1FC8F864002BCCF7 /* SettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
 		CEA9B6341FB1EE2400A4E391 /* ClassicScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassicScene.swift; sourceTree = "<group>"; };
 		CEB27EB21FA76945004511BD /* Ink Xsos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ink Xsos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +61,7 @@
 		CEB27EC21FA76945004511BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB27EC51FA76945004511BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB27EC71FA76945004511BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CECA60981FD0C972007243AA /* Calligraphr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calligraphr-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 				CEB27EBF1FA76945004511BD /* Main.storyboard */,
 				CEB27EC21FA76945004511BD /* Assets.xcassets */,
 				CEB27EC41FA76945004511BD /* LaunchScreen.storyboard */,
-				CE72364F1FBF21B400D65F49 /* DK Flagellum Dei.otf */,
+				CECA60981FD0C972007243AA /* Calligraphr-Regular.otf */,
 				CEB27EC71FA76945004511BD /* Info.plist */,
 			);
 			path = "Ink Xsos";
@@ -204,7 +204,7 @@
 				TargetAttributes = {
 					CEB27EB11FA76945004511BD = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = XR5ZL635QC;
+						DevelopmentTeam = CWK5G6U242;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
@@ -235,8 +235,8 @@
 			files = (
 				CE0024B21FC663820077AB62 /* endSound.wav in Resources */,
 				CEB27EC11FA76945004511BD /* Main.storyboard in Resources */,
-				CE7236501FBF21B400D65F49 /* DK Flagellum Dei.otf in Resources */,
 				CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */,
+				CECA60991FD0C972007243AA /* Calligraphr-Regular.otf in Resources */,
 				CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */,
 				CEB27EC61FA76945004511BD /* LaunchScreen.storyboard in Resources */,
 			);
@@ -402,7 +402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XR5ZL635QC;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = "Ink Xsos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -417,7 +417,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XR5ZL635QC;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = "Ink Xsos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

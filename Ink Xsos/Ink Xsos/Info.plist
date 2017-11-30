@@ -22,7 +22,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>DK Flagellum Dei.otf</string>
+		<string>Calligraphr-Regular.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
