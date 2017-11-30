@@ -22,8 +22,9 @@ class MinimalistMenuScene: SKScene {
     
     var menuButtonSize: CGSize {
         
-        let width = self.size.width * 0.25
-        let height = width
+        let proportion = CGFloat(560.0) / 640.0
+        let width = self.size.width * 0.3
+        let height = width * proportion
         
         return CGSize(width: width, height: height)
     }
@@ -49,7 +50,7 @@ class MinimalistMenuScene: SKScene {
         self.gameName.position = CGPoint(x: self.frame.midX, y: self.frame.maxY * 0.95)
         
         let ratio = self.gameName.size.width / self.gameName.size.height
-        let width = self.size.width * 0.8
+        let width = self.size.width * 0.85
         self.gameName.size = CGSize(width: width, height: width / ratio)
         
         self.addChild(self.gameName)
@@ -57,10 +58,10 @@ class MinimalistMenuScene: SKScene {
     
     private func setupButtons() {
         
-        let buttonWidth = self.menuButtonSize.width
+        let buttonWidth = self.scene!.frame.width * 0.3
         let paletteLeft = CGFloat(0.0)
         let paletteRight = self.scene!.frame.width
-        let paletteMidHeight = self.scene!.frame.height * 0.1
+        let paletteMidHeight = self.scene!.frame.height * 0.18
         
         let left = paletteLeft + buttonWidth / 2
         let right = paletteRight - buttonWidth / 2
@@ -78,12 +79,14 @@ class MinimalistMenuScene: SKScene {
     private func setupPaintNode() {
         
         let width = self.size.width
-        let height = self.gameName.frame.minY - self.selectModeButton.frame.maxY
+        let height = self.gameName.position.y - self.gameName.size.height -
+                     (self.selectModeButton.position.y +
+                      self.selectModeButton.size.height / 2)
         let paintSize = CGSize(width: width, height: height)
         
         self.paintNode = PaintNode(size: paintSize)
         self.paintNode.zPosition = -1
-        self.paintNode.position = CGPoint(x: self.frame.midX, y: self.selectModeButton.frame.maxY + height / 2)
+        self.paintNode.position = CGPoint(x: self.frame.midX, y: self.selectModeButton.position.y + self.selectModeButton.size.height / 2 + height / 2)
         
         self.paintNode.splashAutomatically(withInterval: 3)
         
@@ -95,7 +98,7 @@ class MinimalistMenuScene: SKScene {
         self.randomGameButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.randomGame)) { _ in
             self.switchToScene(ClassicScene.self)
         }
-        self.randomGameButton.size = self.menuButtonSize
+        //self.randomGameButton.size = self.menuButtonSize
         self.randomGameButton.position = position
         self.randomGameButton.zPosition = 1
         
@@ -114,6 +117,7 @@ class MinimalistMenuScene: SKScene {
             let transition = SKTransition.fade(with: .white, duration: 1.0)
             view.presentScene(sceneInstance, transition: transition)
         }
+        
         self.selectModeButton.size = self.menuButtonSize
         self.selectModeButton.position = position
         self.selectModeButton.zPosition = 1
@@ -143,7 +147,7 @@ class MinimalistMenuScene: SKScene {
         self.moreGamesButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.moreGames)) { _ in
             print("More games")
         }
-        self.moreGamesButton.size = self.menuButtonSize
+        //self.moreGamesButton.size = self.menuButtonSize
         self.moreGamesButton.position = position
         self.moreGamesButton.zPosition = 1
         
