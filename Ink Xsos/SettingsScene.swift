@@ -61,14 +61,14 @@ class SettingsScene: SKScene {
         
         let soundLabel = SKLabelNode(fontNamed: Fonts.ink)
         soundLabel.text = "sound"
-        soundLabel.fontSize = sceneFrame.width * 0.07
+        soundLabel.fontSize = sceneFrame.width * 0.1
         soundLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.8)
         soundLabel.fontColor = .red
         addChild(soundLabel)
         
         let animationsLabel = SKLabelNode(fontNamed: Fonts.ink)
         animationsLabel.text = "animations"
-        animationsLabel.fontSize = sceneFrame.width * 0.07
+        animationsLabel.fontSize = sceneFrame.width * 0.1
         animationsLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.4)
         animationsLabel.fontColor = .green
         addChild(animationsLabel)
