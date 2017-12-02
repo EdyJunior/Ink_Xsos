@@ -10,5 +10,5 @@ import Foundation
 
 enum Fonts {
     
-    static let ink = "DK Flagellum Dei"
+    static let ink = "Calligraphr-Regular"
 }

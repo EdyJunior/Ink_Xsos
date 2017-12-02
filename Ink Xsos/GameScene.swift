@@ -80,12 +80,12 @@ class GameScene: SKScene {
         let backButton = Button(defaultButtonImage: Images.arrow, activeButtonImage: Images.arrow) { _ in
             guard let view = self.view else { return }
             
-            let sceneInstance = MenuScene(size: view.bounds.size)
+            let sceneInstance = MinimalistMenuScene(size: view.bounds.size)
             sceneInstance.soundController = self.soundController
             let transition = SKTransition.fade(with: .white, duration: 1.0)
-            if defaultsStandard.soundOn() {
-                self.soundController?.playSound()
-            }
+//            if defaultsStandard.soundOn() {
+//                self.soundController?.playSound()
+//            }
             view.presentScene(sceneInstance, transition: transition)
         }
         

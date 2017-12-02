@@ -33,7 +33,7 @@ class SettingsScene: SKScene {
         let backButton = Button(defaultButtonImage: Images.arrow, activeButtonImage: Images.arrow) { _ in
             guard let view = self.view else { return }
             
-            let sceneInstance = MenuScene(size: view.bounds.size)
+            let sceneInstance = MinimalistMenuScene(size: view.bounds.size)
             sceneInstance.soundController = self.soundController
             let transition = SKTransition.fade(with: .white, duration: 1.0)
             view.presentScene(sceneInstance, transition: transition)
@@ -61,14 +61,14 @@ class SettingsScene: SKScene {
         
         let soundLabel = SKLabelNode(fontNamed: Fonts.ink)
         soundLabel.text = "sound"
-        soundLabel.fontSize = sceneFrame.width * 0.07
+        soundLabel.fontSize = sceneFrame.width * 0.1
         soundLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.8)
         soundLabel.fontColor = .red
         addChild(soundLabel)
         
         let animationsLabel = SKLabelNode(fontNamed: Fonts.ink)
         animationsLabel.text = "animations"
-        animationsLabel.fontSize = sceneFrame.width * 0.07
+        animationsLabel.fontSize = sceneFrame.width * 0.1
         animationsLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.4)
         animationsLabel.fontColor = .green
         addChild(animationsLabel)
@@ -88,8 +88,8 @@ class SettingsScene: SKScene {
         isSoundOn = !isSoundOn
         defaultsStandard.set(isSoundOn, forKey: Defaults.soundOn)
         
-        if isSoundOn { soundController?.playSound() }
-        else { soundController?.stopSound() }
+//        if isSoundOn { soundController?.playSound() }
+//        else { soundController?.stopSound() }
         
         updateButtons()
     }
