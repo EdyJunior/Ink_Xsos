@@ -127,7 +127,7 @@ class Button: SKNode {
                              restore: true)
             )
         )
-        defaultButton.run(action)
+        activeButton.run(action)
     }
     /*
     func setSizeAndPosition(_ size: CGSize, position: CGPoint, areaFactor factor: CGFloat) {
