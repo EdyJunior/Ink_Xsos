@@ -106,7 +106,7 @@ class ClassicScene: GameScene {
             draw(text: s, atPosition: symbolPosition, withSize: size, withColor: .black)
             let state = classic.isGameOver()
             if state == .finishedWithWinner {
-                let message = "Winner = \(s)"
+                let message = "\(s) wins"
                 messageLabel.text = message
                 endGame(victoryLine: classic.victoryLine!)
             } else if state == .draw {

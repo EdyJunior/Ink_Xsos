@@ -217,7 +217,7 @@ class GameScene: SKScene {
         firstMessage.fontColor = .white
         firstMessage.fontName = Fonts.ink
         
-        let secondMessage = SKLabelNode(text: "Over!")
+        let secondMessage = SKLabelNode(text: "Over")
         secondMessage.fontSize = inkSpot.frame.height * 0.25
         secondMessage.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY - inkSpot.frame.height * 0.2)
         secondMessage.zPosition = inkSpot.zPosition + 1
