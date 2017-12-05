@@ -15,6 +15,7 @@
 		C5D65AEB1FC72D0D00AFA54C /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D65AEA1FC72D0D00AFA54C /* Sounds.swift */; };
 		CE0024B21FC663820077AB62 /* endSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE0024B11FC663820077AB62 /* endSound.wav */; };
 		CE02C3561FAC001500CD07F3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C3551FAC001500CD07F3 /* Button.swift */; };
+		CE0F40781FD6D07D004E1BCA /* final.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE0F40771FD6D07D004E1BCA /* final.ttf */; };
 		CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE2C6F231FC9E155003B30A0 /* startSound.wav */; };
 		CE2C6F261FC9E6EE003B30A0 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */; };
 		CE2C6F281FC9F8CB003B30A0 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */; };
@@ -31,7 +32,6 @@
 		CEB27EC11FA76945004511BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EBF1FA76945004511BD /* Main.storyboard */; };
 		CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EC21FA76945004511BD /* Assets.xcassets */; };
 		CEB27EC61FA76945004511BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EC41FA76945004511BD /* LaunchScreen.storyboard */; };
-		CECA60991FD0C972007243AA /* Calligraphr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CECA60981FD0C972007243AA /* Calligraphr-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +43,7 @@
 		C5D65AEA1FC72D0D00AFA54C /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		CE0024B11FC663820077AB62 /* endSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = endSound.wav; sourceTree = "<group>"; };
 		CE02C3551FAC001500CD07F3 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		CE0F40771FD6D07D004E1BCA /* final.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = final.ttf; sourceTree = "<group>"; };
 		CE2C6F231FC9E155003B30A0 /* startSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = startSound.wav; sourceTree = "<group>"; };
 		CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		CEB27EC21FA76945004511BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB27EC51FA76945004511BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB27EC71FA76945004511BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CECA60981FD0C972007243AA /* Calligraphr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calligraphr-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 				CEB27EBF1FA76945004511BD /* Main.storyboard */,
 				CEB27EC21FA76945004511BD /* Assets.xcassets */,
 				CEB27EC41FA76945004511BD /* LaunchScreen.storyboard */,
-				CECA60981FD0C972007243AA /* Calligraphr-Regular.otf */,
+				CE0F40771FD6D07D004E1BCA /* final.ttf */,
 				CEB27EC71FA76945004511BD /* Info.plist */,
 			);
 			path = "Ink Xsos";
@@ -234,9 +234,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE0024B21FC663820077AB62 /* endSound.wav in Resources */,
+				CE0F40781FD6D07D004E1BCA /* final.ttf in Resources */,
 				CEB27EC11FA76945004511BD /* Main.storyboard in Resources */,
 				CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */,
-				CECA60991FD0C972007243AA /* Calligraphr-Regular.otf in Resources */,
 				CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */,
 				CEB27EC61FA76945004511BD /* LaunchScreen.storyboard in Resources */,
 			);
