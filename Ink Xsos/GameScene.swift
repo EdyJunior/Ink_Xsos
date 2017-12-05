@@ -38,10 +38,10 @@ class GameScene: SKScene {
     private func buildScene() {
         
         buildBackground()
+        buildGrid()
         //buildTimer()  It will be useful soon
         buildBackButton()
         buildModeLabel()
-        buildGrid()
         buildMessageLabel()
     }
     
@@ -120,6 +120,20 @@ class GameScene: SKScene {
         grid.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.midY)
 
         addChild(grid)
+        
+        let textures = SKTextureAtlas(named: "grid")
+        var frames = [SKTexture]()
+        
+        let numImages = textures.textureNames.count
+        for i in 1...numImages {
+            let name = String.init(format: "grid_%0.3d", i)
+            frames.append(SKTexture(imageNamed: name))
+        }
+        let action = SKAction.animate(with: frames,
+                             timePerFrame: 1.5 / Double(numImages),
+                             resize: false,
+                             restore: false)
+        grid.run(action)
     }
     
     private func buildMessageLabel() {
