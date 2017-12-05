@@ -79,14 +79,14 @@ class MinimalistMenuScene: SKScene {
     private func setupPaintNode() {
         
         let width = self.size.width
-        let height = self.gameName.position.y - self.gameName.size.height -
-                     (self.selectModeButton.position.y +
-                      self.selectModeButton.size.height / 2)
+        let height = self.gameName.position.y - self.gameName.size.height * 1.5// -
+//                     (self.selectModeButton.position.y +
+//                      self.selectModeButton.size.height / 2)
         let paintSize = CGSize(width: width, height: height)
         
         self.paintNode = PaintNode(size: paintSize)
         self.paintNode.zPosition = -1
-        self.paintNode.position = CGPoint(x: self.frame.midX, y: self.selectModeButton.position.y + self.selectModeButton.size.height / 2 + height / 2)
+        self.paintNode.position = CGPoint(x: self.frame.midX, y: /*self.selectModeButton.position.y + self.selectModeButton.size.height / 2 +*/ height / 2)
         
         self.paintNode.splashAutomatically(withInterval: 3)
         
