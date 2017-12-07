@@ -20,7 +20,7 @@ class GameScene: SKScene {
     var modeLabel = SKLabelNode(fontNamed: Fonts.ink)
     var messageLabel = SKLabelNode(fontNamed: Fonts.ink)
     var timeLabel = SKLabelNode(fontNamed: Fonts.ink)
-    var symbols = [SKLabelNode]()
+    var cellButtons = [Button]()
     var endGameSprites = [SKNode]()
     
     var grid = SKSpriteNode()
@@ -112,8 +112,13 @@ class GameScene: SKScene {
 
         let sceneFrame = scene!.frame
         let gridWidth = sceneFrame.width * 0.8
-
-        let texture = SKTexture(imageNamed: Images.grid)
+        
+        let textures = SKTextureAtlas(named: Images.grid)
+        var frames = [SKTexture]()
+        
+        let numImages = textures.textureNames.count
+        let imageName = "\(Images.grid)_%0.3d"
+        let texture = SKTexture(imageNamed: String.init(format: imageName, numImages))
         let gridSize = CGSize(width: gridWidth, height: gridWidth / 1.0593)
 
         grid = SKSpriteNode(texture: texture, color: .white, size: gridSize)
@@ -121,19 +126,18 @@ class GameScene: SKScene {
 
         addChild(grid)
         
-        let textures = SKTextureAtlas(named: "grid")
-        var frames = [SKTexture]()
-        
-        let numImages = textures.textureNames.count
-        for i in 1...numImages {
-            let name = String.init(format: "grid_%0.3d", i)
-            frames.append(SKTexture(imageNamed: name))
+        if defaultsStandard.animationsOn() {
+            
+            for i in 1...numImages {
+                let name = String.init(format: imageName, i)
+                frames.append(SKTexture(imageNamed: name))
+            }
+            let action = SKAction.animate(with: frames,
+                                 timePerFrame: 1.2 / Double(numImages),
+                                 resize: false,
+                                 restore: false)
+            grid.run(action)
         }
-        let action = SKAction.animate(with: frames,
-                             timePerFrame: 1.5 / Double(numImages),
-                             resize: false,
-                             restore: false)
-        grid.run(action)
     }
     
     private func buildMessageLabel() {
@@ -170,9 +174,7 @@ class GameScene: SKScene {
         label.zPosition = self.grid.zPosition + 1
         label.fontColor = color
         label.fontName = Fonts.ink
-        
-        symbols.append(label)
-        
+
         addChild(label)
     }
     
