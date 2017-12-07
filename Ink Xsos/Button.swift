@@ -110,38 +110,20 @@ class Button: SKNode {
         }
     }
     
-    func animate(_ AtlasName: String, imgName: String) {
+    func animate(AtlasName atlas: String) {
         
-        let textures = SKTextureAtlas(named: AtlasName)
+        let textures = SKTextureAtlas(named: atlas)
         var frames = [SKTexture]()
         
         let numImages = textures.textureNames.count
-        for i in 0..<numImages {
-            let TextureName = "\(imgName)\(i)"
+        for i in 1...numImages {
+            let TextureName = String.init(format: "\(atlas)_%0.3d", i)
             frames.append(textures.textureNamed(TextureName))
         }
-        let action = (SKAction.repeatForever(
-            SKAction.animate(with: frames,
-                             timePerFrame: 0.1,
+        let action = SKAction.animate(with: frames,
+                             timePerFrame: 0.3 / Double(numImages),
                              resize: false,
-                             restore: true)
-            )
-        )
-        defaultButton.run(action)
+                             restore: false)
+        activeButton.run(action)
     }
-    /*
-    func setSizeAndPosition(_ size: CGSize, position: CGPoint, areaFactor factor: CGFloat) {
-        
-        defaultButton.size = size
-        activeButton.size = size
-        
-        touchableArea = SKSpriteNode()
-        touchableArea.size = CGSize(width: size.width * factor, height: size.height * factor)
-        touchableArea.position = position
-        
-        touchableArea.addChild(defaultButton)
-        touchableArea.addChild(activeButton)
-        addChild(touchableArea)
-    }
-    */
 }

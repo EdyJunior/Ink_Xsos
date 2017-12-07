@@ -16,7 +16,6 @@
 		CE0024B21FC663820077AB62 /* endSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE0024B11FC663820077AB62 /* endSound.wav */; };
 		CE02C3561FAC001500CD07F3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C3551FAC001500CD07F3 /* Button.swift */; };
 		CE0F40781FD6D07D004E1BCA /* final.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE0F40771FD6D07D004E1BCA /* final.ttf */; };
-		CE0F407B1FD6DC5C004E1BCA /* grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE0F407A1FD6DC5B004E1BCA /* grid.atlas */; };
 		CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE2C6F231FC9E155003B30A0 /* startSound.wav */; };
 		CE2C6F261FC9E6EE003B30A0 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */; };
 		CE2C6F281FC9F8CB003B30A0 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */; };
@@ -45,7 +44,6 @@
 		CE0024B11FC663820077AB62 /* endSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = endSound.wav; sourceTree = "<group>"; };
 		CE02C3551FAC001500CD07F3 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CE0F40771FD6D07D004E1BCA /* final.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = final.ttf; sourceTree = "<group>"; };
-		CE0F407A1FD6DC5B004E1BCA /* grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = grid.atlas; sourceTree = "<group>"; };
 		CE2C6F231FC9E155003B30A0 /* startSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = startSound.wav; sourceTree = "<group>"; };
 		CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
@@ -106,14 +104,6 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-		CE0F40791FD6DC46004E1BCA /* Atlas */ = {
-			isa = PBXGroup;
-			children = (
-				CE0F407A1FD6DC5B004E1BCA /* grid.atlas */,
-			);
-			path = Atlas;
-			sourceTree = "<group>";
-		};
 		CE4908001FAAB39A006D3A59 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +139,6 @@
 		CEB27EA91FA76945004511BD = {
 			isa = PBXGroup;
 			children = (
-				CE0F40791FD6DC46004E1BCA /* Atlas */,
 				C5D65AE51FC72B3500AFA54C /* Constants */,
 				C50745681FC1016C00C84B2C /* Extensions */,
 				CE0024B01FC6636B0077AB62 /* Sounds */,
@@ -246,7 +235,6 @@
 			files = (
 				CE0024B21FC663820077AB62 /* endSound.wav in Resources */,
 				CE0F40781FD6D07D004E1BCA /* final.ttf in Resources */,
-				CE0F407B1FD6DC5C004E1BCA /* grid.atlas in Resources */,
 				CEB27EC11FA76945004511BD /* Main.storyboard in Resources */,
 				CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */,
 				CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */,
@@ -416,7 +404,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = "Ink Xsos/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.Ink-Xsos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -431,7 +419,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = "Ink Xsos/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.Ink-Xsos";
 				PRODUCT_NAME = "$(TARGET_NAME)";

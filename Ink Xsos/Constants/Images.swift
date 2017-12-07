@@ -13,7 +13,7 @@ enum Images {
     static let paintPallete = "paint_palette"
     static let gameName     = "ink_xsos"
     static let background   = "whiteBackground"
-    static let grid         = "grid_118"
+    static let grid         = "grid"
     static let arrow        = "arrow"
     static let splatter     = "blueSplatter"
     
