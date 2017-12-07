@@ -34,8 +34,9 @@ class ClassicScene: GameScene {
 
     func resetGame() {
 
-        for s in symbols {
-            s.removeFromParent()
+        for cb in cellButtons {
+            cb.pressed = false
+            cb.enabled = true
         }
         for e in endGameSprites {
             e.removeFromParent()
@@ -63,7 +64,8 @@ class ClassicScene: GameScene {
         button.zPosition = 1
         button.name = "\(cell[0]) \(cell[1])"
         button.touchableArea.alpha = 0.01
-
+        
+        self.cellButtons.append(button)
         self.addChild(button)
     }
     
@@ -98,12 +100,19 @@ class ClassicScene: GameScene {
 
         if !success { print("Não é sua vez!") }
         else {
+            button.touchableArea.alpha = 1.0
+            
             let s = classic.getSymbol(fromPlayer: playerNumber)
-            let size = grid.frame.width / 5.0
-
-            let symbolPosition = CGPoint(x: button.position.x,
-                                         y: button.position.y - size * 0.35)
-            draw(text: s, atPosition: symbolPosition, withSize: size, withColor: .black)
+            let atlas = SKTextureAtlas(named: s)
+            let n = atlas.textureNames.count
+            let imageName = String.init(format: "\(s)_%0.3d", n)
+            button.activeButton.texture = SKTexture(imageNamed: imageName)
+            
+            if defaultsStandard.animationsOn() {
+                button.animate(AtlasName: s)
+            }
+            button.enabled = false
+            
             let state = classic.isGameOver()
             if state == .finishedWithWinner {
                 let message = "\(s) wins"
