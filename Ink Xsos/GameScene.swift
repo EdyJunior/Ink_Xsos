@@ -181,6 +181,10 @@ class GameScene: SKScene {
         
         finishedEndAnimation = false
         
+        for button in self.cellButtons {
+            button.enabled = false
+        }
+        
         let splatterTexture = SKTexture(imageNamed: Images.splatter)
 
         let splatterSize = CGSize(width: scene!.frame.width * 0.2, height: scene!.frame.width * 1.3)
