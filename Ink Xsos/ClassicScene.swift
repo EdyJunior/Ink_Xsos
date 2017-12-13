@@ -35,8 +35,11 @@ class ClassicScene: GameScene {
     func resetGame() {
 
         for cb in cellButtons {
+            let gridFrame = self.grid.frame
+            
             cb.pressed = false
             cb.enabled = true
+            cb.size = CGSize(width: gridFrame.width / 3, height: gridFrame.height / 3)
         }
         for e in endGameSprites {
             e.removeFromParent()
@@ -107,6 +110,12 @@ class ClassicScene: GameScene {
             let n = atlas.textureNames.count
             let imageName = String.init(format: "\(s)_%0.3d", n)
             button.activeButton.texture = SKTexture(imageNamed: imageName)
+            
+            let correctionFactor = CGFloat(0.6)
+            var newSize = button.size
+            newSize.width *= correctionFactor
+            newSize.height *= correctionFactor
+            button.size = newSize
             
             if defaultsStandard.animationsOn() {
                 button.animate(AtlasName: s)
