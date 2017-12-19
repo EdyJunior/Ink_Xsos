@@ -121,7 +121,7 @@ class GameScene: SKScene {
         let texture = SKTexture(imageNamed: String.init(format: imageName, numImages))
         let gridSize = CGSize(width: gridWidth, height: gridWidth / 1.0593)
 
-        grid = SKSpriteNode(texture: texture, color: .white, size: gridSize)
+        grid = SKSpriteNode(texture: texture, color: .black, size: gridSize)
         grid.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.midY)
 
         addChild(grid)
@@ -185,10 +185,17 @@ class GameScene: SKScene {
             button.enabled = false
         }
         
-        let splatterTexture = SKTexture(imageNamed: "\(Images.splatter)_012")
-
+        let textures = SKTextureAtlas(named: Images.splatter)
+        var frames = [SKTexture]()
+        
+        let numImages = textures.textureNames.count
+        let imageName = "\(Images.splatter)_%0.3d"
+        
         let splatterSize = CGSize(width: scene!.frame.width * 0.2, height: scene!.frame.width * 1.3)
-        let splatter = SKSpriteNode(texture: splatterTexture, color: .blue, size: splatterSize)
+        let splatter = SKSpriteNode(imageNamed: String.init(format: imageName, numImages))
+        splatter.size = splatterSize
+        splatter.colorBlendFactor = 1.0
+        splatter.color = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
         
         var splatterPosition = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY)
         let gridFrame = self.grid.frame
@@ -212,7 +219,19 @@ class GameScene: SKScene {
         splatter.position = splatterPosition
         splatter.zPosition = self.grid.zPosition + 2
         splatter.alpha = 0.8
-        //splatter.colorBlendFactor = 0.5
+        splatter.isUserInteractionEnabled = false
+        
+        if defaultsStandard.animationsOn() {
+            for i in 1...numImages {
+                let name = String.init(format: imageName, i)
+                frames.append(SKTexture(imageNamed: name))
+            }
+            let action = SKAction.animate(with: frames,
+                                          timePerFrame: 0.25 / Double(numImages),
+                                          resize: false,
+                                          restore: false)
+            splatter.run(action)
+        }
         endGameSprites.append(splatter)
         addChild(splatter)
 
