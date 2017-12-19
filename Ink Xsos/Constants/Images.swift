@@ -15,7 +15,7 @@ enum Images {
     static let background   = "whiteBackground"
     static let grid         = "grid"
     static let arrow        = "arrow"
-    static let splatter     = "blueSplatter"
+    static let splatter     = "splatter"
     
     enum Buttons {
         

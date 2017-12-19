@@ -132,7 +132,7 @@ class GameScene: SKScene {
                 frames.append(SKTexture(imageNamed: name))
             }
             let action = SKAction.animate(with: frames,
-                                 timePerFrame: 1.2 / Double(numImages),
+                                 timePerFrame: 1.0 / Double(numImages),
                                  resize: false,
                                  restore: false)
             grid.run(action)
@@ -185,7 +185,7 @@ class GameScene: SKScene {
             button.enabled = false
         }
         
-        let splatterTexture = SKTexture(imageNamed: Images.splatter)
+        let splatterTexture = SKTexture(imageNamed: "\(Images.splatter)_012")
 
         let splatterSize = CGSize(width: scene!.frame.width * 0.2, height: scene!.frame.width * 1.3)
         let splatter = SKSpriteNode(texture: splatterTexture, color: .blue, size: splatterSize)
@@ -212,7 +212,7 @@ class GameScene: SKScene {
         splatter.position = splatterPosition
         splatter.zPosition = self.grid.zPosition + 2
         splatter.alpha = 0.8
-        splatter.colorBlendFactor = 0.5
+        //splatter.colorBlendFactor = 0.5
         endGameSprites.append(splatter)
         addChild(splatter)
 
