@@ -151,6 +151,7 @@ class GameScene: SKScene {
         
         messageLabel.position = CGPoint(x: sceneFrame.midX, y: (modePosition.y + gridTop) / 2.0)
         messageLabel.fontColor = UIColor(red: 97.0/255, green: 216.0/255, blue: 54.0/255, alpha: 1.0)
+        messageLabel.zPosition = 10
         
         addChild(messageLabel)
     }
