@@ -113,8 +113,10 @@ class GameScene: SKScene {
     
     private func buildGrid() {
 
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.8 : 0.6
         let sceneFrame = scene!.frame
-        let gridWidth = sceneFrame.width * 0.8
+        let gridWidth = sceneFrame.width * factor
         
         let textures = SKTextureAtlas(named: Images.grid)
         var frames = [SKTexture]()
