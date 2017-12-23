@@ -200,15 +200,17 @@ class GameScene: SKScene {
         let numImages = textures.textureNames.count
         let imageName = "\(Images.splatter)_%0.3d"
         
-        let splatterSize = CGSize(width: scene!.frame.width * 0.2, height: scene!.frame.width * 1.3)
+        let gridFrame = self.grid.frame
+        
+        let splatterSize = CGSize(width: gridFrame.width * 0.27, height: gridFrame.width * 1.4)
         let splatter = SKSpriteNode(imageNamed: String.init(format: imageName, numImages))
         splatter.size = splatterSize
         splatter.colorBlendFactor = 1.0
         splatter.color = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
         
-        var splatterPosition = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY)
-        let gridFrame = self.grid.frame
         let gridPosition = self.grid.position
+        var splatterPosition = CGPoint(x: gridPosition.x, y: gridPosition.y)
+        
         let gridTop = gridPosition.y + gridFrame.height / 2
         let gridLeft = gridPosition.x - gridFrame.width / 2
         
@@ -216,12 +218,12 @@ class GameScene: SKScene {
         case .row(let line):
             splatter.zRotation = -CGFloat(Double.pi / 2)
             let yAux = CGFloat(2.0 * Double(line) - 1.0)
-            splatterPosition = CGPoint(x: gridPosition.x - gridFrame.width * 0.1,
+            splatterPosition = CGPoint(x: gridPosition.x - gridFrame.width * 0.07,
                                        y: gridTop - yAux * gridFrame.height / 6.0)
         case .column(let line):
             let xAux = CGFloat(2.0 * Double(line) - 1.0)
             splatterPosition = CGPoint(x: gridLeft + xAux * gridFrame.width / 6.0,
-                                       y: gridPosition.y - gridFrame.height * 0.15)
+                                       y: gridPosition.y - gridFrame.height * 0.05)
         case .diagonal(let main):
             splatter.zRotation = CGFloat(Double.pi / 4) * (main ? 1 : -1)
         }
