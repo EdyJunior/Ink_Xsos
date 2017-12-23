@@ -50,25 +50,27 @@ class SettingsScene: SKScene {
     
     func buildLabels() {
         
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.1 : 0.08
         let sceneFrame = scene!.frame
         
         let settingsLabel = SKLabelNode(fontNamed: Fonts.ink)
         settingsLabel.text = "settings"
-        settingsLabel.fontSize = sceneFrame.width * 0.1
+        settingsLabel.fontSize = sceneFrame.width * factor
         settingsLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.915)
         settingsLabel.fontColor = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
         addChild(settingsLabel)
         
         let soundLabel = SKLabelNode(fontNamed: Fonts.ink)
         soundLabel.text = "sound"
-        soundLabel.fontSize = sceneFrame.width * 0.1
+        soundLabel.fontSize = sceneFrame.width * factor
         soundLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.8)
         soundLabel.fontColor = .red
         addChild(soundLabel)
         
         let animationsLabel = SKLabelNode(fontNamed: Fonts.ink)
         animationsLabel.text = "animations"
-        animationsLabel.fontSize = sceneFrame.width * 0.1
+        animationsLabel.fontSize = sceneFrame.width * factor
         animationsLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.4)
         animationsLabel.fontColor = .green
         addChild(animationsLabel)

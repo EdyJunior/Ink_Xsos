@@ -52,8 +52,11 @@ class MinimalistMenuScene: SKScene {
         self.gameName.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         self.gameName.position = CGPoint(x: self.frame.midX, y: self.frame.maxY * 0.95)
         
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.85 : 0.6
+        
         let ratio = self.gameName.size.width / self.gameName.size.height
-        let width = self.size.width * 0.85
+        let width = self.size.width * factor
         self.gameName.size = CGSize(width: width, height: width / ratio)
         
         self.addChild(self.gameName)

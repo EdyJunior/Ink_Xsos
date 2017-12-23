@@ -100,8 +100,11 @@ class GameScene: SKScene {
     
     private func buildModeLabel() {
         
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.1 : 0.08
+        
         let sceneFrame = scene!.frame
-        modeLabel.fontSize = sceneFrame.width * 0.1
+        modeLabel.fontSize = sceneFrame.width * factor
         modeLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.915)
         modeLabel.fontColor = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
     
@@ -141,15 +144,18 @@ class GameScene: SKScene {
     
     private func buildMessageLabel() {
         
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.11 : 0.08
         let sceneFrame = scene!.frame
-        messageLabel.fontSize = sceneFrame.width * 0.11
+        let fontSize = sceneFrame.width * factor
+        messageLabel.fontSize = fontSize
         
         let gridFrame = self.grid.frame
         let gridPosition = self.grid.position
         let modePosition = self.modeLabel.position
         let gridTop = gridPosition.y + gridFrame.height / 2
         
-        messageLabel.position = CGPoint(x: sceneFrame.midX, y: (modePosition.y + gridTop) / 2.0)
+        messageLabel.position = CGPoint(x: sceneFrame.midX, y: (modePosition.y + gridTop - fontSize) / 2.0)
         messageLabel.fontColor = UIColor(red: 97.0/255, green: 216.0/255, blue: 54.0/255, alpha: 1.0)
         messageLabel.zPosition = 10
         
@@ -242,6 +248,9 @@ class GameScene: SKScene {
     
     func animateEnd() {
         
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.25 : 0.2
+        
         let spotTexture = SKTexture(imageNamed: Images.Spots.bigBlack)
         let spotSize = CGSize(width: scene!.frame.width * 2.5, height: scene!.frame.width * 1.0)
         let spotPosition = CGPoint(x: scene!.frame.width * 0.7, y: scene!.frame.midY)
@@ -250,14 +259,14 @@ class GameScene: SKScene {
         inkSpot.zPosition = self.grid.zPosition + 3
         
         let firstMessage = SKLabelNode(text: "It's")
-        firstMessage.fontSize = inkSpot.frame.height * 0.25
+        firstMessage.fontSize = inkSpot.frame.height * factor
         firstMessage.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY + inkSpot.frame.height * 0.01)
         firstMessage.zPosition = inkSpot.zPosition + 1
         firstMessage.fontColor = .white
         firstMessage.fontName = Fonts.ink
         
         let secondMessage = SKLabelNode(text: "Over")
-        secondMessage.fontSize = inkSpot.frame.height * 0.25
+        secondMessage.fontSize = inkSpot.frame.height * factor
         secondMessage.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY - inkSpot.frame.height * 0.2)
         secondMessage.zPosition = inkSpot.zPosition + 1
         secondMessage.fontColor = .white
