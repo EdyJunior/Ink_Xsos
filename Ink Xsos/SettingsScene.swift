@@ -102,8 +102,10 @@ class SettingsScene: SKScene {
     
     func updateButtons() {
         
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.5 : 0.3
         let sceneFrame = self.scene!.frame
-        let buttonSize = CGSize(width: sceneFrame.width * 0.5, height: sceneFrame.width * 0.5)
+        let buttonSize = CGSize(width: sceneFrame.width * factor, height: sceneFrame.width * factor)
         
         let soundButtonPosition = CGPoint(x: sceneFrame.midX, y: size.height * 0.65)
         var soundDefault = "soundOn", soundActive = "soundOff"

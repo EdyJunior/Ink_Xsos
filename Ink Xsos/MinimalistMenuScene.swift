@@ -22,8 +22,11 @@ class MinimalistMenuScene: SKScene {
     
     var menuButtonSize: CGSize {
         
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.3 : 0.2
+        
         let proportion = CGFloat(560.0) / 640.0
-        let width = self.size.width * 0.3
+        let width = self.size.width * factor
         let height = width * proportion
         
         return CGSize(width: width, height: height)
