@@ -72,8 +72,11 @@ class PaintNode: SKSpriteNode {
         
         let spot = randomSpot()
         
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 1.5 : 2.0
+        
         let ratio = spot.size.width / spot.size.height
-        let width = scene.size.width / 1.5
+        let width = scene.size.width / factor
         
         spot.size = CGSize(width: width, height: width / ratio)
         spot.zRotation = CGFloat(Double.pi * Double(Int(arc4random()) % 60) / 60.0)
