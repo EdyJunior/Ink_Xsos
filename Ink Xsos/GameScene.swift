@@ -205,8 +205,6 @@ class GameScene: SKScene {
         let splatterSize = CGSize(width: gridFrame.width * 0.27, height: gridFrame.width * 1.4)
         let splatter = SKSpriteNode(imageNamed: String.init(format: imageName, numImages))
         splatter.size = splatterSize
-        splatter.colorBlendFactor = 1.0
-        splatter.color = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
         
         let gridPosition = self.grid.position
         var splatterPosition = CGPoint(x: gridPosition.x, y: gridPosition.y)
