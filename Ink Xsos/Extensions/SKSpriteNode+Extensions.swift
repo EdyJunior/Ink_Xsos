@@ -29,4 +29,21 @@ extension SKSpriteNode {
     func lastTextureOfAnimation(forImageNamed name: String) -> SKTexture {
         return SKTexture(imageNamed: lastNameOfAnimation(forImageNamed: name))
     }
+    
+    func animation(atlasName: String, duration: Double) -> SKAction {
+        
+        var frames = [SKTexture]()
+        let numImages = numberOfFrames(forImageNamed: atlasName)
+        let imageName = "\(atlasName)_%0.3d"
+        
+        for i in 1...numImages {
+            let name = String.init(format: imageName, i)
+            frames.append(SKTexture(imageNamed: name))
+        }
+        let animation = SKAction.animate(with: frames,
+                                         timePerFrame: duration / Double(numImages),
+                                         resize: false,
+                                         restore: false)
+        return animation
+    }
 }
