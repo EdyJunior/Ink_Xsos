@@ -53,16 +53,27 @@ class ClassicGrid: SKSpriteNode {
         }
     }
     
-    func draw(symbolName name: String, xPos: Int, yPos: Int) {
+    func draw(symbolName name: String, xPos: Int, yPos: Int, animated: Bool) {
         
-        let sprite = SKSpriteNode(imageNamed: name)
+        let sprite = SKSpriteNode(imageNamed: "\(name)_001")
         let unit = self.size.width / 6
         let spriteSize = 1.3 * unit
-        sprite.size = CGSize(width: spriteSize, height: spriteSize)
         
+        sprite.size = CGSize(width: spriteSize, height: spriteSize)
         sprite.position = CGPoint(x: CGFloat(xPos * 2 + 1) * unit, y: unit * CGFloat(5 - 2 * yPos))
         addChild(sprite)
         symbols.append(sprite)
+        
+        if animated {
+            lock(true)
+            
+            let animationAction = sprite.animation(atlasName: name, duration: 0.3)
+            let unlock = SKAction.run { self.lock(false) }
+            
+            sprite.run(SKAction.sequence([animationAction, unlock]))
+        } else {
+            sprite.texture = sprite.lastTextureOfAnimation(forImageNamed: name)
+        }
     }
     
     func clear() {
@@ -78,21 +89,9 @@ class ClassicGrid: SKSpriteNode {
         
         lock(true)
         
-        var frames = [SKTexture]()
-        let numImages = numberOfFrames(forImageNamed: Images.grid)
-        let imageName = "\(Images.grid)_%0.3d"
-        
-        for i in 1...numImages {
-            let name = String.init(format: imageName, i)
-            frames.append(SKTexture(imageNamed: name))
-        }
-        let animation = SKAction.animate(with: frames,
-                                         timePerFrame: 1.0 / Double(numImages),
-                                         resize: false,
-                                         restore: false)
-        let wait = SKAction.wait(forDuration: 1.0)
+        let animationAction = animation(atlasName: Images.grid, duration: 1.0)
         let unlock = SKAction.run { self.lock(false) }
         
-        self.run(SKAction.sequence([animation, wait, unlock]))
+        self.run(SKAction.sequence([animationAction, unlock]))
     }
 }
