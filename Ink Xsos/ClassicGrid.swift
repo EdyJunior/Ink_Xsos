@@ -24,10 +24,7 @@ class ClassicGrid: SKSpriteNode {
     
     init(size: CGSize) {
         
-        let textures = SKTextureAtlas(named: Images.grid)
-        let numImages = textures.textureNames.count
-        let imageName = "\(Images.grid)_%0.3d"
-        let texture = SKTexture(imageNamed: String.init(format: imageName, numImages))
+        let texture = SKTexture(imageNamed: "\(Images.grid)_001")
         
         super.init(texture: texture, color: UIColor.clear, size: size)
         isUserInteractionEnabled = true
@@ -73,5 +70,29 @@ class ClassicGrid: SKSpriteNode {
         _ = symbols.map { $0.removeFromParent() }
         symbols.removeAll()
         isLocked = false
+    }
+    
+    func setImage() { texture = lastTextureOfAnimation(forImageNamed: Images.grid) }
+    
+    func animate() {
+        
+        lock(true)
+        
+        var frames = [SKTexture]()
+        let numImages = numberOfFrames(forImageNamed: Images.grid)
+        let imageName = "\(Images.grid)_%0.3d"
+        
+        for i in 1...numImages {
+            let name = String.init(format: imageName, i)
+            frames.append(SKTexture(imageNamed: name))
+        }
+        let animation = SKAction.animate(with: frames,
+                                         timePerFrame: 1.0 / Double(numImages),
+                                         resize: false,
+                                         restore: false)
+        let wait = SKAction.wait(forDuration: 1.0)
+        let unlock = SKAction.run { self.lock(false) }
+        
+        self.run(SKAction.sequence([animation, wait, unlock]))
     }
 }
