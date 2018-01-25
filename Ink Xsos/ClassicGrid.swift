@@ -94,4 +94,46 @@ class ClassicGrid: SKSpriteNode {
         
         self.run(SKAction.sequence([animationAction, unlock]))
     }
+    
+    func add(victoryLine vl: VictoryLine, animated: Bool) {
+        
+        let name = Images.splatter
+        
+        let splatter = SKSpriteNode(imageNamed: "\(name)_001")
+        let width = self.size.width
+        let unit = width / 6
+        let splatterTexture = splatter.lastTextureOfAnimation(forImageNamed: name)
+        let proportion = splatterTexture.size().width / splatterTexture.size().height
+        
+        splatter.size = CGSize(width: 7 * unit * proportion, height: 7 * unit)
+        var splatterPosition = CGPoint(x: width / 2, y: width / 2)
+
+        switch vl {
+        case .row(let line):
+            splatter.zRotation = -CGFloat(Double.pi / 2)
+            splatterPosition = CGPoint(x: width / 2, y: unit * CGFloat(5 - 2 * line))
+        case .column(let line):
+            splatterPosition = CGPoint(x: unit * CGFloat(2 * line + 1), y: width / 2)
+        case .diagonal(let main):
+            splatter.size = CGSize(width: 8 * unit * proportion, height: 8 * unit)
+            splatter.zRotation = CGFloat(Double.pi / 4) * (main ? 1 : -1)
+        }
+        splatter.position = splatterPosition
+        splatter.zPosition = zPosition + 2
+        splatter.alpha = 0.9
+
+        addChild(splatter)
+        symbols.append(splatter)
+        
+        if animated {
+            lock(true)
+            
+            let animationAction = splatter.animation(atlasName: name, duration: 0.3)
+            let unlock = SKAction.run { self.lock(false) }
+            
+            splatter.run(SKAction.sequence([animationAction, unlock]))
+        } else {
+            splatter.texture = splatter.lastTextureOfAnimation(forImageNamed: name)
+        }
+    }
 }
