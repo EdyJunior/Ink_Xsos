@@ -37,6 +37,7 @@
 		CEC34FC2201AB3B6002834B9 /* ClassicGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC1201AB3B6002834B9 /* ClassicGame.swift */; };
 		CEC34FC5201ABB5A002834B9 /* PlayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC4201ABB5A002834B9 /* PlayDelegate.swift */; };
 		CEC34FC7201ABB97002834B9 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC6201ABB97002834B9 /* PlayerEntity.swift */; };
+		CEC34FC9201ABD29002834B9 /* ClassicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC8201ABD29002834B9 /* ClassicPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		CEC34FC1201AB3B6002834B9 /* ClassicGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicGame.swift; sourceTree = "<group>"; };
 		CEC34FC4201ABB5A002834B9 /* PlayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayDelegate.swift; sourceTree = "<group>"; };
 		CEC34FC6201ABB97002834B9 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
+		CEC34FC8201ABD29002834B9 /* ClassicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				CEC34FC4201ABB5A002834B9 /* PlayDelegate.swift */,
 				CEC34FC6201ABB97002834B9 /* PlayerEntity.swift */,
+				CEC34FC8201ABD29002834B9 /* ClassicPlayer.swift */,
 			);
 			name = Players;
 			path = "New Group";
@@ -275,6 +278,7 @@
 			files = (
 				CE6404A91FA895AA00B01022 /* Player.swift in Sources */,
 				CE9F9D872019443F0000F0F3 /* SKSpriteNode+Extensions.swift in Sources */,
+				CEC34FC9201ABD29002834B9 /* ClassicPlayer.swift in Sources */,
 				C5D65AE71FC72B4500AFA54C /* Images.swift in Sources */,
 				C53FCF431FC8C1C00079C508 /* PaintNode.swift in Sources */,
 				C5D65AE91FC72C8A00AFA54C /* Fonts.swift in Sources */,
