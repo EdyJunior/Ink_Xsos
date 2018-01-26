@@ -34,6 +34,9 @@
 		CEB27EC11FA76945004511BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EBF1FA76945004511BD /* Main.storyboard */; };
 		CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EC21FA76945004511BD /* Assets.xcassets */; };
 		CEB27EC61FA76945004511BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EC41FA76945004511BD /* LaunchScreen.storyboard */; };
+		CEC34FC2201AB3B6002834B9 /* ClassicGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC1201AB3B6002834B9 /* ClassicGame.swift */; };
+		CEC34FC5201ABB5A002834B9 /* PlayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC4201ABB5A002834B9 /* PlayDelegate.swift */; };
+		CEC34FC7201ABB97002834B9 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC6201ABB97002834B9 /* PlayerEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		CEB27EC21FA76945004511BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB27EC51FA76945004511BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB27EC71FA76945004511BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEC34FC1201AB3B6002834B9 /* ClassicGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicGame.swift; sourceTree = "<group>"; };
+		CEC34FC4201ABB5A002834B9 /* PlayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayDelegate.swift; sourceTree = "<group>"; };
+		CEC34FC6201ABB97002834B9 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6404AF1FA8A6B600B01022 /* Classic.swift */,
+				CEC34FC1201AB3B6002834B9 /* ClassicGame.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 		CEB27EA91FA76945004511BD = {
 			isa = PBXGroup;
 			children = (
+				CEC34FC3201ABAFE002834B9 /* Players */,
 				C5D65AE51FC72B3500AFA54C /* Constants */,
 				C50745681FC1016C00C84B2C /* Extensions */,
 				CE0024B01FC6636B0077AB62 /* Sounds */,
@@ -176,6 +184,16 @@
 				CEB27EC71FA76945004511BD /* Info.plist */,
 			);
 			path = "Ink Xsos";
+			sourceTree = "<group>";
+		};
+		CEC34FC3201ABAFE002834B9 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				CEC34FC4201ABB5A002834B9 /* PlayDelegate.swift */,
+				CEC34FC6201ABB97002834B9 /* PlayerEntity.swift */,
+			);
+			name = Players;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,12 +281,15 @@
 				C507456A1FC1017E00C84B2C /* SKScene+Extensions.swift in Sources */,
 				CE85F41D1FC8F864002BCCF7 /* SettingsScene.swift in Sources */,
 				CEB27EBE1FA76945004511BD /* GameViewController.swift in Sources */,
+				CEC34FC5201ABB5A002834B9 /* PlayDelegate.swift in Sources */,
 				CEA9B6351FB1EE2400A4E391 /* ClassicScene.swift in Sources */,
 				CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */,
 				CE02C3561FAC001500CD07F3 /* Button.swift in Sources */,
 				CE2C6F281FC9F8CB003B30A0 /* UserDefaults+Extensions.swift in Sources */,
 				CE6404AD1FA8A0E700B01022 /* Xsos.swift in Sources */,
 				CE2C6F261FC9E6EE003B30A0 /* Defaults.swift in Sources */,
+				CEC34FC7201ABB97002834B9 /* PlayerEntity.swift in Sources */,
+				CEC34FC2201AB3B6002834B9 /* ClassicGame.swift in Sources */,
 				CEB27EB61FA76945004511BD /* AppDelegate.swift in Sources */,
 				CE5126031FCCFCE200E1A0C2 /* MinimalistMenuScene.swift in Sources */,
 				C546B0221FBB86A10042978F /* MenuScene.swift in Sources */,
