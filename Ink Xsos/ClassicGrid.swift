@@ -9,7 +9,7 @@
 import SpriteKit
 
 protocol TouchedGrid {
-    func touchIn(_ xPos: Int, _ yPos: Int)
+    func touchIn(_ row: Int, _ col: Int)
 }
 
 class ClassicGrid: SKSpriteNode {
@@ -41,26 +41,26 @@ class ClassicGrid: SKSpriteNode {
 
             let xRel = pos.x / size.width
             let yRel = pos.y / size.height
-            var xPos = 0, yPos = 2
+            var col = 0, row = 2
             var previous = 1
             
             for i in [2, 3] {
-                if xRel > CGFloat(previous) / 3 && xRel <= CGFloat(i) / 3 { xPos = i - 1 }
-                if yRel > CGFloat(previous) / 3 && yRel <= CGFloat(i) / 3 { yPos = 3 - i }
+                if xRel > CGFloat(previous) / 3 && xRel <= CGFloat(i) / 3 { col = i - 1 }
+                if yRel > CGFloat(previous) / 3 && yRel <= CGFloat(i) / 3 { row = 3 - i }
                 previous = i
             }
-            self.touchedProtocol?.touchIn(xPos, yPos)
+            self.touchedProtocol?.touchIn(row, col)
         }
     }
     
-    func draw(symbolName name: String, xPos: Int, yPos: Int, animated: Bool) {
+    func draw(symbolName name: String, row: Int, column col: Int, animated: Bool) {
         
         let sprite = SKSpriteNode(imageNamed: "\(name)_001")
         let unit = self.size.width / 6
         let spriteSize = 1.3 * unit
         
         sprite.size = CGSize(width: spriteSize, height: spriteSize)
-        sprite.position = CGPoint(x: CGFloat(xPos * 2 + 1) * unit, y: unit * CGFloat(5 - 2 * yPos))
+        sprite.position = CGPoint(x: CGFloat(col * 2 + 1) * unit, y: unit * CGFloat(5 - 2 * row))
         addChild(sprite)
         symbols.append(sprite)
         
