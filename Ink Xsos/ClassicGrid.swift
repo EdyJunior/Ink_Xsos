@@ -22,6 +22,15 @@ class ClassicGrid: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    init() {
+        
+        let texture = SKTexture(imageNamed: "\(Images.grid)_001")
+        
+        super.init(texture: texture, color: UIColor.clear, size: CGSize.zero)
+        isUserInteractionEnabled = true
+        anchorPoint = CGPoint.zero
+    }
+    
     init(size: CGSize) {
         
         let texture = SKTexture(imageNamed: "\(Images.grid)_001")
