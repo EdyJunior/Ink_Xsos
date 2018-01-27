@@ -35,6 +35,7 @@ class ClassicScene2: GameScene2 {
         let player1 = ClassicPlayer(symbol: "X", number: 0, brush: .black)
         let player2 = ClassicPlayer(symbol: "O", number: 1, brush: .black)
         classic.players = [player1, player2]
+        classic.gridUpdater = self
         grid.touchedProtocol = classic
         
         playerNumber = 1
@@ -73,5 +74,12 @@ class ClassicScene2: GameScene2 {
         let interval = defaultsStandard.animationsOn() ? 4.0 : 1.0
         let fadeAction = SKAction.fadeAlpha(to: 1.0, duration: interval)
         resetLabel.run(fadeAction)
+    }
+}
+
+extension ClassicScene2: GridUpdater {
+    
+    func updateGrid(symb: String, row: Int, column col: Int) {
+        grid.draw(symbolName: symb, row: row, column: col, animated: defaultsStandard.animationsOn())
     }
 }

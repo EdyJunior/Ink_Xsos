@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol GridUpdater {
+    func updateGrid(symb: String, row: Int, column col: Int)
+}
+
 class ClassicGame {
     
     var players: [PlayerEntity]?
@@ -23,6 +27,7 @@ class ClassicGame {
     var grid = [[String]]()
     var winner: Int = -1
     var victoryLine: VictoryLine?
+    var gridUpdater: GridUpdater?
     
     typealias symbolType = String
     
@@ -130,6 +135,7 @@ class ClassicGame {
         
         if isEmpty(row, col) {
             grid[row][col] = symb
+            gridUpdater?.updateGrid(symb: symb, row: row, column: col)
         }
     }
 }
