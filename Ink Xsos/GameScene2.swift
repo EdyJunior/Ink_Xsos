@@ -12,27 +12,20 @@ class GameScene2: SKScene {
     
     var modeLabel = SKLabelNode(fontNamed: Fonts.ink)
     var messageLabel = SKLabelNode(fontNamed: Fonts.ink)
-    var timeLabel = SKLabelNode(fontNamed: Fonts.ink)
-    var cellButtons = [Button]()
     var endGameSprites = [SKNode]()
-    
-    var grid = SKSpriteNode()
     var finishedEndAnimation = true
-    
-    var soundController: SoundController?
+    var grid = ClassicGrid()
     
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
-        
         self.buildScene()
     }
     
     private func buildScene() {
         
+        setupGrid()
         buildBackground()
-        buildGrid()
-        //buildTimer()  It will be useful soon
         buildBackButton()
         buildModeLabel()
         buildMessageLabel()
@@ -46,39 +39,13 @@ class GameScene2: SKScene {
         addChild(background)
     }
     
-    //It will be useful soon
-    private func buildTimer() {
-        
-        let sceneFrame = scene!.frame
-        let spotWidth = sceneFrame.width * 0.2859
-        
-        let texture = SKTexture(imageNamed: Images.Spots.black)
-        let spotTimerSize = CGSize(width: spotWidth, height: spotWidth / 1.0764)
-        let spotTimerSprite = SKSpriteNode(texture: texture, color: .white, size: spotTimerSize)
-        spotTimerSprite.position = CGPoint(x: 0.87 * sceneFrame.width, y: 0.93 * sceneFrame.height)
-        
-        timeLabel.fontSize = spotWidth * 0.4
-        timeLabel.position = spotTimerSprite.position
-        timeLabel.position.y -= timeLabel.fontSize / 2
-        
-        spotTimerSprite.zPosition = 1
-        timeLabel.zPosition = 2
-        
-        addChild(spotTimerSprite)
-        addChild(timeLabel)
-    }
-    
     private func buildBackButton() {
         
         let backButton = Button(defaultButtonImage: Images.arrow, activeButtonImage: Images.arrow) { _ in
             guard let view = self.view else { return }
             
             let sceneInstance = MinimalistMenuScene(size: view.bounds.size)
-            sceneInstance.soundController = self.soundController
             let transition = SKTransition.fade(with: .white, duration: 1.0)
-            //            if defaultsStandard.soundOn() {
-            //                self.soundController?.playSound()
-            //            }
             view.presentScene(sceneInstance, transition: transition)
         }
         
@@ -104,39 +71,6 @@ class GameScene2: SKScene {
         addChild(modeLabel)
     }
     
-    private func buildGrid() {
-        
-        let device = UIDevice.current.userInterfaceIdiom
-        let factor: CGFloat = device == .phone ? 0.8 : 0.6
-        let sceneFrame = scene!.frame
-        let gridWidth = sceneFrame.width * factor
-        
-        let textures = SKTextureAtlas(named: Images.grid)
-        var frames = [SKTexture]()
-        
-        let numImages = textures.textureNames.count
-        let imageName = "\(Images.grid)_%0.3d"
-        let texture = SKTexture(imageNamed: String.init(format: imageName, numImages))
-        let gridSize = CGSize(width: gridWidth, height: gridWidth / 1.0593)
-        
-        grid = SKSpriteNode(texture: texture, color: .black, size: gridSize)
-        grid.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.midY)
-        
-        addChild(grid)
-        
-        if defaultsStandard.animationsOn() {
-            for i in 1...numImages {
-                let name = String.init(format: imageName, i)
-                frames.append(SKTexture(imageNamed: name))
-            }
-            let action = SKAction.animate(with: frames,
-                                          timePerFrame: 1.0 / Double(numImages),
-                                          resize: false,
-                                          restore: false)
-            grid.run(action)
-        }
-    }
-    
     private func buildMessageLabel() {
         
         let device = UIDevice.current.userInterfaceIdiom
@@ -148,96 +82,42 @@ class GameScene2: SKScene {
         let gridFrame = self.grid.frame
         let gridPosition = self.grid.position
         let modePosition = self.modeLabel.position
-        let gridTop = gridPosition.y + gridFrame.height / 2
+        let gridTop = gridPosition.y + gridFrame.height
         
-        messageLabel.position = CGPoint(x: sceneFrame.midX, y: (modePosition.y + gridTop - fontSize) / 2.0)
+        messageLabel.position = CGPoint(x: sceneFrame.midX, y: (gridTop + modePosition.y) / 2)
         messageLabel.fontColor = UIColor(red: 97.0/255, green: 216.0/255, blue: 54.0/255, alpha: 1.0)
         messageLabel.zPosition = 10
         
         addChild(messageLabel)
     }
     
-    func draw(texture: SKTexture, atPosition pos: CGPoint, withSize textureSize: CGSize, withAlpha alpha: CGFloat = 1.0, withZPosition zPos: CGFloat = -1.0) {
+    func setupGrid() {
         
-        let image = SKSpriteNode(texture: texture, color: .white, size: textureSize)
-        image.position = pos
-        image.alpha = alpha
-        image.zPosition = zPos
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.8 : 0.6
+        let sceneFrame = scene!.frame
+        let gridSize = sceneFrame.width * factor
+        let gridXPosition = sceneFrame.width / 2 - gridSize / 2
+        let gridYPosition = sceneFrame.height / 2 - gridSize / 2
         
-        addChild(image)
-    }
-    
-    func draw(text: String, atPosition pos: CGPoint, withSize fontSize: CGFloat, withColor color: UIColor) {
+        grid = ClassicGrid(size: CGSize(width: gridSize, height: gridSize))
+        if defaultsStandard.animationsOn() {
+            grid.animate()
+        } else { grid.setImage() }
+        grid.position = CGPoint(x: gridXPosition, y: gridYPosition)
         
-        let label = SKLabelNode(text: text)
-        label.fontSize = fontSize
-        label.position = pos
-        label.zPosition = self.grid.zPosition + 1
-        label.fontColor = color
-        label.fontName = Fonts.ink
-        
-        addChild(label)
+        addChild(grid)
     }
     
     func endGame(victoryLine vl: VictoryLine) {
         
+        let isAnimated = defaultsStandard.animationsOn()
         finishedEndAnimation = false
         
-        for button in self.cellButtons {
-            button.enabled = false
-        }
+        grid.lock(true)
+        grid.add(victoryLine: vl, animated: isAnimated)
         
-        let textures = SKTextureAtlas(named: Images.splatter)
-        var frames = [SKTexture]()
-        
-        let numImages = textures.textureNames.count
-        let imageName = "\(Images.splatter)_%0.3d"
-        
-        let gridFrame = self.grid.frame
-        
-        let splatterSize = CGSize(width: gridFrame.width * 0.27, height: gridFrame.width * 1.4)
-        let splatter = SKSpriteNode(imageNamed: String.init(format: imageName, numImages))
-        splatter.size = splatterSize
-        
-        let gridPosition = self.grid.position
-        var splatterPosition = CGPoint(x: gridPosition.x, y: gridPosition.y)
-        
-        let gridTop = gridPosition.y + gridFrame.height / 2
-        let gridLeft = gridPosition.x - gridFrame.width / 2
-        
-        switch vl {
-        case .row(let line):
-            splatter.zRotation = -CGFloat(Double.pi / 2)
-            let yAux = CGFloat(2.0 * Double(line) - 1.0)
-            splatterPosition = CGPoint(x: gridPosition.x - gridFrame.width * 0.07,
-                                       y: gridTop - yAux * gridFrame.height / 6.0)
-        case .column(let line):
-            let xAux = CGFloat(2.0 * Double(line) - 1.0)
-            splatterPosition = CGPoint(x: gridLeft + xAux * gridFrame.width / 6.0,
-                                       y: gridPosition.y - gridFrame.height * 0.05)
-        case .diagonal(let main):
-            splatter.zRotation = CGFloat(Double.pi / 4) * (main ? 1 : -1)
-        }
-        splatter.position = splatterPosition
-        splatter.zPosition = self.grid.zPosition + 2
-        splatter.alpha = 0.8
-        splatter.isUserInteractionEnabled = false
-        
-        if defaultsStandard.animationsOn() {
-            for i in 1...numImages {
-                let name = String.init(format: imageName, i)
-                frames.append(SKTexture(imageNamed: name))
-            }
-            let action = SKAction.animate(with: frames,
-                                          timePerFrame: 0.25 / Double(numImages),
-                                          resize: false,
-                                          restore: false)
-            splatter.run(action)
-        }
-        endGameSprites.append(splatter)
-        addChild(splatter)
-        
-        if defaultsStandard.animationsOn() { animateEnd() }
+        if isAnimated { animateEnd() }
         else { self.finishedEndAnimation = true }
     }
     
