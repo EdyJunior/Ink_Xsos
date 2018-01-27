@@ -26,6 +26,7 @@
 		CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AA1FA89D5800B01022 /* PaintScreen.swift */; };
 		CE6404AD1FA8A0E700B01022 /* Xsos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AC1FA8A0E700B01022 /* Xsos.swift */; };
 		CE6404B01FA8A6B600B01022 /* Classic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AF1FA8A6B600B01022 /* Classic.swift */; };
+		CE824F6D201BFAD5004EDCDB /* ClassicScene2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE824F6C201BFAD5004EDCDB /* ClassicScene2.swift */; };
 		CE85F41D1FC8F864002BCCF7 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85F41C1FC8F864002BCCF7 /* SettingsScene.swift */; };
 		CE9F9D872019443F0000F0F3 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F9D862019443F0000F0F3 /* SKSpriteNode+Extensions.swift */; };
 		CEA9B6351FB1EE2400A4E391 /* ClassicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA9B6341FB1EE2400A4E391 /* ClassicScene.swift */; };
@@ -60,6 +61,7 @@
 		CE6404AA1FA89D5800B01022 /* PaintScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintScreen.swift; sourceTree = "<group>"; };
 		CE6404AC1FA8A0E700B01022 /* Xsos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xsos.swift; sourceTree = "<group>"; };
 		CE6404AF1FA8A6B600B01022 /* Classic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classic.swift; sourceTree = "<group>"; };
+		CE824F6C201BFAD5004EDCDB /* ClassicScene2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicScene2.swift; sourceTree = "<group>"; };
 		CE85F41C1FC8F864002BCCF7 /* SettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
 		CE9F9D862019443F0000F0F3 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		CEA9B6341FB1EE2400A4E391 /* ClassicScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassicScene.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				C546B0211FBB86A10042978F /* MenuScene.swift */,
 				CE85F41C1FC8F864002BCCF7 /* SettingsScene.swift */,
 				CE5126021FCCFCE200E1A0C2 /* MinimalistMenuScene.swift */,
+				CE824F6C201BFAD5004EDCDB /* ClassicScene2.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				CE08591E2016CD5300A60B7E /* ClassicGrid.swift in Sources */,
 				C5D65AEB1FC72D0D00AFA54C /* Sounds.swift in Sources */,
 				CE4908021FAAB3F2006D3A59 /* GameScene.swift in Sources */,
+				CE824F6D201BFAD5004EDCDB /* ClassicScene2.swift in Sources */,
 				CE6404B01FA8A6B600B01022 /* Classic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
