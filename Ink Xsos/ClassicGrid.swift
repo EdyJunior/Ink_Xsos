@@ -89,7 +89,6 @@ class ClassicGrid: SKSpriteNode {
         
         _ = symbols.map { $0.removeFromParent() }
         symbols.removeAll()
-        isLocked = false
     }
     
     func setImage() { texture = lastTextureOfAnimation(forImageNamed: Images.grid) }

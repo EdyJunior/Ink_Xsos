@@ -32,6 +32,10 @@ class ClassicGame {
         self.turn = 1
     }
     
+    func isEmpty(_ row: Int, _ column: Int) -> Bool {
+        return grid[row][column] == "-"
+    }
+    
     func getSymbol(fromPlayer p: Int) -> String {
         
         let desiredPlayer = players?.filter() { $0.number == p }
@@ -40,9 +44,9 @@ class ClassicGame {
     
     private func checkRow (_ row: Int) -> Bool {
         
-        let s = grid[row][0]
-        if s == "-" { return false }
+        if isEmpty(row, 0) { return false }
         
+        let s = grid[row][0]
         for col in [1, 2] {
             if grid[row][col] != s { return false }
         }
@@ -50,10 +54,10 @@ class ClassicGame {
     }
     
     private func checkColumn (_ col: Int) -> Bool {
+
+        if isEmpty(0, col) { return false }
         
         let s = grid[0][col]
-        if s == "-" { return false }
-        
         for row in [1, 2] {
             if grid[row][col] != s { return false }
         }
@@ -63,9 +67,9 @@ class ClassicGame {
     private func checkDiagonal (row: Int, inc: Int) -> Bool {
         
         var col = 0, r = row
-        let s = grid[row][col]
-        if s == "-" { return false }
+        if isEmpty(row, col) { return false }
         
+        let s = grid[row][col]
         while (col < 3) {
             if grid[r][col] != s { return false }
             r += inc
@@ -120,5 +124,21 @@ class ClassicGame {
         }
         if turn == 9 { return .draw }
         return .onGoing
+    }
+    
+    func updateGrid (symb: String, row: Int, column col: Int) {
+        
+        if isEmpty(row, col) {
+            grid[row][col] = symb
+        }
+    }
+}
+
+extension ClassicGame: TouchedGrid {
+    
+    func touchIn(_ row: Int, _ col: Int) {
+        
+        let cp = self.turn % 2 == 0 ? 1 : 0
+        updateGrid(symb: players![cp].symbol, row: row, column: col)
     }
 }
