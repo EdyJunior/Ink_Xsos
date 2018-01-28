@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol GridUpdater {
-    func updateGrid(symb: String, row: Int, column col: Int)
-}
-
 class ClassicGame {
     
     var players: [PlayerEntity]?
@@ -28,6 +24,7 @@ class ClassicGame {
     var winner: Int = -1
     var victoryLine: VictoryLine?
     var gridUpdater: GridUpdater?
+    var matchManager: MatchPresentationManager?
     
     typealias symbolType = String
     
@@ -148,5 +145,16 @@ extension ClassicGame: TouchedGrid {
         updateGrid(symb: players![cp].symbol, row: row, column: col)
     }
     
-    func finishedDrawing() { turn += 1 }
+    func finishedDrawing() {
+        
+        let state = isGameOver()
+        if state == .finishedWithWinner {
+            matchManager!.show(winner: players![winner])
+        } else if state == .draw {
+            matchManager!.showDraw()
+        } else if state == .onGoing {
+            turn += 1
+            matchManager!.passTurn()
+        }
+    }
 }

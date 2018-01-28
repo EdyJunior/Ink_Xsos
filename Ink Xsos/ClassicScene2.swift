@@ -8,6 +8,17 @@
 
 import SpriteKit
 
+protocol GridUpdater {
+    func updateGrid(symb: String, row: Int, column col: Int)
+}
+
+protocol MatchPresentationManager {
+    
+    func show(winner: PlayerEntity)
+    func showDraw()
+    func passTurn()
+}
+
 class ClassicScene2: GameScene2 {
     
     var playerNumber = 1;
@@ -81,5 +92,20 @@ extension ClassicScene2: GridUpdater {
     
     func updateGrid(symb: String, row: Int, column col: Int) {
         grid.draw(symbolName: symb, row: row, column: col, animated: defaultsStandard.animationsOn())
+    }
+}
+
+extension ClassicScene2: MatchPresentationManager {
+    
+    func show(winner: PlayerEntity) {
+        
+    }
+    
+    func showDraw() {
+        
+    }
+    
+    func passTurn() {
+        
     }
 }
