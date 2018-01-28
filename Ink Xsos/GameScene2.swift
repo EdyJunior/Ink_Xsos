@@ -111,13 +111,9 @@ class GameScene2: SKScene {
     
     func endGame(victoryLine vl: VictoryLine) {
         
-        let isAnimated = defaultsStandard.animationsOn()
         finishedEndAnimation = false
         
-        grid.lock(true)
-        grid.add(victoryLine: vl, animated: isAnimated)
-        
-        if isAnimated { animateEnd() }
+        if defaultsStandard.animationsOn() { animateEnd() }
         else { self.finishedEndAnimation = true }
     }
     
@@ -159,7 +155,7 @@ class GameScene2: SKScene {
             self.addChild(secondMessage)
             self.endGameSprites.append(secondMessage)
         }
-        let wait = SKAction.wait(forDuration: 1)
+        let wait = SKAction.wait(forDuration: 0.5)
         let playSound = defaultsStandard.soundOn() ?
             SKAction.playSoundFileNamed(Sounds.end, waitForCompletion: false) :
             SKAction()
