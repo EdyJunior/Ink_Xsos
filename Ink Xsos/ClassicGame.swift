@@ -147,4 +147,6 @@ extension ClassicGame: TouchedGrid {
         let cp = self.turn % 2 == 0 ? 1 : 0
         updateGrid(symb: players![cp].symbol, row: row, column: col)
     }
+    
+    func finishedDrawing() { turn += 1 }
 }

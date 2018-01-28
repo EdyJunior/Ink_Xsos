@@ -9,7 +9,9 @@
 import SpriteKit
 
 protocol TouchedGrid {
+    
     func touchIn(_ row: Int, _ col: Int)
+    func finishedDrawing()
 }
 
 class ClassicGrid: SKSpriteNode {
@@ -78,10 +80,12 @@ class ClassicGrid: SKSpriteNode {
             
             let animationAction = sprite.animation(atlasName: name, duration: 0.3)
             let unlock = SKAction.run { self.lock(false) }
+            let finishedDrawing = SKAction.run { self.touchedProtocol?.finishedDrawing() }
             
-            sprite.run(SKAction.sequence([animationAction, unlock]))
+            sprite.run(SKAction.sequence([animationAction, unlock, finishedDrawing]))
         } else {
             sprite.texture = sprite.lastTextureOfAnimation(forImageNamed: name)
+            self.touchedProtocol?.finishedDrawing()
         }
     }
     
