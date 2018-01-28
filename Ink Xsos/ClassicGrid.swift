@@ -27,8 +27,8 @@ class ClassicGrid: SKSpriteNode {
     init() {
         
         let texture = SKTexture(imageNamed: "\(Images.grid)_001")
-        
         super.init(texture: texture, color: UIColor.clear, size: CGSize.zero)
+        
         isUserInteractionEnabled = true
         anchorPoint = CGPoint.zero
     }
@@ -36,8 +36,8 @@ class ClassicGrid: SKSpriteNode {
     init(size: CGSize) {
         
         let texture = SKTexture(imageNamed: "\(Images.grid)_001")
-        
         super.init(texture: texture, color: UIColor.clear, size: size)
+        
         isUserInteractionEnabled = true
         anchorPoint = CGPoint.zero
     }
@@ -76,13 +76,12 @@ class ClassicGrid: SKSpriteNode {
         symbols.append(sprite)
         
         if animated {
-            lock(true)
-            
+            let lockAction = SKAction.run { self.lock(true) }
             let animationAction = sprite.animation(atlasName: name, duration: 0.3)
-            let unlock = SKAction.run { self.lock(false) }
+            let unlockAction = SKAction.run { self.lock(false) }
             let finishedDrawing = SKAction.run { self.touchedProtocol?.finishedDrawing() }
             
-            sprite.run(SKAction.sequence([animationAction, unlock, finishedDrawing]))
+            sprite.run(SKAction.sequence([lockAction, animationAction, unlockAction, finishedDrawing]))
         } else {
             sprite.texture = sprite.lastTextureOfAnimation(forImageNamed: name)
             self.touchedProtocol?.finishedDrawing()
@@ -98,13 +97,12 @@ class ClassicGrid: SKSpriteNode {
     func setImage() { texture = lastTextureOfAnimation(forImageNamed: Images.grid) }
     
     func animate() {
-        
-        lock(true)
-        
+
+        let lockAction = SKAction.run { self.lock(true) }
         let animationAction = animation(atlasName: Images.grid, duration: 1.0)
-        let unlock = SKAction.run { self.lock(false) }
+        let unlockAction = SKAction.run { self.lock(false) }
         
-        self.run(SKAction.sequence([animationAction, unlock]))
+        self.run(SKAction.sequence([lockAction, animationAction, unlockAction]))
     }
     
     func add(victoryLine vl: VictoryLine, animated: Bool) {
@@ -138,12 +136,11 @@ class ClassicGrid: SKSpriteNode {
         symbols.append(splatter)
         
         if animated {
-            lock(true)
-            
+            let lockAction = SKAction.run { self.lock(true) }
             let animationAction = splatter.animation(atlasName: name, duration: 0.3)
-            let unlock = SKAction.run { self.lock(false) }
+            let unlockAction = SKAction.run { self.lock(false) }
             
-            splatter.run(SKAction.sequence([animationAction, unlock]))
+            splatter.run(SKAction.sequence([lockAction, animationAction, unlockAction]))
         } else {
             splatter.texture = splatter.lastTextureOfAnimation(forImageNamed: name)
         }
