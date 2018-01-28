@@ -14,7 +14,7 @@ protocol GridUpdater {
 
 protocol MatchPresentationManager {
     
-    func show(winner: PlayerEntity)
+    func show(winner: PlayerEntity, victoryLine vl: VictoryLine)
     func showDraw()
     func passTurn()
 }
@@ -47,6 +47,7 @@ class ClassicScene2: GameScene2 {
         let player2 = ClassicPlayer(symbol: "O", number: 1, brush: .black)
         classic.players = [player1, player2]
         classic.gridUpdater = self
+        classic.matchManager = self
         grid.touchedProtocol = classic
         
         playerNumber = 1
@@ -97,8 +98,14 @@ extension ClassicScene2: GridUpdater {
 
 extension ClassicScene2: MatchPresentationManager {
     
-    func show(winner: PlayerEntity) {
+    func show(winner: PlayerEntity, victoryLine vl: VictoryLine) {
         
+        grid.add(victoryLine: vl, animated: defaultsStandard.animationsOn())
+        
+        let wait = SKAction.wait(forDuration: 0.4)
+        let endAction = SKAction.run { self.endGame(victoryLine: vl) }
+        
+        run(SKAction.sequence([wait, endAction]))
     }
     
     func showDraw() {

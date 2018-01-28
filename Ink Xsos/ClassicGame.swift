@@ -149,7 +149,7 @@ extension ClassicGame: TouchedGrid {
         
         let state = isGameOver()
         if state == .finishedWithWinner {
-            matchManager!.show(winner: players![winner])
+            matchManager!.show(winner: players![winner], victoryLine: victoryLine!)
         } else if state == .draw {
             matchManager!.showDraw()
         } else if state == .onGoing {
