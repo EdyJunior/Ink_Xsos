@@ -9,7 +9,9 @@
 import SpriteKit
 
 protocol GridUpdater {
+    
     func updateGrid(symb: String, row: Int, column col: Int)
+    func lockGrid(_ flag: Bool)
 }
 
 protocol MatchPresentationManager {
@@ -95,6 +97,8 @@ extension ClassicScene2: GridUpdater {
     func updateGrid(symb: String, row: Int, column col: Int) {
         grid.draw(symbolName: symb, row: row, column: col, animated: defaultsStandard.animationsOn())
     }
+    
+    func lockGrid(_ flag: Bool) { self.grid.lock(flag) }
 }
 
 extension ClassicScene2: MatchPresentationManager {

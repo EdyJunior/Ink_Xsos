@@ -142,7 +142,7 @@ class ClassicGame {
         if isEmpty(row, col) {
             grid[row][col] = symb
             gridUpdater?.updateGrid(symb: symb, row: row, column: col)
-        }
+        } else { gridUpdater?.lockGrid(false) }
     }
 }
 
