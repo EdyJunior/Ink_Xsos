@@ -47,6 +47,7 @@ class ClassicGrid: SKSpriteNode {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         if touches.count == 1 && !isLocked {
+            lock(true)
             let touch = touches.first!
             let pos = touch.location(in: self)
 
