@@ -59,14 +59,15 @@ class ClassicScene2: GameScene2 {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if classic.isGameOver() != .onGoing && finishedEndAnimation {
+        if classic.winner > -1 && finishedEndAnimation {
             resetGame()
         }
     }
     
-    override func endGame(victoryLine vl: VictoryLine) {
+    override func endGame() {
         
-        super.endGame(victoryLine: vl)
+        super.endGame()
+        messageLabel.text = "\(classic.currentPlayer.symbol) wins!"
         addResetLabel()
     }
     
@@ -103,16 +104,19 @@ extension ClassicScene2: MatchPresentationManager {
         grid.add(victoryLine: vl, animated: defaultsStandard.animationsOn())
         
         let wait = SKAction.wait(forDuration: 0.4)
-        let endAction = SKAction.run { self.endGame(victoryLine: vl) }
+        let endAction = SKAction.run { self.endGame() }
         
         run(SKAction.sequence([wait, endAction]))
     }
     
     func showDraw() {
         
+        addResetLabel()
+        finishedEndAnimation = true
+        messageLabel.text = "Draw!"
     }
     
     func passTurn() {
-        
+        messageLabel.text = "It's \(classic.currentPlayer.symbol) turn!"
     }
 }
