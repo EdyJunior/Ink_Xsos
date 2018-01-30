@@ -12,6 +12,7 @@ class ClassicGame {
     
     var players: [PlayerEntity]?
     var turn: Int {
+        
         didSet {
             if winner == -1 {
                 let cp = self.turn % 2 == 0 ? 1 : 0
@@ -22,6 +23,11 @@ class ClassicGame {
     var time: TimeInterval = 0
     var grid = [[String]]()
     var winner: Int = -1
+    var currentPlayer: PlayerEntity {
+        
+        let cp = self.turn % 2 == 0 ? 1 : 0
+        return players![cp]
+    }
     var victoryLine: VictoryLine?
     var gridUpdater: GridUpdater?
     var matchManager: MatchPresentationManager?
@@ -88,7 +94,7 @@ class ClassicGame {
                 return
             }
         }
-        winner = 0
+        winner = 2
     }
     
     func isGameOver () -> MatchState {
@@ -124,7 +130,10 @@ class ClassicGame {
                 return .finishedWithWinner
             }
         }
-        if turn == 9 { return .draw }
+        if turn == 9 {
+            winner = 3
+            return .draw
+        }
         return .onGoing
     }
     
