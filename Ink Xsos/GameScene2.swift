@@ -109,7 +109,7 @@ class GameScene2: SKScene {
         addChild(grid)
     }
     
-    func endGame(victoryLine vl: VictoryLine) {
+    func endGame() {
         
         finishedEndAnimation = false
         
