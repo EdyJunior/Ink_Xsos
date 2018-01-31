@@ -142,7 +142,7 @@ class ClassicGame {
         if isEmpty(row, col) {
             grid[row][col] = symb
             gridUpdater?.updateGrid(symb: symb, row: row, column: col)
-        } else { gridUpdater?.lockGrid(false) }
+        } else if !isEmpty(row, col) && winner == -1 { gridUpdater?.lockGrid(false) }
     }
 }
 
@@ -157,11 +157,12 @@ extension ClassicGame: TouchedGrid {
     func finishedDrawing() {
         
         let state = isGameOver()
-        if state == .finishedWithWinner {
+        switch state {
+        case .finishedWithWinner:
             matchManager!.show(winner: players![winner], victoryLine: victoryLine!)
-        } else if state == .draw {
+        case .draw:
             matchManager!.showDraw()
-        } else if state == .onGoing {
+        default:
             turn += 1
             matchManager!.passTurn()
         }

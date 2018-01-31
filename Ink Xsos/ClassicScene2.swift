@@ -121,6 +121,8 @@ extension ClassicScene2: MatchPresentationManager {
     }
     
     func passTurn() {
+        
         messageLabel.text = "It's \(classic.currentPlayer.symbol) turn!"
+        grid.lock(false)
     }
 }

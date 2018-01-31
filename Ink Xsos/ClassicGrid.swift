@@ -77,12 +77,10 @@ class ClassicGrid: SKSpriteNode {
         symbols.append(sprite)
         
         if animated {
-            let lockAction = SKAction.run { self.lock(true) }
             let animationAction = sprite.animation(atlasName: name, duration: 0.3)
-            let unlockAction = SKAction.run { self.lock(false) }
             let finishedDrawing = SKAction.run { self.touchedProtocol?.finishedDrawing() }
             
-            sprite.run(SKAction.sequence([lockAction, animationAction, unlockAction, finishedDrawing]))
+            sprite.run(SKAction.sequence([animationAction, finishedDrawing]))
         } else {
             sprite.texture = sprite.lastTextureOfAnimation(forImageNamed: name)
             self.touchedProtocol?.finishedDrawing()
@@ -107,7 +105,7 @@ class ClassicGrid: SKSpriteNode {
     }
     
     func add(victoryLine vl: VictoryLine, animated: Bool) {
-        
+
         let name = Images.splatter
         
         let splatter = SKSpriteNode(imageNamed: "\(name)_001")
@@ -136,14 +134,7 @@ class ClassicGrid: SKSpriteNode {
         addChild(splatter)
         symbols.append(splatter)
         
-        if animated {
-            let lockAction = SKAction.run { self.lock(true) }
-            let animationAction = splatter.animation(atlasName: name, duration: 0.3)
-            let unlockAction = SKAction.run { self.lock(false) }
-            
-            splatter.run(SKAction.sequence([lockAction, animationAction, unlockAction]))
-        } else {
-            splatter.texture = splatter.lastTextureOfAnimation(forImageNamed: name)
-        }
+        if animated { splatter.run(splatter.animation(atlasName: name, duration: 0.3)) }
+        else { splatter.texture = splatter.lastTextureOfAnimation(forImageNamed: name) }
     }
 }
