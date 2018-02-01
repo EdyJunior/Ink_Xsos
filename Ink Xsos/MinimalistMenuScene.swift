@@ -25,7 +25,7 @@ class MinimalistMenuScene: SKScene {
         let device = UIDevice.current.userInterfaceIdiom
         let factor: CGFloat = device == .phone ? 0.3 : 0.2
         
-        let proportion = CGFloat(560.0) / 640.0
+        let proportion = CGFloat(300.0) / 300.0
         let width = self.size.width * factor
         let height = width * proportion
         
