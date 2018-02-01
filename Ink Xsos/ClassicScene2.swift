@@ -57,6 +57,7 @@ class ClassicScene2: GameScene2 {
         messageLabel.text = "It’s X turn!"
         grid.clear()
         grid.lock(false)
+        finishedEndAnimation = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,10 +71,10 @@ class ClassicScene2: GameScene2 {
         
         super.endGame()
         messageLabel.text = "\(classic.currentPlayer.symbol) wins!"
-        addResetLabel()
+        addResetLabel(interval: 2.7)
     }
     
-    func addResetLabel() {
+    func addResetLabel(interval: Double = 0.7) {
         
         let sceneFrame = scene!.frame
         let resetLabel = SKLabelNode(fontNamed: Fonts.ink)
@@ -86,9 +87,7 @@ class ClassicScene2: GameScene2 {
         self.endGameSprites.append(resetLabel)
         addChild(resetLabel)
         
-        let interval = defaultsStandard.animationsOn() ? 4.0 : 1.0
-        let fadeAction = SKAction.fadeAlpha(to: 1.0, duration: interval)
-        resetLabel.run(fadeAction)
+        resetLabel.run(SKAction.fadeAlpha(to: 1.0, duration: interval))
     }
 }
 
@@ -109,15 +108,26 @@ extension ClassicScene2: MatchPresentationManager {
         
         let wait = SKAction.wait(forDuration: 0.4)
         let endAction = SKAction.run { self.endGame() }
+        let sequence1 = SKAction.sequence([wait, endAction])
         
-        run(SKAction.sequence([wait, endAction]))
+        let interval = defaultsStandard.animationsOn() ? 2.7 : 0.7
+        let waitEndAnimation = SKAction.wait(forDuration: interval)
+        let unlock = SKAction.run { self.finishedEndAnimation = true }
+        
+        let sequence2 = SKAction.sequence([waitEndAnimation, unlock])
+        
+        run(SKAction.group([sequence1, sequence2]))
     }
     
     func showDraw() {
         
         addResetLabel()
-        finishedEndAnimation = true
         messageLabel.text = "Draw!"
+        
+        let wait = SKAction.wait(forDuration: 0.7)
+        let unlock = SKAction.run { self.finishedEndAnimation = true }
+        
+        run(SKAction.sequence([wait, unlock]))
     }
     
     func passTurn() {

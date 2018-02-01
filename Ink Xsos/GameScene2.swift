@@ -13,7 +13,7 @@ class GameScene2: SKScene {
     var modeLabel = SKLabelNode(fontNamed: Fonts.ink)
     var messageLabel = SKLabelNode(fontNamed: Fonts.ink)
     var endGameSprites = [SKNode]()
-    var finishedEndAnimation = true
+    var finishedEndAnimation = false
     var grid = ClassicGrid()
     
     override func didMove(to view: SKView) {
@@ -109,13 +109,7 @@ class GameScene2: SKScene {
         addChild(grid)
     }
     
-    func endGame() {
-        
-        finishedEndAnimation = false
-        
-        if defaultsStandard.animationsOn() { animateEnd() }
-        else { self.finishedEndAnimation = true }
-    }
+    func endGame() { if defaultsStandard.animationsOn() { animateEnd() } }
     
     func animateEnd() {
         
@@ -161,8 +155,7 @@ class GameScene2: SKScene {
             SKAction()
         let seqAction = SKAction.sequence([wait, addSpot, wait, addMessage1, wait, addMessage2])
         let group = SKAction.group([playSound, seqAction])
-        let finish = SKAction.run { self.finishedEndAnimation = true }
         
-        scene!.run(SKAction.sequence([group, finish]))
+        scene!.run(group)
     }
 }
