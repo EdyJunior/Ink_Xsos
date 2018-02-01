@@ -16,7 +16,6 @@ class PaintNode: SKSpriteNode {
     
     private let maxSplashes: Int
     private let spotFormats: [SKSpriteNode]
-    private let spotColors: [UIColor]
     
     private var splashes: [SKSpriteNode]
     
@@ -29,9 +28,10 @@ class PaintNode: SKSpriteNode {
     init(size: CGSize) {
         
         self.maxSplashes = 25
-        self.spotFormats = [0,5].map { SKSpriteNode(imageNamed: "white_spot_\($0)") }
-        self.spotColors = [.red, .green, .blue, .yellow, .cyan, .orange, .purple]
-        
+        self.spotFormats = [1, 2, 3, 4, 5, 6].map {
+            let name = String.init(format: "splash_%0.3d", $0)
+            return SKSpriteNode(imageNamed: name)
+        }
         self.splashes = []
         
         super.init(texture: nil, color: .clear, size: size)
@@ -73,7 +73,7 @@ class PaintNode: SKSpriteNode {
         let spot = randomSpot()
         
         let device = UIDevice.current.userInterfaceIdiom
-        let factor: CGFloat = device == .phone ? 1.5 : 2.0
+        let factor: CGFloat = device == .phone ? 1.7 : 2.2
         
         let ratio = spot.size.width / spot.size.height
         let width = scene.size.width / factor
@@ -81,12 +81,9 @@ class PaintNode: SKSpriteNode {
         spot.size = CGSize(width: width, height: width / ratio)
         spot.zRotation = CGFloat(Double.pi * Double(Int(arc4random()) % 60) / 60.0)
         spot.position = position
-        spot.blendMode = .subtract
         spot.isUserInteractionEnabled = false
+        spot.colorBlendFactor = 0.1
         
-        let colorizeAction = SKAction.colorize(with: randomColor(), colorBlendFactor: 0.75, duration: 0.1)
-        
-        spot.run(colorizeAction)
         self.addChild(spot)
         self.splashes.append(spot)
     }
@@ -106,12 +103,6 @@ class PaintNode: SKSpriteNode {
         
         let random = Int(arc4random_uniform(UInt32(self.spotFormats.count)))
         return self.spotFormats[random].copy() as! SKSpriteNode
-    }
-    
-    private func randomColor() -> UIColor {
-        
-        let random = Int(arc4random_uniform(UInt32(self.spotColors.count)))
-        return self.spotColors[random]
     }
     
     private func randomPosition() -> CGPoint {
@@ -137,5 +128,4 @@ class PaintNode: SKSpriteNode {
             self.splash(atPosition: position)
         }
     }
-    
 }
