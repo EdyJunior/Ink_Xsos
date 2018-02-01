@@ -118,8 +118,8 @@ class MinimalistMenuScene: SKScene {
             
             guard let view = self.view else { return }
             
-            let sceneInstance = ClassicScene(size: view.bounds.size)
-            sceneInstance.soundController = self.soundController
+            let sceneInstance = ClassicScene2(size: view.bounds.size)
+            //sceneInstance.soundController = self.soundController
             let transition = SKTransition.fade(with: .white, duration: 1.0)
             view.presentScene(sceneInstance, transition: transition)
         }
