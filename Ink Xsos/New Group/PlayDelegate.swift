@@ -12,6 +12,5 @@ protocol PlayDelegate {
     
     var grid: [[String]] { get set }
     
-    func updateGrid (playerNumber: Int, symb: String, pos: [Int]) -> Bool
-    func updateTurn ()
+    func move (row: Int, column: Int)
 }
