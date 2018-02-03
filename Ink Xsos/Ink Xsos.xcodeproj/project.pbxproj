@@ -16,6 +16,7 @@
 		CE02C3561FAC001500CD07F3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C3551FAC001500CD07F3 /* Button.swift */; };
 		CE08591E2016CD5300A60B7E /* ClassicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08591D2016CD5300A60B7E /* ClassicGrid.swift */; };
 		CE1851A71FD98E1B00ECF8F5 /* Inkfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE1851A61FD98E1B00ECF8F5 /* Inkfont.ttf */; };
+		CE2378FC20254526002237D4 /* ClassicAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2378FB20254526002237D4 /* ClassicAI.swift */; };
 		CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE2C6F231FC9E155003B30A0 /* startSound.wav */; };
 		CE2C6F261FC9E6EE003B30A0 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */; };
 		CE2C6F281FC9F8CB003B30A0 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */; };
@@ -49,6 +50,7 @@
 		CE02C3551FAC001500CD07F3 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CE08591D2016CD5300A60B7E /* ClassicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicGrid.swift; sourceTree = "<group>"; };
 		CE1851A61FD98E1B00ECF8F5 /* Inkfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inkfont.ttf; sourceTree = "<group>"; };
+		CE2378FB20254526002237D4 /* ClassicAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicAI.swift; sourceTree = "<group>"; };
 		CE2C6F231FC9E155003B30A0 /* startSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = startSound.wav; sourceTree = "<group>"; };
 		CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				CEC34FC4201ABB5A002834B9 /* PlayDelegate.swift */,
 				CEC34FC6201ABB97002834B9 /* PlayerEntity.swift */,
 				CEC34FC8201ABD29002834B9 /* ClassicPlayer.swift */,
+				CE2378FB20254526002237D4 /* ClassicAI.swift */,
 			);
 			name = Players;
 			path = "New Group";
@@ -293,6 +296,7 @@
 				CEC34FC7201ABB97002834B9 /* PlayerEntity.swift in Sources */,
 				CEC34FC2201AB3B6002834B9 /* ClassicGame.swift in Sources */,
 				CEB27EB61FA76945004511BD /* AppDelegate.swift in Sources */,
+				CE2378FC20254526002237D4 /* ClassicAI.swift in Sources */,
 				CE08591E2016CD5300A60B7E /* ClassicGrid.swift in Sources */,
 				CED712BE2023FF9D00E2EF91 /* MenuScene.swift in Sources */,
 				C5D65AEB1FC72D0D00AFA54C /* Sounds.swift in Sources */,

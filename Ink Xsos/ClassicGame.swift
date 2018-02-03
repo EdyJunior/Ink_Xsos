@@ -144,14 +144,19 @@ class ClassicGame {
             gridUpdater?.updateGrid(symb: symb, row: row, column: col)
         } else if !isEmpty(row, col) && winner == -1 { gridUpdater?.lockGrid(false) }
     }
+    
+    func entityMoves(_ row: Int, _ col: Int) {
+        
+        gridUpdater?.lockGrid(true)
+        let cp = self.turn % 2 == 0 ? 1 : 0
+        updateGrid(symb: players![cp].symbol, row: row, column: col)
+    }
 }
 
 extension ClassicGame: TouchedGrid {
     
     func touchIn(_ row: Int, _ col: Int) {
-        
-        let cp = self.turn % 2 == 0 ? 1 : 0
-        updateGrid(symb: players![cp].symbol, row: row, column: col)
+        entityMoves(row, col)
     }
     
     func finishedDrawing() {

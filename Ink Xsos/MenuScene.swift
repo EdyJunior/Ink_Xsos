@@ -1,5 +1,5 @@
 //
-//  MinimalistMenuScene.swift
+//  MenuScene.swift
 //  Ink Xsos
 //
 //  Created by Edvaldo Junior on 27/11/17.
