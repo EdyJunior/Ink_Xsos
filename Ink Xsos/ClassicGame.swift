@@ -173,3 +173,10 @@ extension ClassicGame: TouchedGrid {
         }
     }
 }
+
+extension ClassicGame: PlayDelegate {
+    
+    func move(row: Int, column: Int) {
+        entityMoves(row, column)
+    }
+}
