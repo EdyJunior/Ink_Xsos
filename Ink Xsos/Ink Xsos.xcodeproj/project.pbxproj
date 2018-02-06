@@ -27,6 +27,7 @@
 		CE824F6F201BFBCD004EDCDB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE824F6E201BFBCD004EDCDB /* GameScene.swift */; };
 		CE85F41D1FC8F864002BCCF7 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85F41C1FC8F864002BCCF7 /* SettingsScene.swift */; };
 		CE9F9D872019443F0000F0F3 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F9D862019443F0000F0F3 /* SKSpriteNode+Extensions.swift */; };
+		CEA117E720293C7E0089A1E5 /* SelectAdversaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA117E620293C7E0089A1E5 /* SelectAdversaryScene.swift */; };
 		CEB27EB61FA76945004511BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB27EB51FA76945004511BD /* AppDelegate.swift */; };
 		CEB27EBE1FA76945004511BD /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB27EBD1FA76945004511BD /* GameViewController.swift */; };
 		CEB27EC11FA76945004511BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EBF1FA76945004511BD /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		CE824F6E201BFBCD004EDCDB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		CE85F41C1FC8F864002BCCF7 /* SettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
 		CE9F9D862019443F0000F0F3 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
+		CEA117E620293C7E0089A1E5 /* SelectAdversaryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAdversaryScene.swift; sourceTree = "<group>"; };
 		CEB27EB21FA76945004511BD /* Ink Xsos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ink Xsos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB27EB51FA76945004511BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB27EBD1FA76945004511BD /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				CE824F6C201BFAD5004EDCDB /* ClassicScene.swift */,
 				CE824F6E201BFBCD004EDCDB /* GameScene.swift */,
 				CED712BD2023FF9D00E2EF91 /* MenuScene.swift */,
+				CEA117E620293C7E0089A1E5 /* SelectAdversaryScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				CE6404A91FA895AA00B01022 /* Player.swift in Sources */,
 				CE9F9D872019443F0000F0F3 /* SKSpriteNode+Extensions.swift in Sources */,
+				CEA117E720293C7E0089A1E5 /* SelectAdversaryScene.swift in Sources */,
 				CEC34FC9201ABD29002834B9 /* ClassicPlayer.swift in Sources */,
 				C5D65AE71FC72B4500AFA54C /* Images.swift in Sources */,
 				CED712BC2023FBA600E2EF91 /* VictoryLine.swift in Sources */,

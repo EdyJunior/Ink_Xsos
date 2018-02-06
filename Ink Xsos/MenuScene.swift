@@ -118,12 +118,11 @@ class MenuScene: SKScene {
             
             guard let view = self.view else { return }
             
-            let sceneInstance = ClassicScene(size: view.bounds.size)
+            let sceneInstance = SelectAdversaryScene(size: view.bounds.size)
             //sceneInstance.soundController = self.soundController
             let transition = SKTransition.fade(with: .white, duration: 1.0)
             view.presentScene(sceneInstance, transition: transition)
         }
-        
         self.selectModeButton.size = self.menuButtonSize
         self.selectModeButton.position = position
         self.selectModeButton.zPosition = 1
