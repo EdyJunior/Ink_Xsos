@@ -26,8 +26,8 @@ class ClassicAI: PlayerEntity {
     func play(grid: [[String]]) {
         
         var flag = false
-        for i in 1...3 {
-            for j in 1...3 {
+        for i in 0...2 {
+            for j in 0...2 {
                 if grid[i][j] == "-" {
                     _ = playDelegate?.move(row: i, column: j)
                     flag = true

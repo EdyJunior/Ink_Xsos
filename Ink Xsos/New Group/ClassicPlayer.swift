@@ -23,5 +23,5 @@ class ClassicPlayer: PlayerEntity {
         self.playDelegate = delegate
     }
     
-    func play(grid: [[String]]) { print("Player") }
+    func play(grid: [[String]]) { }
 }

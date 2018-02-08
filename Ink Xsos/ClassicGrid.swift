@@ -8,15 +8,16 @@
 
 import SpriteKit
 
-protocol TouchedGrid {
+protocol GridDelegate {
     
     func touchIn(_ row: Int, _ col: Int)
-    func finishedDrawing()
+    func finishedSymbol()
+    func finishedGrid()
 }
 
 class ClassicGrid: SKSpriteNode {
     
-    var touchedProtocol: TouchedGrid?
+    var gridProtocol: GridDelegate?
     var isLocked = false
     var symbols = [SKNode]()
     
@@ -61,7 +62,7 @@ class ClassicGrid: SKSpriteNode {
                 if yRel > CGFloat(previous) / 3 && yRel <= CGFloat(i) / 3 { row = 3 - i }
                 previous = i
             }
-            self.touchedProtocol?.touchIn(row, col)
+            self.gridProtocol?.touchIn(row, col)
         }
     }
     
@@ -78,12 +79,12 @@ class ClassicGrid: SKSpriteNode {
         
         if animated {
             let animationAction = sprite.animation(atlasName: name, duration: 0.3)
-            let finishedDrawing = SKAction.run { self.touchedProtocol?.finishedDrawing() }
+            let finishedDrawing = SKAction.run { self.gridProtocol?.finishedSymbol() }
             
             sprite.run(SKAction.sequence([animationAction, finishedDrawing]))
         } else {
             sprite.texture = sprite.lastTextureOfAnimation(forImageNamed: name)
-            self.touchedProtocol?.finishedDrawing()
+            self.gridProtocol?.finishedSymbol()
         }
     }
     
@@ -100,8 +101,9 @@ class ClassicGrid: SKSpriteNode {
         let lockAction = SKAction.run { self.lock(true) }
         let animationAction = animation(atlasName: Images.grid, duration: 1.0)
         let unlockAction = SKAction.run { self.lock(false) }
+        let finishedDrawing = SKAction.run { self.gridProtocol?.finishedGrid() }
         
-        self.run(SKAction.sequence([lockAction, animationAction, unlockAction]))
+        self.run(SKAction.sequence([lockAction, animationAction, unlockAction, finishedDrawing]))
     }
     
     func add(victoryLine vl: VictoryLine, animated: Bool) {

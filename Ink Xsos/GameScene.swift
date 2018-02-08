@@ -15,6 +15,7 @@ class GameScene: SKScene {
     var endGameSprites = [SKNode]()
     var finishedEndAnimation = false
     var grid = ClassicGrid()
+    var matchNumber = 0
     
     override func didMove(to view: SKView) {
         

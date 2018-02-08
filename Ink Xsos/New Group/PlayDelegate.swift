@@ -12,5 +12,5 @@ protocol PlayDelegate {
     
     var grid: [[String]] { get set }
     
-    func move (row: Int, column: Int)
+    func move (row: Int, column: Int)    
 }

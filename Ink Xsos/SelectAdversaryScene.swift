@@ -73,6 +73,7 @@ class SelectAdversaryScene: SKScene {
             guard let view = self.view else { return }
             
             let sceneInstance = ClassicScene(size: view.bounds.size)
+            sceneInstance.hasAI = false
             let transition = SKTransition.fade(with: .white, duration: 1.0)
             view.presentScene(sceneInstance, transition: transition)
         }
@@ -89,6 +90,7 @@ class SelectAdversaryScene: SKScene {
             guard let view = self.view else { return }
             
             let sceneInstance = ClassicScene(size: view.bounds.size)
+            sceneInstance.hasAI = true
             let transition = SKTransition.fade(with: .white, duration: 1.0)
             view.presentScene(sceneInstance, transition: transition)
         }

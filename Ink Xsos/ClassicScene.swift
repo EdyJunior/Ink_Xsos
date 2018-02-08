@@ -25,6 +25,7 @@ class ClassicScene: GameScene {
     
     var playerNumber = 1;
     var classic = ClassicGame()
+    var hasAI: Bool!
     
     override func didMove(to view: SKView) {
         
@@ -45,12 +46,24 @@ class ClassicScene: GameScene {
         endGameSprites.removeAll()
         
         classic = ClassicGame()
-        let player1 = ClassicPlayer(symbol: "X", number: 0, brush: .black)
-        let player2 = ClassicPlayer(symbol: "O", number: 1, brush: .black)
+        var player1, player2: PlayerEntity
+        if hasAI {
+            let random = arc4random_uniform(2)
+            if random == 0 {
+                player1 = ClassicPlayer(symbol: "X", number: 0, brush: .black, delegate: classic)
+                player2 = ClassicAI(symbol: "O", number: 1, brush: .black, delegate: classic)
+            } else {
+                player1 = ClassicAI(symbol: "X", number: 0, brush: .black, delegate: classic)
+                player2 = ClassicPlayer(symbol: "O", number: 1, brush: .black, delegate: classic)
+            }
+        } else {
+            player1 = ClassicPlayer(symbol: "X", number: 0, brush: .black, delegate: classic)
+            player2 = ClassicPlayer(symbol: "O", number: 1, brush: .black, delegate: classic)
+        }
         classic.players = [player1, player2]
         classic.gridUpdater = self
         classic.matchManager = self
-        grid.touchedProtocol = classic
+        grid.gridProtocol = classic
         
         playerNumber = 1
         modeLabel.text = "classic"
@@ -58,6 +71,9 @@ class ClassicScene: GameScene {
         grid.clear()
         grid.lock(false)
         finishedEndAnimation = false
+        matchNumber += 1
+        
+        if matchNumber > 1 { classic.passTurn() }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

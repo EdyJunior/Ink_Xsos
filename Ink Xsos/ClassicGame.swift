@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 class ClassicGame {
     
@@ -14,7 +15,7 @@ class ClassicGame {
     var turn: Int {
         
         didSet {
-            if winner == -1 {
+            if turn != 0 && winner == -1 {
                 let cp = self.turn % 2 == 0 ? 1 : 0
                 self.players?[cp].play(grid: self.grid)
             }
@@ -37,7 +38,7 @@ class ClassicGame {
     init() {
         
         for _ in 0...2 { grid.append(["-", "-", "-"]) }
-        self.turn = 1
+        self.turn = 0
     }
     
     func isEmpty(_ row: Int, _ column: Int) -> Bool {
@@ -142,7 +143,9 @@ class ClassicGame {
         if isEmpty(row, col) {
             grid[row][col] = symb
             gridUpdater?.updateGrid(symb: symb, row: row, column: col)
-        } else if !isEmpty(row, col) && winner == -1 { gridUpdater?.lockGrid(false) }
+        } else if !isEmpty(row, col) && winner == -1 {
+            gridUpdater?.lockGrid(false)
+        }
     }
     
     func entityMoves(_ row: Int, _ col: Int) {
@@ -151,15 +154,17 @@ class ClassicGame {
         let cp = self.turn % 2 == 0 ? 1 : 0
         updateGrid(symb: players![cp].symbol, row: row, column: col)
     }
+    
+    func passTurn() { turn += 1 }
 }
 
-extension ClassicGame: TouchedGrid {
+extension ClassicGame: GridDelegate {
     
     func touchIn(_ row: Int, _ col: Int) {
         entityMoves(row, col)
     }
     
-    func finishedDrawing() {
+    func finishedSymbol() {
         
         let state = isGameOver()
         switch state {
@@ -168,10 +173,12 @@ extension ClassicGame: TouchedGrid {
         case .draw:
             matchManager!.showDraw()
         default:
-            turn += 1
-            matchManager!.passTurn()
+            self.matchManager!.passTurn()
+            self.passTurn()
         }
     }
+    
+    func finishedGrid() { turn = 1 }
 }
 
 extension ClassicGame: PlayDelegate {
