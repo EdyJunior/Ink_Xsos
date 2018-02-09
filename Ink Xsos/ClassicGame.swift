@@ -51,40 +51,54 @@ class ClassicGame {
         return desiredPlayer![0].symbol
     }
     
-    private func checkRow (_ row: Int) -> Bool {
-        
-        if isEmpty(row, 0) { return false }
-        
-        let s = grid[row][0]
-        for col in [1, 2] {
-            if grid[row][col] != s { return false }
-        }
-        return true
+    private func checkRow (_ row: Int, for symbol: String) -> Bool {
+        return grid[row][0] == symbol && grid[row][1] == symbol && grid[row][2] == symbol;
     }
     
-    private func checkColumn (_ col: Int) -> Bool {
-
-        if isEmpty(0, col) { return false }
-        
-        let s = grid[0][col]
-        for row in [1, 2] {
-            if grid[row][col] != s { return false }
-        }
-        return true
+    private func checkColumn (_ col: Int, for symbol: String) -> Bool {
+        return grid[0][col] == symbol && grid[1][col] == symbol && grid[2][col] == symbol;
     }
     
-    private func checkDiagonal (row: Int, inc: Int) -> Bool {
+    private func checkDiagonal1 (for symbol: String) -> Bool {
+        return grid[0][0] == symbol && grid[1][1] == symbol && grid[2][2] == symbol;
+    }
+    
+    private func checkDiagonal2 (for symbol: String) -> Bool {
+        return grid[2][0] == symbol && grid[1][1] == symbol && grid[0][2] == symbol;
+    }
+    
+    func isGameOver () -> MatchState {
         
-        var col = 0, r = row
-        if isEmpty(row, col) { return false }
-        
-        let s = grid[row][col]
-        while (col < 3) {
-            if grid[r][col] != s { return false }
-            r += inc
-            col += 1
+        for i in [0, 1] {
+            let symbol = players![i].symbol
+            for j in 0...2 {
+                if checkRow(j, for: symbol) {
+                    setWinner(fromSymbol: symbol)
+                    victoryLine = .row(line: j)
+                    return .finishedWithWinner
+                }
+                if checkColumn(j, for: symbol) {
+                    setWinner(fromSymbol: symbol)
+                    victoryLine = .column(line: j)
+                    return .finishedWithWinner
+                }
+            }
+            if checkDiagonal1(for: symbol) {
+                setWinner(fromSymbol: symbol)
+                victoryLine = .diagonal(main: true)
+                return .finishedWithWinner
+            }
+            if checkDiagonal2(for: symbol) {
+                setWinner(fromSymbol: symbol)
+                victoryLine = .diagonal(main: false)
+                return .finishedWithWinner
+            }
         }
-        return true
+        if turn == 9 {
+            winner = 3
+            return .draw
+        }
+        return .onGoing
     }
     
     private func setWinner(fromSymbol s: String)   {
@@ -96,46 +110,6 @@ class ClassicGame {
             }
         }
         winner = 2
-    }
-    
-    func isGameOver () -> MatchState {
-        
-        for row in 0...2 {
-            let flag = checkRow(row)
-            if flag {
-                let s = grid[row][0]
-                setWinner(fromSymbol: s)
-                victoryLine = .row(line: row)
-                return .finishedWithWinner
-            }
-        }
-        for col in 0...2 {
-            let flag = checkColumn(col)
-            if flag {
-                let s = grid[0][col]
-                setWinner(fromSymbol: s)
-                victoryLine = .column(line: col)
-                return .finishedWithWinner
-            }
-        }
-        var a = [(row: Int, inc: Int)]()
-        a.append((0,  1))
-        a.append((2, -1))
-        
-        for item in a {
-            let flag = checkDiagonal(row: item.row, inc: item.inc)
-            if flag {
-                let s = grid[item.row][0]
-                setWinner(fromSymbol: s)
-                victoryLine = .diagonal(main: item.row == 0)
-                return .finishedWithWinner
-            }
-        }
-        if turn == 9 {
-            winner = 3
-            return .draw
-        }
-        return .onGoing
     }
     
     func updateGrid (symb: String, row: Int, column col: Int) {
