@@ -30,7 +30,7 @@ extension SKSpriteNode {
         return SKTexture(imageNamed: lastNameOfAnimation(forImageNamed: name))
     }
     
-    func animation(atlasName: String, duration: Double) -> SKAction {
+    func animation(atlasName: String, duration: Double, restore: Bool = false) -> SKAction {
         
         var frames = [SKTexture]()
         let numImages = numberOfFrames(forImageNamed: atlasName)
@@ -40,10 +40,18 @@ extension SKSpriteNode {
             let name = String.init(format: imageName, i)
             frames.append(SKTexture(imageNamed: name))
         }
-        let animation = SKAction.animate(with: frames,
+        let ani = SKAction.animate(with: frames,
                                          timePerFrame: duration / Double(numImages),
                                          resize: false,
-                                         restore: false)
-        return animation
+                                         restore: restore)
+        return ani
+    }
+    
+    func animationLoop(atlasName: String, duration: Double, restore: Bool = false) -> SKAction {
+        
+        let ani = animation(atlasName: atlasName, duration: duration, restore: restore)
+        let forever = SKAction.repeatForever(ani)
+        
+        return forever
     }
 }
