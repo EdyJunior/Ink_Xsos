@@ -23,6 +23,7 @@ enum Images {
         static let randomGame     = "random_game_button"
         static let configurations = "configurations_button"
         static let moreGames      = "more_games_button"
+        static let options        = "options_button"
     }
     
     enum Spots {
