@@ -30,7 +30,7 @@ extension SKSpriteNode {
         return SKTexture(imageNamed: lastNameOfAnimation(forImageNamed: name))
     }
     
-    func animation(atlasName: String, duration: Double, restore: Bool = false) -> SKAction {
+    func getFrames(atlasName: String, mustBack: Bool = false) -> [SKTexture] {
         
         var frames = [SKTexture]()
         let numImages = numberOfFrames(forImageNamed: atlasName)
@@ -40,16 +40,48 @@ extension SKSpriteNode {
             let name = String.init(format: imageName, i)
             frames.append(SKTexture(imageNamed: name))
         }
+        if mustBack {
+            for i in stride(from: numImages - 1, to: 1, by: -1) {
+                let name = String.init(format: imageName, i)
+                frames.append(SKTexture(imageNamed: name))
+            }
+        }
+        return frames
+    }
+    
+    func animation(atlasName: String, duration: Double) -> SKAction {
+        
+        let frames = getFrames(atlasName: atlasName)
+        let numImages = frames.count
         let ani = SKAction.animate(with: frames,
                                          timePerFrame: duration / Double(numImages),
                                          resize: false,
-                                         restore: restore)
+                                         restore: false)
         return ani
     }
     
-    func animationLoop(atlasName: String, duration: Double, restore: Bool = false) -> SKAction {
+    func animationLoop(atlasName: String, duration: Double) -> SKAction {
         
-        let ani = animation(atlasName: atlasName, duration: duration, restore: restore)
+        let ani = animation(atlasName: atlasName, duration: duration)
+        let forever = SKAction.repeatForever(ani)
+        
+        return forever
+    }
+    
+    func animationBack(atlasName: String, duration: Double) -> SKAction {
+        
+        let frames = getFrames(atlasName: atlasName, mustBack: true)
+        let numImages = frames.count
+        let ani = SKAction.animate(with: frames,
+                                   timePerFrame: duration / Double(numImages),
+                                   resize: false,
+                                   restore: false)
+        return ani
+    }
+    
+    func animationBackLoop(atlasName: String, duration: Double) -> SKAction {
+        
+        let ani = animationBack(atlasName: atlasName, duration: duration)
         let forever = SKAction.repeatForever(ani)
         
         return forever
