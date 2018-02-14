@@ -31,5 +31,4 @@ enum Images {
         static let bigBlack = "big_black_spot"
         static let black    = "black_spot"
     }
-    
 }

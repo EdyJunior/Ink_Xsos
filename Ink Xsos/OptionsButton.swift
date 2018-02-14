@@ -12,18 +12,18 @@ class OptionsButton: CustomButton {
 
     init(scene: GameScene) {
         
-        let texture = SKTexture(imageNamed: Images.Buttons.options)
+        let texture = SKTexture(imageNamed: "\(Images.Buttons.options)_001")
         let proportion = texture.size().height / texture.size().width
         let sceneSize = scene.size
-        let buttonSize = CGSize(width: sceneSize.width * 0.1,
-                                height: sceneSize.width * 0.1 * proportion)
+        let buttonSize = CGSize(width: sceneSize.width * 0.2,
+                                height: sceneSize.width * 0.2 * proportion)
         let buttonImage = SKSpriteNode(texture: texture, color: .clear, size: buttonSize)
         
         super.init(sprite: buttonImage)
         
-        let animationAction = self.imageButton.animationLoop(atlasName: Images.Buttons.options, duration: 1.0, restore: true)
+        let animationAction = self.imageButton.animationBackLoop(atlasName: Images.Buttons.options, duration: 1.5)
         
-        self.run(animationAction)
+        self.imageButton.run(animationAction)
     }
     
     required init?(coder aDecoder: NSCoder) {
