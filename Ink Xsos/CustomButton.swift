@@ -8,9 +8,7 @@
 
 import SpriteKit
 
-protocol OptionsDelegate {
-    func showOptions()
-}
+protocol ButtonAction { func execute() }
 
 class CustomButton: SKNode {
 
@@ -18,7 +16,7 @@ class CustomButton: SKNode {
     var touchableArea = SKSpriteNode()
     var enabled: Bool = true
     var pressed: Bool = false
-    var delegate: OptionsDelegate!
+    var action: ButtonAction!
  
     init(sprite: SKSpriteNode) {
         
@@ -41,7 +39,7 @@ class CustomButton: SKNode {
         if touchableArea.contains((touches.first?.location(in: self))!) {
             if enabled {
                 pressed = !pressed
-                delegate.showOptions()
+                action.execute()
             }
         }
     }
