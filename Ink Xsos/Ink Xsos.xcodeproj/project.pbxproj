@@ -20,6 +20,7 @@
 		CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE2C6F231FC9E155003B30A0 /* startSound.wav */; };
 		CE2C6F261FC9E6EE003B30A0 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */; };
 		CE2C6F281FC9F8CB003B30A0 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */; };
+		CE2F998120366AD4009D4C4B /* OptionsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F998020366AD4009D4C4B /* OptionsUtil.swift */; };
 		CE6404A91FA895AA00B01022 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404A81FA895AA00B01022 /* Player.swift */; };
 		CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AA1FA89D5800B01022 /* PaintScreen.swift */; };
 		CE6404AD1FA8A0E700B01022 /* Xsos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AC1FA8A0E700B01022 /* Xsos.swift */; };
@@ -57,6 +58,7 @@
 		CE2C6F231FC9E155003B30A0 /* startSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = startSound.wav; sourceTree = "<group>"; };
 		CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		CE2F998020366AD4009D4C4B /* OptionsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsUtil.swift; sourceTree = "<group>"; };
 		CE6404A81FA895AA00B01022 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CE6404AA1FA89D5800B01022 /* PaintScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintScreen.swift; sourceTree = "<group>"; };
 		CE6404AC1FA8A0E700B01022 /* Xsos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xsos.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				CE08591D2016CD5300A60B7E /* ClassicGrid.swift */,
 				CEAB31F4202FCA5E00A327E0 /* OptionsButton.swift */,
 				CE7E021720327161008880B0 /* CustomButton.swift */,
+				CE2F998020366AD4009D4C4B /* OptionsUtil.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				CEC34FC9201ABD29002834B9 /* ClassicPlayer.swift in Sources */,
 				CE7E021820327161008880B0 /* CustomButton.swift in Sources */,
 				C5D65AE71FC72B4500AFA54C /* Images.swift in Sources */,
+				CE2F998120366AD4009D4C4B /* OptionsUtil.swift in Sources */,
 				CED712BC2023FBA600E2EF91 /* VictoryLine.swift in Sources */,
 				C53FCF431FC8C1C00079C508 /* PaintNode.swift in Sources */,
 				C5D65AE91FC72C8A00AFA54C /* Fonts.swift in Sources */,

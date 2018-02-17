@@ -10,13 +10,12 @@ import SpriteKit
 
 class OptionsButton: CustomButton {
 
-    init(scene: GameScene) {
+    init(sceneSize: CGSize) {
         
         let texture = SKTexture(imageNamed: "\(Images.Buttons.options)_001")
         let proportion = texture.size().height / texture.size().width
-        let sceneSize = scene.size
-        let buttonSize = CGSize(width: sceneSize.width * 0.2,
-                                height: sceneSize.width * 0.2 * proportion)
+        let buttonWidth = sceneSize.width * 0.18
+        let buttonSize = CGSize(width: buttonWidth, height: buttonWidth * proportion)
         let buttonImage = SKSpriteNode(texture: texture, color: .clear, size: buttonSize)
         
         super.init(sprite: buttonImage)
