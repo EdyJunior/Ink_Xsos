@@ -27,7 +27,6 @@ class GameScene: SKScene {
         
         setupGrid()
         buildBackground()
-        buildBackButton()
         buildModeLabel()
         buildMessageLabel()
     }
@@ -38,25 +37,6 @@ class GameScene: SKScene {
         background.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY)
         background.zPosition = -2
         addChild(background)
-    }
-    
-    private func buildBackButton() {
-        
-        let backButton = Button(defaultButtonImage: Images.arrow, activeButtonImage: Images.arrow) { _ in
-            guard let view = self.view else { return }
-            
-            let sceneInstance = MenuScene(size: view.bounds.size)
-            let transition = SKTransition.fade(with: .white, duration: 1.0)
-            view.presentScene(sceneInstance, transition: transition)
-        }
-        
-        backButton.size = CGSize(width: size.width * 0.12, height: size.width * 0.12)
-        backButton.position = CGPoint(x: size.width * 0.08, y: size.height * 0.93)
-        
-        backButton.touchableArea.zPosition = 1
-        backButton.touchableArea.xScale *= -1
-        
-        addChild(backButton)
     }
     
     private func buildModeLabel() {
