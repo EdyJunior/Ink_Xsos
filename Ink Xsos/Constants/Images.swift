@@ -25,11 +25,14 @@ enum Images {
         static let moreGames      = "more_games_button"
         static let options        = "options_button"
         static let sound          = "sound_button"
+        static let backMenu       = "back_menu_button"
+        static let backGame       = "back_game_button"
     }
     
     enum Spots {
         
-        static let bigBlack = "big_black_spot"
-        static let black    = "black_spot"
+        static let bigBlack      = "big_black_spot"
+        static let black         = "black_spot"
+        static let option_splash = "option_splash"
     }
 }
