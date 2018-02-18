@@ -12,11 +12,19 @@ class OptionsAction: NSObject {
 
     var scene: SKScene
     var uiElements = [SKNode]()
-    let blankZPos: CGFloat = 10
+    let blankZPos: CGFloat = 20
     
     var sceneFrame: CGRect { return scene.frame }
 
     init(scene: SKScene) { self.scene = scene }
+    
+    func addOptionsButton(atPosition pos: CGPoint) {
+        
+        let optionsButton = OptionsButton(sceneSize: self.scene.size)
+        optionsButton.position = pos
+        optionsButton.action = self
+        scene.addChild(optionsButton)
+    }
     
     func setBackground() {
 
