@@ -16,7 +16,8 @@ class CustomButton: SKNode {
     var touchableArea = SKSpriteNode()
     var enabled: Bool = true
     var pressed: Bool = false
-    var action: ButtonAction!
+    var action: ButtonAction?
+    var noDelegateAction: (() -> Void)?
  
     init(sprite: SKSpriteNode) {
         
@@ -39,7 +40,9 @@ class CustomButton: SKNode {
         if touchableArea.contains((touches.first?.location(in: self))!) {
             if enabled {
                 pressed = !pressed
-                action.execute()
+                if let Action = action {
+                    Action.execute()
+                } else { noDelegateAction!() }
             }
         }
     }
