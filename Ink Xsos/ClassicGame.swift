@@ -9,6 +9,10 @@
 import Foundation
 import SpriteKit
 
+enum MatchState {
+    case finishedWithWinner, onGoing, draw
+}
+
 class ClassicGame {
     
     var players: [PlayerEntity]?

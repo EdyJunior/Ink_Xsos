@@ -10,8 +10,8 @@ import SpriteKit
 
 class SelectAdversaryScene: SKScene {
     
-    var humanButton: Button!
-    var aiButton: Button!
+    var humanButton: CustomButton!
+    var aiButton: CustomButton!
     
     var buttonSize: CGSize {
         
@@ -76,35 +76,45 @@ class SelectAdversaryScene: SKScene {
     
     private func setupHumanButton() {
         
-        self.humanButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.play)) { _ in
-            guard let view = self.view else { return }
-            
-            let sceneInstance = ClassicScene(size: view.bounds.size)
-            sceneInstance.hasAI = false
-            let transition = SKTransition.fade(with: .white, duration: 1.0)
-            view.presentScene(sceneInstance, transition: transition)
-        }
-        self.humanButton.size = self.buttonSize
+        let sprite = SKSpriteNode(imageNamed: Images.Buttons.play)
+        sprite.size = buttonSize
+        self.humanButton = CustomButton(sprite: sprite)
         self.humanButton.position = CGPoint(x: scene!.size.width / 2, y: scene!.size.height * 0.75)
         self.humanButton.zPosition = 1
+        self.humanButton.noDelegateAction = humanAction
         
         addChild(self.humanButton)
     }
     
     private func setupAIButton() {
         
-        self.aiButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.configurations)) { _ in
-            guard let view = self.view else { return }
-            
-            let sceneInstance = ClassicScene(size: view.bounds.size)
-            sceneInstance.hasAI = true
-            let transition = SKTransition.fade(with: .white, duration: 1.0)
-            view.presentScene(sceneInstance, transition: transition)
-        }
-        self.aiButton.size = self.buttonSize
+        let sprite = SKSpriteNode(imageNamed: Images.Buttons.configurations)
+        sprite.size = buttonSize
+        self.aiButton = CustomButton(sprite: sprite)
         self.aiButton.position = CGPoint(x: scene!.size.width / 2, y: scene!.size.height * 0.35)
         self.aiButton.zPosition = 1
+        self.aiButton.noDelegateAction = aiAction
         
         addChild(self.aiButton)
+    }
+    
+    func humanAction() {
+        
+        guard let view = self.view else { return }
+        
+        let sceneInstance = ClassicScene(size: view.bounds.size)
+        sceneInstance.hasAI = false
+        let transition = SKTransition.fade(with: .white, duration: 1.0)
+        view.presentScene(sceneInstance, transition: transition)
+    }
+    
+    func aiAction() {
+        
+        guard let view = self.view else { return }
+        
+        let sceneInstance = ClassicScene(size: view.bounds.size)
+        sceneInstance.hasAI = true
+        let transition = SKTransition.fade(with: .white, duration: 1.0)
+        view.presentScene(sceneInstance, transition: transition)
     }
 }

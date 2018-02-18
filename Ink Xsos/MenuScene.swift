@@ -13,21 +13,10 @@ class MenuScene: SKScene {
     var gameName: SKSpriteNode!
     var paintNode: PaintNode!
     
-    var selectModeButton: Button!
-    var moreGamesButton: Button!
+    var playButton: CustomButton!
+    var moreGamesButton: CustomButton!
     
     var soundController: SoundController?
-    
-    var menuButtonSize: CGSize {
-        
-        let device = UIDevice.current.userInterfaceIdiom
-        let factor: CGFloat = device == .phone ? 0.35 : 0.3
-        
-        let width = self.size.width * factor
-        let height = width
-        
-        return CGSize(width: width, height: height)
-    }
     
     override func didMove(to view: SKView) {
         
@@ -61,23 +50,23 @@ class MenuScene: SKScene {
     
     private func setupButton() {
 
-        self.selectModeButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.play)) { _ in
-            self.soundController?.stopSound()
-            
-            guard let view = self.view else { return }
-            
-            let sceneInstance = SelectAdversaryScene(size: view.bounds.size)
-            //sceneInstance.soundController = self.soundController
-            let transition = SKTransition.fade(with: .white, duration: 1.0)
-            view.presentScene(sceneInstance, transition: transition)
-        }
-        self.selectModeButton.size = self.menuButtonSize
+        let playButtonTexture = SKTexture(imageNamed: Images.Buttons.play)
+        let playButtonProportion = playButtonTexture.size().height / playButtonTexture.size().width
+        
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.35 : 0.3
+        
+        let playButtonWidth = scene!.frame.width * factor
+        let playButtonSize = CGSize(width: playButtonWidth, height: playButtonWidth * playButtonProportion)
+        let playButtonSprite = SKSpriteNode(texture: playButtonTexture, color: .clear, size: playButtonSize)
+        playButton = CustomButton(sprite: playButtonSprite)
         let xButton = scene!.size.width / 2
         let yButton = self.scene!.frame.height * 0.18
-        self.selectModeButton.position = CGPoint(x: xButton, y: yButton)
-        self.selectModeButton.zPosition = 1
+        playButton.position = CGPoint(x: xButton, y: yButton)
+        playButton.zPosition = 1
+        playButton.noDelegateAction = playAction
         
-        addChild(self.selectModeButton)
+        addChild(self.playButton)
     }
     
     private func setupPaintNode() {
@@ -97,14 +86,21 @@ class MenuScene: SKScene {
     
     private func setupMoreGamesButton(atPosition position: CGPoint) {
         
-        self.moreGamesButton = Button(sprite: SKSpriteNode(imageNamed: Images.Buttons.moreGames)) { _ in
-            print("More games")
-        }
-        //self.moreGamesButton.size = self.menuButtonSize
+        self.moreGamesButton = CustomButton(sprite: SKSpriteNode(imageNamed: Images.Buttons.moreGames))
         self.moreGamesButton.position = position
         self.moreGamesButton.zPosition = 1
         
         addChild(self.moreGamesButton)
     }
+    
+    func playAction() {
+        
+        self.soundController?.stopSound()
+        guard let view = self.view else { return }
+        
+        let sceneInstance = SelectAdversaryScene(size: view.bounds.size)
+        //sceneInstance.soundController = self.soundController
+        let transition = SKTransition.fade(with: .white, duration: 1.0)
+        view.presentScene(sceneInstance, transition: transition)
+    }
 }
-
