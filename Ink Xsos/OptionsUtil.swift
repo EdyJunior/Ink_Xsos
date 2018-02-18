@@ -9,13 +9,18 @@
 import SpriteKit
 
 enum TypeOfButton {
-    case back_to_menu, back_to_game, set_sound
+    case back_to_menu, hide_options, set_sound
+}
+
+protocol HideOptionsDelegate {
+    func hide()
 }
 
 class OptionsUtil: NSObject {
     
     var view: SKView?
     var type: TypeOfButton
+    var hideDelegate: HideOptionsDelegate?
     
     init(type: TypeOfButton, view: SKView? = nil) {
         
@@ -31,11 +36,11 @@ class OptionsUtil: NSObject {
         view!.presentScene(sceneInstance, transition: transition)
     }
     
-    func backToGame() {
+    func hideOptions() {
         
-        let sceneInstance = MenuScene(size: view!.bounds.size)
-        let transition = SKTransition.fade(with: .white, duration: 1.0)
-        view!.presentScene(sceneInstance, transition: transition)
+        hideDelegate!.hide()
+//        for element in uiElements! { element.removeFromParent() }
+//        uiElements!.removeAll()
     }
     
     func setSound() {
@@ -50,8 +55,8 @@ extension OptionsUtil: ButtonAction {
     func execute() {
         
         switch type {
-        case .back_to_game:
-            backToGame()
+        case .hide_options:
+            hideOptions()
         case .back_to_menu:
             backToMenu()
         default:

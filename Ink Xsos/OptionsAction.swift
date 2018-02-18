@@ -13,15 +13,10 @@ class OptionsAction: NSObject {
     var scene: SKScene
     var uiElements = [SKNode]()
     let blankZPos: CGFloat = 10
-    var inGame: Bool
     
     var sceneFrame: CGRect { return scene.frame }
 
-    init(scene: SKScene, inGame: Bool) {
-        
-        self.scene = scene
-        self.inGame = inGame
-    }
+    init(scene: SKScene) { self.scene = scene }
     
     func setBackground() {
 
@@ -91,6 +86,7 @@ class OptionsAction: NSObject {
         backButton.position = pos
         let optionBack = OptionsUtil(type: type, view: scene.view!)
         backButton.action = optionBack
+        if type == .hide_options { optionBack.hideDelegate = self }
         backButton.zPosition = blankZPos + 1
         
         let device = UIDevice.current.userInterfaceIdiom
@@ -113,21 +109,27 @@ extension OptionsAction: ButtonAction {
     
     func execute() {
         
-        let backToGamePos = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.4)
-        let backToMenuInGamePos = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.15)
-        let backToMenuOutGamePos = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.35)
+        let hideOptionsPos = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.4)
+        let backToMenuPos = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.15)
         
         setBackground()
         setSoundButton()
-        if inGame {
-            setBackButton(imageName: Images.Buttons.backGame,
-                          pos: backToGamePos,
-                          text: "back to game",
-                          type: .back_to_game)
-        }
+        setBackButton(imageName: Images.Buttons.backGame,
+                      pos: hideOptionsPos,
+                      text: "hide options",
+                      type: .hide_options)
         setBackButton(imageName: Images.Buttons.backMenu,
-                      pos: inGame ? backToMenuInGamePos : backToMenuOutGamePos,
+                      pos: backToMenuPos,
                       text: "back to menu",
                       type: .back_to_menu)
+    }
+}
+
+extension OptionsAction: HideOptionsDelegate {
+    
+    func hide() {
+        
+        for element in uiElements { element.removeFromParent() }
+        uiElements.removeAll()
     }
 }

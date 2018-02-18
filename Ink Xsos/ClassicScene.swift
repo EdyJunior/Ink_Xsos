@@ -40,7 +40,7 @@ class ClassicScene: GameScene {
         }
         resetGame()
         
-        let optionsAction = OptionsAction(scene: scene!, inGame: true)
+        let optionsAction = OptionsAction(scene: scene!)
         let optionsButton = OptionsButton(sceneSize: self.scene!.size)
         optionsButton.position = CGPoint(x: scene!.size.width * 0.13, y: scene!.size.height * 0.93)
         optionsButton.action = optionsAction
