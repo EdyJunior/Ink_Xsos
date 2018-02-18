@@ -34,9 +34,16 @@ class SelectAdversaryScene: SKScene {
     func buildScene() {
         
         self.backgroundColor = .white
+        setupOptionsButton()
         buildLabels()
         setupHumanButton()
         setupAIButton()
+    }
+    
+    func setupOptionsButton() {
+        
+        let optionsAction = OptionsAction(scene: scene!)
+        optionsAction.addOptionsButton()
     }
     
     func buildLabels() {

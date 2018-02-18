@@ -13,15 +13,19 @@ class OptionsAction: NSObject {
     var scene: SKScene
     var uiElements = [SKNode]()
     let blankZPos: CGFloat = 20
-    
+    var defaultPos: CGPoint {
+        return CGPoint(x: sceneFrame.width * 0.13, y: sceneFrame.height * 0.93)
+    }
     var sceneFrame: CGRect { return scene.frame }
 
     init(scene: SKScene) { self.scene = scene }
     
-    func addOptionsButton(atPosition pos: CGPoint) {
+    func addOptionsButton(atPosition pos: CGPoint? = nil) {
         
         let optionsButton = OptionsButton(sceneSize: self.scene.size)
-        optionsButton.position = pos
+        if let Pos = pos { optionsButton.position = Pos }
+        else { optionsButton.position = defaultPos }
+        
         optionsButton.action = self
         scene.addChild(optionsButton)
     }
