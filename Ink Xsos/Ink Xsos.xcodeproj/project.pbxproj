@@ -21,6 +21,7 @@
 		CE2C6F261FC9E6EE003B30A0 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */; };
 		CE2C6F281FC9F8CB003B30A0 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */; };
 		CE2F998120366AD4009D4C4B /* OptionsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F998020366AD4009D4C4B /* OptionsUtil.swift */; };
+		CE44CDE02038FC420047B5BC /* OptionsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE44CDDF2038FC420047B5BC /* OptionsAction.swift */; };
 		CE6404A91FA895AA00B01022 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404A81FA895AA00B01022 /* Player.swift */; };
 		CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AA1FA89D5800B01022 /* PaintScreen.swift */; };
 		CE6404AD1FA8A0E700B01022 /* Xsos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AC1FA8A0E700B01022 /* Xsos.swift */; };
@@ -59,6 +60,7 @@
 		CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		CE2F998020366AD4009D4C4B /* OptionsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsUtil.swift; sourceTree = "<group>"; };
+		CE44CDDF2038FC420047B5BC /* OptionsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsAction.swift; sourceTree = "<group>"; };
 		CE6404A81FA895AA00B01022 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CE6404AA1FA89D5800B01022 /* PaintScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintScreen.swift; sourceTree = "<group>"; };
 		CE6404AC1FA8A0E700B01022 /* Xsos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xsos.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				CEAB31F4202FCA5E00A327E0 /* OptionsButton.swift */,
 				CE7E021720327161008880B0 /* CustomButton.swift */,
 				CE2F998020366AD4009D4C4B /* OptionsUtil.swift */,
+				CE44CDDF2038FC420047B5BC /* OptionsAction.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				CEAB31F5202FCA5E00A327E0 /* OptionsButton.swift in Sources */,
 				CE2378FC20254526002237D4 /* ClassicAI.swift in Sources */,
 				CE08591E2016CD5300A60B7E /* ClassicGrid.swift in Sources */,
+				CE44CDE02038FC420047B5BC /* OptionsAction.swift in Sources */,
 				CED712BE2023FF9D00E2EF91 /* MenuScene.swift in Sources */,
 				C5D65AEB1FC72D0D00AFA54C /* Sounds.swift in Sources */,
 				CE824F6D201BFAD5004EDCDB /* ClassicScene.swift in Sources */,
