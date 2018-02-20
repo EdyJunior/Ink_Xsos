@@ -19,6 +19,7 @@ protocol MatchPresentationManager {
     func show(winner: PlayerEntity, victoryLine vl: VictoryLine)
     func showDraw()
     func passTurn()
+    func updateMessageLabel()
 }
 
 class ClassicScene: GameScene {
@@ -59,10 +60,12 @@ class ClassicScene: GameScene {
             } else {
                 player1 = ClassicAI(symbol: "X", number: 0, brush: .black, delegate: classic)
                 player2 = ClassicPlayer(symbol: "O", number: 1, brush: .black, delegate: classic)
+                classic.typeOfPlayers = .secondHuman
             }
         } else {
             player1 = ClassicPlayer(symbol: "X", number: 0, brush: .black, delegate: classic)
             player2 = ClassicPlayer(symbol: "O", number: 1, brush: .black, delegate: classic)
+            classic.typeOfPlayers = .onlyHumans
         }
         classic.players = [player1, player2]
         classic.gridUpdater = self
@@ -71,7 +74,7 @@ class ClassicScene: GameScene {
         
         playerNumber = 1
         modeLabel.text = "classic"
-        messageLabel.text = "It’s X turn!"
+        messageLabel.text = "Loading game..."
         grid.clear()
         grid.lock(false)
         finishedEndAnimation = false
@@ -90,7 +93,14 @@ class ClassicScene: GameScene {
     override func endGame() {
         
         super.endGame()
-        messageLabel.text = "\(classic.currentPlayer.symbol) wins!"
+        if hasAI {
+            switch classic.typeOfPlayers {
+            case .firstHuman:
+                messageLabel.text = classic.currentPlayer.symbol == "X" ? "You won!" : "You lose.."
+            default:
+                messageLabel.text = classic.currentPlayer.symbol == "O" ? "You won!" : "You lose.."
+            }
+        } else { messageLabel.text = "\(classic.currentPlayer.symbol) won!" }
         addResetLabel(interval: 2.7)
     }
     
@@ -150,9 +160,19 @@ extension ClassicScene: MatchPresentationManager {
         run(SKAction.sequence([wait, unlock]))
     }
     
-    func passTurn() {
+    func passTurn() { grid.lock(false) }
+    
+    func updateMessageLabel() {
         
-        messageLabel.text = "It's \(classic.currentPlayer.symbol) turn!"
-        grid.lock(false)
+        var nowPlay = ""
+        if hasAI {
+            switch classic.typeOfPlayers {
+            case .firstHuman:
+                nowPlay = classic.currentPlayer.symbol == "X" ? "your" : "AI"
+            default:
+                nowPlay = classic.currentPlayer.symbol == "O" ? "your" : "AI"
+            }
+        } else { nowPlay = classic.currentPlayer.symbol }
+        messageLabel.text = "It's \(nowPlay) turn!"
     }
 }

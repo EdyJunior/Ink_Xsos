@@ -36,12 +36,7 @@ class OptionsUtil: NSObject {
         view!.presentScene(sceneInstance, transition: transition)
     }
     
-    func hideOptions() {
-        
-        hideDelegate!.hide()
-//        for element in uiElements! { element.removeFromParent() }
-//        uiElements!.removeAll()
-    }
+    func hideOptions() { hideDelegate!.hide() }
     
     func setSound() {
         

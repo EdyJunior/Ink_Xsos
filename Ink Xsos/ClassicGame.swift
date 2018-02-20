@@ -13,6 +13,10 @@ enum MatchState {
     case finishedWithWinner, onGoing, draw
 }
 
+enum TypeOfPlayers {
+    case firstHuman, secondHuman, onlyHumans
+}
+
 class ClassicGame {
     
     var players: [PlayerEntity]?
@@ -20,6 +24,7 @@ class ClassicGame {
         
         didSet {
             if turn != 0 && winner == -1 {
+                matchManager!.updateMessageLabel()
                 let cp = self.turn % 2 == 0 ? 1 : 0
                 self.players?[cp].play(grid: self.grid)
             }
@@ -36,6 +41,7 @@ class ClassicGame {
     var victoryLine: VictoryLine?
     var gridUpdater: GridUpdater?
     var matchManager: MatchPresentationManager?
+    var typeOfPlayers = TypeOfPlayers.firstHuman
     
     typealias symbolType = String
     
