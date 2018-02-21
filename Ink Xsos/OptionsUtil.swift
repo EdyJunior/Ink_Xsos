@@ -16,11 +16,16 @@ protocol HideOptionsDelegate {
     func hide()
 }
 
+protocol TouchSoundDelegate {
+    func animateButton()
+}
+
 class OptionsUtil: NSObject {
     
     var view: SKView?
     var type: TypeOfButton
     var hideDelegate: HideOptionsDelegate?
+    var soundDelegate: TouchSoundDelegate?
     
     init(type: TypeOfButton, view: SKView? = nil) {
         
@@ -41,7 +46,13 @@ class OptionsUtil: NSObject {
     func setSound() {
         
         let isSoundOn = defaultsStandard.soundOn()
-        defaultsStandard.set(!isSoundOn, forKey: Defaults.soundOn)
+        let setSound = SKAction.run {
+            defaultsStandard.set(!isSoundOn, forKey: Defaults.soundOn)
+        }
+        let callDelegate = SKAction.run {
+            self.soundDelegate!.animateButton()
+        }
+        view!.scene!.run(SKAction.sequence([setSound, callDelegate]))
     }
 }
 

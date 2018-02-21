@@ -74,9 +74,11 @@ class OptionsAction: NSObject {
         soundButton.position = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.65)
         soundButton.zPosition = blankZPos + 1
         let optionSound = OptionsUtil(type: .set_sound, view: scene.view!)
+        optionSound.soundDelegate = self
         soundButton.action = optionSound
+        soundButton.name = "SoundButton"
         
-        if defaultsStandard.bool(forKey: Defaults.soundOn) {
+        if defaultsStandard.soundOn() {
             let number = soundButtonSprite.numberOfFrames(forImageNamed: Images.Buttons.sound)
             let name = String.init(format: "\(Images.Buttons.sound)_%03d", number)
             soundButton.imageButton.texture = SKTexture(imageNamed: name)
@@ -143,5 +145,26 @@ extension OptionsAction: HideOptionsDelegate {
         
         for element in uiElements { element.removeFromParent() }
         uiElements.removeAll()
+    }
+}
+
+extension OptionsAction: TouchSoundDelegate {
+    
+    func animateButton() {
+        
+        let isSoundOn = defaultsStandard.soundOn()
+        let btns = uiElements.filter { (node) -> Bool in
+            node.name == "SoundButton"
+        }
+        let soundBtn: CustomButton = btns[0] as! CustomButton
+        var animationAction: SKAction
+        if isSoundOn {
+            animationAction = soundBtn.imageButton.animation(atlasName: Images.Buttons.sound,
+                                                             duration: 0.3)
+        } else {
+            animationAction = soundBtn.imageButton.animation(atlasName: Images.Buttons.sound,
+                                                             duration: 0.3, backward: true)
+        }
+        soundBtn.imageButton.run(animationAction)
     }
 }

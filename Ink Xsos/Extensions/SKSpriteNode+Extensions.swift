@@ -30,7 +30,7 @@ extension SKSpriteNode {
         return SKTexture(imageNamed: lastNameOfAnimation(forImageNamed: name))
     }
     
-    func getFrames(atlasName: String, mustBack: Bool = false) -> [SKTexture] {
+    func getFrames(atlasName: String) -> [SKTexture] {
         
         var frames = [SKTexture]()
         let numImages = numberOfFrames(forImageNamed: atlasName)
@@ -40,18 +40,27 @@ extension SKSpriteNode {
             let name = String.init(format: imageName, i)
             frames.append(SKTexture(imageNamed: name))
         }
-        if mustBack {
-            for i in stride(from: numImages - 1, to: 1, by: -1) {
-                let name = String.init(format: imageName, i)
-                frames.append(SKTexture(imageNamed: name))
-            }
+        return frames
+    }
+    
+    func getFramesBackward(atlasName: String) -> [SKTexture] {
+        
+        var frames = [SKTexture]()
+        let numImages = numberOfFrames(forImageNamed: atlasName)
+        let imageName = "\(atlasName)_%0.3d"
+        
+        for i in stride(from: numImages, to: 0, by: -1) {
+            let name = String.init(format: imageName, i)
+            frames.append(SKTexture(imageNamed: name))
         }
         return frames
     }
     
-    func animation(atlasName: String, duration: Double) -> SKAction {
+    func animation(atlasName: String, duration: Double, backward: Bool = false) -> SKAction {
         
-        let frames = getFrames(atlasName: atlasName)
+        var frames: [SKTexture]
+        if backward { frames = getFramesBackward(atlasName: atlasName) }
+        else { frames = getFrames(atlasName: atlasName) }
         let numImages = frames.count
         let ani = SKAction.animate(with: frames,
                                          timePerFrame: duration / Double(numImages),
@@ -70,8 +79,11 @@ extension SKSpriteNode {
     
     func animationBack(atlasName: String, duration: Double) -> SKAction {
         
-        let frames = getFrames(atlasName: atlasName, mustBack: true)
+        var frames = getFrames(atlasName: atlasName)
+        let backwardFrames = getFramesBackward(atlasName: atlasName)
         let numImages = frames.count
+        frames.remove(at: numImages - 1)
+        frames.append(contentsOf: backwardFrames)
         let ani = SKAction.animate(with: frames,
                                    timePerFrame: duration / Double(numImages),
                                    resize: false,
