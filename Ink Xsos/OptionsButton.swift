@@ -20,7 +20,7 @@ class OptionsButton: CustomButton {
         
         super.init(sprite: buttonImage)
         
-        let animationAction = self.imageButton.animationBackLoop(atlasName: Images.Buttons.options, duration: 1.5)
+        let animationAction = self.imageButton.animationBackLoop(atlasName: Images.Buttons.options, duration: 0.8)
         
         self.imageButton.run(animationAction)
     }
