@@ -33,6 +33,7 @@
 		CEB27EC11FA76945004511BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EBF1FA76945004511BD /* Main.storyboard */; };
 		CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EC21FA76945004511BD /* Assets.xcassets */; };
 		CEB27EC61FA76945004511BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB27EC41FA76945004511BD /* LaunchScreen.storyboard */; };
+		CEBFA5FE203E564C00ABC756 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBFA5FD203E564C00ABC756 /* Scoreboard.swift */; };
 		CEC34FC2201AB3B6002834B9 /* ClassicGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC1201AB3B6002834B9 /* ClassicGame.swift */; };
 		CEC34FC5201ABB5A002834B9 /* PlayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC4201ABB5A002834B9 /* PlayDelegate.swift */; };
 		CEC34FC7201ABB97002834B9 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC6201ABB97002834B9 /* PlayerEntity.swift */; };
@@ -70,6 +71,7 @@
 		CEB27EC21FA76945004511BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB27EC51FA76945004511BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB27EC71FA76945004511BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEBFA5FD203E564C00ABC756 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		CEC34FC1201AB3B6002834B9 /* ClassicGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicGame.swift; sourceTree = "<group>"; };
 		CEC34FC4201ABB5A002834B9 /* PlayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayDelegate.swift; sourceTree = "<group>"; };
 		CEC34FC6201ABB97002834B9 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				C53FCF421FC8C1C00079C508 /* PaintNode.swift */,
 				CE08591D2016CD5300A60B7E /* ClassicGrid.swift */,
 				CE7E021720327161008880B0 /* CustomButton.swift */,
+				CEBFA5FD203E564C00ABC756 /* Scoreboard.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEBFA5FE203E564C00ABC756 /* Scoreboard.swift in Sources */,
 				CE9F9D872019443F0000F0F3 /* SKSpriteNode+Extensions.swift in Sources */,
 				CEA117E720293C7E0089A1E5 /* SelectAdversaryScene.swift in Sources */,
 				CEC34FC9201ABD29002834B9 /* ClassicPlayer.swift in Sources */,

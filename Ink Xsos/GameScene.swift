@@ -16,6 +16,7 @@ class GameScene: SKScene {
     var finishedEndAnimation = false
     var grid = ClassicGrid()
     var matchNumber = 0
+    var scoreBoard: Scoreboard!
     
     override func didMove(to view: SKView) {
         
@@ -67,7 +68,7 @@ class GameScene: SKScene {
         
         messageLabel.verticalAlignmentMode = .center
         messageLabel.position = CGPoint(x: sceneFrame.midX, y: (gridTop + modePosition.y) / 2)
-        messageLabel.fontColor = UIColor(red: 97.0/255, green: 216.0/255, blue: 54.0/255, alpha: 1.0)
+        messageLabel.fontColor = UIColor(red: 72.0/255, green: 161.0/255, blue: 41.0/255, alpha: 1.0)
         messageLabel.zPosition = 10
         
         addChild(messageLabel)

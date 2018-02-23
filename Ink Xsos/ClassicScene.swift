@@ -39,6 +39,9 @@ class ClassicScene: GameScene {
                 SKAction.playSoundFileNamed(Sounds.start, waitForCompletion: false)
             )
         }
+        scoreBoard = Scoreboard(sceneFrame: scene!.frame, hasAi: hasAI)
+        scoreBoard.position = CGPoint(x: scene!.frame.width / 2, y: scene!.frame.height / 2)
+        addChild(scoreBoard)
         resetGame()
         
         let optionsAction = OptionsAction(scene: scene!)
@@ -81,6 +84,8 @@ class ClassicScene: GameScene {
         matchNumber += 1
         
         if matchNumber > 1 { classic.passTurn() }
+        scoreBoard.alpha = 1
+        scoreBoard.updateScore()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -97,15 +102,24 @@ class ClassicScene: GameScene {
             switch classic.typeOfPlayers {
             case .firstHuman:
                 messageLabel.text = classic.currentPlayer.symbol == "X" ? "You won!" : "You lose.."
+                scoreBoard.score1 += classic.currentPlayer.symbol == "X" ? 1 : 0
+                scoreBoard.score2 += classic.currentPlayer.symbol == "X" ? 0 : 1
             default:
                 messageLabel.text = classic.currentPlayer.symbol == "O" ? "You won!" : "You lose.."
+                scoreBoard.score1 += classic.currentPlayer.symbol == "O" ? 1 : 0
+                scoreBoard.score2 += classic.currentPlayer.symbol == "O" ? 0 : 1
             }
-        } else { messageLabel.text = "\(classic.currentPlayer.symbol) won!" }
+        } else {
+            messageLabel.text = "\(classic.currentPlayer.symbol) won!"
+            scoreBoard.score1 += classic.currentPlayer.symbol == "X" ? 1 : 0
+            scoreBoard.score2 += classic.currentPlayer.symbol == "X" ? 0 : 1
+        }
         addResetLabel(interval: 2.7)
     }
     
     func addResetLabel(interval: Double = 0.7) {
         
+        scoreBoard.alpha = 0
         let sceneFrame = scene!.frame
         let resetLabel = SKLabelNode(fontNamed: Fonts.ink)
         resetLabel.fontSize = sceneFrame.width * 0.1
