@@ -34,10 +34,7 @@ class GameScene: SKScene {
     
     private func buildBackground() {
         
-        let background = SKSpriteNode(texture: SKTexture(imageNamed: Images.background), color: .white, size: scene!.size)
-        background.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY)
-        background.zPosition = -2
-        addChild(background)
+        
     }
     
     private func buildModeLabel() {
