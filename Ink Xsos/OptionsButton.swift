@@ -14,7 +14,7 @@ class OptionsButton: CustomButton {
         
         let texture = SKTexture(imageNamed: "\(Images.Buttons.options)_001")
         let proportion = texture.size().height / texture.size().width
-        let buttonWidth = sceneSize.width * 0.18
+        let buttonWidth = sceneSize.width * 0.15
         let buttonSize = CGSize(width: buttonWidth, height: buttonWidth * proportion)
         let buttonImage = SKSpriteNode(texture: texture, color: .clear, size: buttonSize)
         
