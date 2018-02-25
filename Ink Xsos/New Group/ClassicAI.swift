@@ -14,6 +14,7 @@ class ClassicAI: PlayerEntity {
     var number: Int
     var brush : UIColor
     var playDelegate: PlayDelegate?
+    var firstTurn = true
     
     init(symbol: String, number: Int, brush: UIColor = .black, delegate: PlayDelegate? = nil) {
         
@@ -23,18 +24,17 @@ class ClassicAI: PlayerEntity {
         self.playDelegate = delegate
     }
     
-    func play(grid: [[String]]) {
+    func play(grid: [[String]]) { randomMoveIn(grid) }
+    
+    func randomMoveIn(_ grid: [[String]]) {
         
-        var flag = false
+        var array = [(f: Int, s: Int)]()
         for i in 0...2 {
             for j in 0...2 {
-                if grid[i][j] == "-" {
-                    _ = playDelegate?.move(row: i, column: j)
-                    flag = true
-                }
-                if flag { break }
+                if grid[i][j] == "-" { array.append((i, j)) }
             }
-            if flag { break }
         }
+        let rdm = Int(arc4random_uniform(UInt32(array.count)))
+        _ = playDelegate?.move(row: array[rdm].f, column: array[rdm].s)
     }
 }
