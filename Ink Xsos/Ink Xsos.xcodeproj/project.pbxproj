@@ -14,7 +14,6 @@
 		C5D65AEB1FC72D0D00AFA54C /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D65AEA1FC72D0D00AFA54C /* Sounds.swift */; };
 		CE0024B21FC663820077AB62 /* endSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE0024B11FC663820077AB62 /* endSound.wav */; };
 		CE08591E2016CD5300A60B7E /* ClassicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08591D2016CD5300A60B7E /* ClassicGrid.swift */; };
-		CE1851A71FD98E1B00ECF8F5 /* Inkfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE1851A61FD98E1B00ECF8F5 /* Inkfont.ttf */; };
 		CE2378FC20254526002237D4 /* ClassicAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2378FB20254526002237D4 /* ClassicAI.swift */; };
 		CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE2C6F231FC9E155003B30A0 /* startSound.wav */; };
 		CE2C6F261FC9E6EE003B30A0 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */; };
@@ -25,6 +24,7 @@
 		CE7E021820327161008880B0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E021720327161008880B0 /* CustomButton.swift */; };
 		CE824F6D201BFAD5004EDCDB /* ClassicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE824F6C201BFAD5004EDCDB /* ClassicScene.swift */; };
 		CE824F6F201BFBCD004EDCDB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE824F6E201BFBCD004EDCDB /* GameScene.swift */; };
+		CE82F9642042E95F0038A4E8 /* InkFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE82F9632042E95F0038A4E8 /* InkFont.ttf */; };
 		CE9F9D872019443F0000F0F3 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F9D862019443F0000F0F3 /* SKSpriteNode+Extensions.swift */; };
 		CEA117E720293C7E0089A1E5 /* SelectAdversaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA117E620293C7E0089A1E5 /* SelectAdversaryScene.swift */; };
 		CEAB31F5202FCA5E00A327E0 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB31F4202FCA5E00A327E0 /* OptionsButton.swift */; };
@@ -50,7 +50,6 @@
 		C5D65AEA1FC72D0D00AFA54C /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		CE0024B11FC663820077AB62 /* endSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = endSound.wav; sourceTree = "<group>"; };
 		CE08591D2016CD5300A60B7E /* ClassicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicGrid.swift; sourceTree = "<group>"; };
-		CE1851A61FD98E1B00ECF8F5 /* Inkfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inkfont.ttf; sourceTree = "<group>"; };
 		CE2378FB20254526002237D4 /* ClassicAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicAI.swift; sourceTree = "<group>"; };
 		CE2C6F231FC9E155003B30A0 /* startSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = startSound.wav; sourceTree = "<group>"; };
 		CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		CE7E021720327161008880B0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CE824F6C201BFAD5004EDCDB /* ClassicScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicScene.swift; sourceTree = "<group>"; };
 		CE824F6E201BFBCD004EDCDB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		CE82F9632042E95F0038A4E8 /* InkFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InkFont.ttf; sourceTree = "<group>"; };
 		CE9F9D862019443F0000F0F3 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		CEA117E620293C7E0089A1E5 /* SelectAdversaryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAdversaryScene.swift; sourceTree = "<group>"; };
 		CEAB31F4202FCA5E00A327E0 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 				CEB27EBF1FA76945004511BD /* Main.storyboard */,
 				CEB27EC21FA76945004511BD /* Assets.xcassets */,
 				CEB27EC41FA76945004511BD /* LaunchScreen.storyboard */,
-				CE1851A61FD98E1B00ECF8F5 /* Inkfont.ttf */,
+				CE82F9632042E95F0038A4E8 /* InkFont.ttf */,
 				CEB27EC71FA76945004511BD /* Info.plist */,
 			);
 			path = "Ink Xsos";
@@ -276,10 +276,10 @@
 			files = (
 				CE0024B21FC663820077AB62 /* endSound.wav in Resources */,
 				CEB27EC11FA76945004511BD /* Main.storyboard in Resources */,
+				CE82F9642042E95F0038A4E8 /* InkFont.ttf in Resources */,
 				CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */,
 				CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */,
 				CEB27EC61FA76945004511BD /* LaunchScreen.storyboard in Resources */,
-				CE1851A71FD98E1B00ECF8F5 /* Inkfont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
