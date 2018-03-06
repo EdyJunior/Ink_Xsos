@@ -24,7 +24,6 @@
 		CE7E021820327161008880B0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E021720327161008880B0 /* CustomButton.swift */; };
 		CE824F6D201BFAD5004EDCDB /* ClassicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE824F6C201BFAD5004EDCDB /* ClassicScene.swift */; };
 		CE824F6F201BFBCD004EDCDB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE824F6E201BFBCD004EDCDB /* GameScene.swift */; };
-		CE82F9642042E95F0038A4E8 /* InkFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE82F9632042E95F0038A4E8 /* InkFont.ttf */; };
 		CE9F9D872019443F0000F0F3 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F9D862019443F0000F0F3 /* SKSpriteNode+Extensions.swift */; };
 		CEA117E720293C7E0089A1E5 /* SelectAdversaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA117E620293C7E0089A1E5 /* SelectAdversaryScene.swift */; };
 		CEAB31F5202FCA5E00A327E0 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB31F4202FCA5E00A327E0 /* OptionsButton.swift */; };
@@ -40,6 +39,7 @@
 		CEC34FC9201ABD29002834B9 /* ClassicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC34FC8201ABD29002834B9 /* ClassicPlayer.swift */; };
 		CED712BC2023FBA600E2EF91 /* VictoryLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED712BB2023FBA600E2EF91 /* VictoryLine.swift */; };
 		CED712BE2023FF9D00E2EF91 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED712BD2023FF9D00E2EF91 /* MenuScene.swift */; };
+		CEF21B92204E2443003E76FC /* InkFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEF21B91204E2443003E76FC /* InkFont.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +60,6 @@
 		CE7E021720327161008880B0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CE824F6C201BFAD5004EDCDB /* ClassicScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicScene.swift; sourceTree = "<group>"; };
 		CE824F6E201BFBCD004EDCDB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		CE82F9632042E95F0038A4E8 /* InkFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InkFont.ttf; sourceTree = "<group>"; };
 		CE9F9D862019443F0000F0F3 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		CEA117E620293C7E0089A1E5 /* SelectAdversaryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAdversaryScene.swift; sourceTree = "<group>"; };
 		CEAB31F4202FCA5E00A327E0 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		CEC34FC8201ABD29002834B9 /* ClassicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicPlayer.swift; sourceTree = "<group>"; };
 		CED712BB2023FBA600E2EF91 /* VictoryLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryLine.swift; sourceTree = "<group>"; };
 		CED712BD2023FF9D00E2EF91 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		CEF21B91204E2443003E76FC /* InkFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InkFont.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,8 +194,8 @@
 				CEB27EBD1FA76945004511BD /* GameViewController.swift */,
 				CEB27EBF1FA76945004511BD /* Main.storyboard */,
 				CEB27EC21FA76945004511BD /* Assets.xcassets */,
+				CEF21B91204E2443003E76FC /* InkFont.ttf */,
 				CEB27EC41FA76945004511BD /* LaunchScreen.storyboard */,
-				CE82F9632042E95F0038A4E8 /* InkFont.ttf */,
 				CEB27EC71FA76945004511BD /* Info.plist */,
 			);
 			path = "Ink Xsos";
@@ -276,7 +276,7 @@
 			files = (
 				CE0024B21FC663820077AB62 /* endSound.wav in Resources */,
 				CEB27EC11FA76945004511BD /* Main.storyboard in Resources */,
-				CE82F9642042E95F0038A4E8 /* InkFont.ttf in Resources */,
+				CEF21B92204E2443003E76FC /* InkFont.ttf in Resources */,
 				CE2C6F241FC9E155003B30A0 /* startSound.wav in Resources */,
 				CEB27EC31FA76945004511BD /* Assets.xcassets in Resources */,
 				CEB27EC61FA76945004511BD /* LaunchScreen.storyboard in Resources */,
