@@ -34,17 +34,10 @@ class SelectAdversaryScene: SKScene {
     func buildScene() {
         
         self.backgroundColor = .white
-        setupOptionsButton()
         buildLabels()
         setupHumanButton()
         setupAIButton()
         buildBackground()
-    }
-    
-    func setupOptionsButton() {
-        
-        let optionsAction = OptionsAction(scene: scene!)
-        optionsAction.addOptionsButton()
     }
     
     func buildLabels() {
@@ -128,9 +121,9 @@ class SelectAdversaryScene: SKScene {
         let texture3 = SKTexture(imageNamed: "splash_005")
         let texture4 = SKTexture(imageNamed: "splash_006")
         let position1 = CGPoint(x: w * 1.05, y: h * 0.93)
-        let position2 = CGPoint(x: -w * 0.12, y: h * 0.7)
+        let position2 = CGPoint(x: -w * 0.11, y: h * 0.67)
         let position3 = CGPoint(x: w * 1.05, y: h * 0.2)
-        let position4 = CGPoint(x: -w * 0.07, y: h * 0.15)
+        let position4 = CGPoint(x: -w * 0.06, y: h * 0.15)
         let proportion = texture1.size().height / texture1.size().width
         let splashesSize = CGSize(width: w * 0.85, height: w * 0.85 * proportion)
         
@@ -158,10 +151,10 @@ class SelectAdversaryScene: SKScene {
         
         let wait = SKAction.wait(forDuration: 0.2)
         let fade = SKAction.fadeAlpha(to: 1.0, duration: 0.25)
-        let act1 = SKAction.run { splash1.run(fade) }
-        let act2 = SKAction.run { splash2.run(fade) }
+        let act1 = SKAction.run { splash4.run(fade) }
+        let act2 = SKAction.run { splash1.run(fade) }
         let act3 = SKAction.run { splash3.run(fade) }
-        let act4 = SKAction.run { splash4.run(fade) }
+        let act4 = SKAction.run { splash2.run(fade) }
         let act = SKAction.sequence([act1, wait, act2, wait, act3, wait, act4])
         scene?.run(act)
     }
