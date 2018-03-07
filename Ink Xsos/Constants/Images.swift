@@ -27,6 +27,8 @@ enum Images {
         static let sound          = "sound_button"
         static let backMenu       = "back_menu_button"
         static let backGame       = "back_game_button"
+        static let human          = "human_button"
+        static let robot          = "robot_button"
     }
     
     enum Spots {

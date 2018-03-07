@@ -80,7 +80,7 @@ class GameScene: SKScene {
         let sceneFrame = scene!.frame
         modeLabel.fontSize = sceneFrame.width * factor
         modeLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.915)
-        modeLabel.fontColor = UIColor(red: 0, green: 162.0/255, blue: 1, alpha: 1.0)
+        modeLabel.fontColor = Colors.blue
         
         addChild(modeLabel)
     }
@@ -100,7 +100,7 @@ class GameScene: SKScene {
         
         messageLabel.verticalAlignmentMode = .center
         messageLabel.position = CGPoint(x: sceneFrame.midX, y: (gridTop + modePosition.y) / 2)
-        messageLabel.fontColor = UIColor(red: 72.0/255, green: 161.0/255, blue: 41.0/255, alpha: 1.0)
+        messageLabel.fontColor = Colors.green
         messageLabel.zPosition = 10
         
         addChild(messageLabel)

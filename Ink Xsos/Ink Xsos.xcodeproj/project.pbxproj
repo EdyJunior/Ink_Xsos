@@ -40,6 +40,7 @@
 		CED712BC2023FBA600E2EF91 /* VictoryLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED712BB2023FBA600E2EF91 /* VictoryLine.swift */; };
 		CED712BE2023FF9D00E2EF91 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED712BD2023FF9D00E2EF91 /* MenuScene.swift */; };
 		CEF21B92204E2443003E76FC /* InkFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEF21B91204E2443003E76FC /* InkFont.ttf */; };
+		CEF21B94204E2C07003E76FC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF21B93204E2C07003E76FC /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		CED712BB2023FBA600E2EF91 /* VictoryLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryLine.swift; sourceTree = "<group>"; };
 		CED712BD2023FF9D00E2EF91 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		CEF21B91204E2443003E76FC /* InkFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InkFont.ttf; sourceTree = "<group>"; };
+		CEF21B93204E2C07003E76FC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				C5D65AEA1FC72D0D00AFA54C /* Sounds.swift */,
 				CE2C6F251FC9E6EE003B30A0 /* Defaults.swift */,
 				CED712BB2023FBA600E2EF91 /* VictoryLine.swift */,
+				CEF21B93204E2C07003E76FC /* Colors.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				CE824F6F201BFBCD004EDCDB /* GameScene.swift in Sources */,
 				CE2C6F281FC9F8CB003B30A0 /* UserDefaults+Extensions.swift in Sources */,
 				CE2C6F261FC9E6EE003B30A0 /* Defaults.swift in Sources */,
+				CEF21B94204E2C07003E76FC /* Colors.swift in Sources */,
 				CEC34FC7201ABB97002834B9 /* PlayerEntity.swift in Sources */,
 				CEC34FC2201AB3B6002834B9 /* ClassicGame.swift in Sources */,
 				CEB27EB61FA76945004511BD /* AppDelegate.swift in Sources */,
