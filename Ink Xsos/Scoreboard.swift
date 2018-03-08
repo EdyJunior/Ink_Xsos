@@ -38,10 +38,10 @@ class Scoreboard: SKNode {
         let yLine1 = -sceneFrame.height * 0.35
         let yLine2 = yLine1 * 1.3
         vs.position = CGPoint(x: 0, y: yLine1)
-        player1.position = CGPoint(x: -sceneFrame.width * 0.2, y: yLine1)
-        player2.position = CGPoint(x: sceneFrame.width * 0.2, y: yLine1)
-        scoreNode1.position = CGPoint(x: -sceneFrame.width * 0.2, y: yLine2)
-        scoreNode2.position = CGPoint(x: sceneFrame.width * 0.2, y: yLine2)
+        player1.position = CGPoint(x: -sceneFrame.width * 0.22, y: yLine1)
+        player2.position = CGPoint(x: sceneFrame.width * 0.22, y: yLine1)
+        scoreNode1.position = CGPoint(x: -sceneFrame.width * 0.22, y: yLine2)
+        scoreNode2.position = CGPoint(x: sceneFrame.width * 0.22, y: yLine2)
 
         addChild(player1)
         addChild(player2)
@@ -53,7 +53,7 @@ class Scoreboard: SKNode {
     func buildFont(label: SKLabelNode, text: String, color: UIColor, sceneFrame: CGRect) {
         
         let device = UIDevice.current.userInterfaceIdiom
-        let factor: CGFloat = device == .phone ? 0.15 : 0.12
+        let factor: CGFloat = device == .phone ? 0.12 : 0.09
         
         label.fontName = Fonts.ink
         label.fontColor = color
