@@ -124,7 +124,7 @@ class ClassicScene: GameScene {
         let resetLabel = SKLabelNode(fontNamed: Fonts.ink)
         resetLabel.fontSize = sceneFrame.width * 0.1
         resetLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.1)
-        resetLabel.fontColor = .red
+        resetLabel.fontColor = Colors.red
         resetLabel.text = "tap to reset"
         resetLabel.alpha = 0
         

@@ -25,15 +25,12 @@ class Scoreboard: SKNode {
         let vs = SKLabelNode()
         let player1 = SKLabelNode()
         let player2 = SKLabelNode()
-        let coolRed = UIColor(red: 201.0/255, green: 30.0/255, blue: 11.0/255, alpha: 1.0)
-        let coolGreen = UIColor(red: 72.0/255, green: 161.0/255, blue: 41.0/255, alpha: 1.0)
-        let coolBlue = UIColor(red: 0, green: 162.0/255, blue: 255.0/255, alpha: 1.0)
-
-        buildFont(label: player1, text: p1Text, color: coolRed, sceneFrame: sceneFrame)
-        buildFont(label: player2, text: p2Text, color: coolGreen, sceneFrame: sceneFrame)
+        
+        buildFont(label: player1, text: p1Text, color: Colors.red, sceneFrame: sceneFrame)
+        buildFont(label: player2, text: p2Text, color: Colors.green, sceneFrame: sceneFrame)
         buildFont(label: scoreNode1, text: "0", color: .black, sceneFrame: sceneFrame)
         buildFont(label: scoreNode2, text: "0", color: .black, sceneFrame: sceneFrame)
-        buildFont(label: vs, text: "vs", color: coolBlue, sceneFrame: sceneFrame)
+        buildFont(label: vs, text: "vs", color: Colors.blue, sceneFrame: sceneFrame)
         
         let yLine1 = -sceneFrame.height * 0.35
         let yLine2 = yLine1 * 1.3

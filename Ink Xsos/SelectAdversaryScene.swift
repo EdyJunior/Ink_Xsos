@@ -64,7 +64,7 @@ class SelectAdversaryScene: SKScene {
         aiLabel.text = "robot"
         aiLabel.fontSize = sceneFrame.width * factor
         aiLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.38)
-        aiLabel.fontColor = .red
+        aiLabel.fontColor = Colors.red
         addChild(aiLabel)
     }
     
