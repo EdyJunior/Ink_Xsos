@@ -37,37 +37,82 @@ class OptionsAction: NSObject {
         blank.zPosition = blankZPos
         blank.alpha = 0.9
         
-        let splashTexture = SKTexture(imageNamed: Images.Spots.option_splash)
-        let splashProportion = splashTexture.size().height / splashTexture.size().width
-        let splashSize = CGSize(width: sceneFrame.width, height: sceneFrame.width * splashProportion)
-        let splash = SKSpriteNode(texture: splashTexture, color: .clear, size: splashSize)
-        splash.position = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height - splashSize.height / 2)
-        splash.zPosition = blank.zPosition + 1
-        
         let device = UIDevice.current.userInterfaceIdiom
-        let factor: CGFloat = device == .phone ? 0.18 : 0.14
+        let factor: CGFloat = device == .phone ? 0.12 : 0.1
         
         let optionsLabel = SKLabelNode(text: "options")
         optionsLabel.fontSize = sceneFrame.width * factor
         optionsLabel.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.height * 0.915)
-        optionsLabel.fontColor = .white
-        optionsLabel.zPosition = splash.zPosition + 1
+        optionsLabel.fontColor = Colors.blue
+        optionsLabel.zPosition = blankZPos + 2
         optionsLabel.fontName = Fonts.ink
         
+        let soundLabel = SKLabelNode(text: "sound")
+        soundLabel.fontSize = sceneFrame.width * factor * 1.15
+        soundLabel.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.height * 0.78)
+        soundLabel.fontColor = Colors.green
+        soundLabel.zPosition = blankZPos + 2
+        soundLabel.fontName = Fonts.ink
+        
         scene.addChild(blank)
-        scene.addChild(splash)
         scene.addChild(optionsLabel)
+        scene.addChild(soundLabel)
         
         uiElements.append(blank)
-        uiElements.append(splash)
         uiElements.append(optionsLabel)
+        uiElements.append(soundLabel)
+        
+        addSplashes()
+    }
+    
+    func addSplashes() {
+        
+        let w = scene.frame.width
+        let h = scene.frame.height
+        let texture1 = SKTexture(imageNamed: "splash_003")
+        let texture2 = SKTexture(imageNamed: "splash_005")
+        let texture3 = SKTexture(imageNamed: "splash_002")
+        let position1 = CGPoint(x: w * -0.07, y: h * 0.9)
+        let position2 = CGPoint(x: w * 1.05, y: h * 0.9)
+        let position3 = CGPoint(x: w * 0.5, y: h * -0.02)
+        let proportion = texture1.size().height / texture1.size().width
+        let splashesSize = CGSize(width: w * 0.7, height: w * 0.7 * proportion)
+        
+        let splash1 = SKSpriteNode(texture: texture1, color: .clear, size: splashesSize)
+        let splash2 = SKSpriteNode(texture: texture2, color: .clear, size: splashesSize)
+        let splash3 = SKSpriteNode(texture: texture3, color: .clear, size: splashesSize)
+        splash1.position = position1
+        splash2.position = position2
+        splash3.position = position3
+        splash1.zPosition = blankZPos + 1
+        splash2.zPosition = blankZPos + 1
+        splash3.zPosition = blankZPos + 1
+        splash1.alpha = 0
+        splash2.alpha = 0
+        splash3.alpha = 0
+        
+        scene.addChild(splash1)
+        scene.addChild(splash2)
+        scene.addChild(splash3)
+        
+        uiElements.append(splash1)
+        uiElements.append(splash2)
+        uiElements.append(splash3)
+        
+        let wait = SKAction.wait(forDuration: 0.3)
+        let fade = SKAction.fadeAlpha(to: 1.0, duration: 0.3)
+        let act1 = SKAction.run { splash1.run(fade) }
+        let act2 = SKAction.run { splash2.run(fade) }
+        let act3 = SKAction.run { splash3.run(fade) }
+        let act = SKAction.sequence([act1, wait, act2, wait, act3])
+        scene.run(act)
     }
     
     func setSoundButton() {
         
         let soundButtonTexture = SKTexture(imageNamed: "\(Images.Buttons.sound)_001")
         let soundButtonProportion = soundButtonTexture.size().height / soundButtonTexture.size().width
-        let soundButtonWidth = sceneFrame.width * 0.55
+        let soundButtonWidth = sceneFrame.width * 0.5
         let soundButtonSize = CGSize(width: soundButtonWidth, height: soundButtonWidth * soundButtonProportion)
         let soundButtonSprite = SKSpriteNode(texture: soundButtonTexture, color: .clear, size: soundButtonSize)
         let soundButton = CustomButton(sprite: soundButtonSprite)
@@ -110,7 +155,7 @@ class OptionsAction: NSObject {
         backLabel.fontSize = sceneFrame.width * factor * 0.45
         backLabel.position = CGPoint(x: 0, y: backButtonSize.height * -0.05)
         backLabel.fontColor = .white
-        backLabel.zPosition = backButton.zPosition + 1
+        backLabel.zPosition = backButton.zPosition + 2
         backLabel.fontName = Fonts.ink
         backButton.touchableArea.addChild(backLabel)
         
@@ -123,8 +168,8 @@ extension OptionsAction: ButtonAction {
     
     func execute() {
         
-        let hideOptionsPos = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.4)
-        let backToMenuPos = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.15)
+        let hideOptionsPos = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.45)
+        let backToMenuPos = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.25)
         
         setBackground()
         setSoundButton()
