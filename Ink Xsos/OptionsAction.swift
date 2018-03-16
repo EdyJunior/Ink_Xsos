@@ -134,7 +134,7 @@ class OptionsAction: NSObject {
         uiElements.append(soundButton)
     }
     
-    func setBackButton(imageName: String, pos: CGPoint, text: String, type: TypeOfButton) {
+    func setBackButton(imageName: String, pos: CGPoint, type: TypeOfButton) {
         
         let backButtonTexture = SKTexture(imageNamed: imageName)
         let backButtonProportion = backButtonTexture.size().height / backButtonTexture.size().width
@@ -147,17 +147,6 @@ class OptionsAction: NSObject {
         backButton.action = optionBack
         if type == .hide_options { optionBack.hideDelegate = self }
         backButton.zPosition = blankZPos + 1
-        
-        let device = UIDevice.current.userInterfaceIdiom
-        let factor: CGFloat = device == .phone ? 0.18 : 0.14
-        
-        let backLabel = SKLabelNode(text: text)
-        backLabel.fontSize = sceneFrame.width * factor * 0.45
-        backLabel.position = CGPoint(x: 0, y: backButtonSize.height * -0.05)
-        backLabel.fontColor = .white
-        backLabel.zPosition = backButton.zPosition + 2
-        backLabel.fontName = Fonts.ink
-        backButton.touchableArea.addChild(backLabel)
         
         scene.addChild(backButton)
         uiElements.append(backButton)
@@ -175,11 +164,9 @@ extension OptionsAction: ButtonAction {
         setSoundButton()
         setBackButton(imageName: Images.Buttons.backGame,
                       pos: hideOptionsPos,
-                      text: "hide options",
                       type: .hide_options)
         setBackButton(imageName: Images.Buttons.backMenu,
                       pos: backToMenuPos,
-                      text: "back to menu",
                       type: .back_to_menu)
     }
 }
