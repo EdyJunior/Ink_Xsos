@@ -10,7 +10,7 @@ import SpriteKit
 
 class ClassicAI: PlayerEntity {
     
-    var symbol: String
+    var symbol, opponent: String
     var number: Int
     var brush : UIColor
     var playDelegate: PlayDelegate?
@@ -22,6 +22,7 @@ class ClassicAI: PlayerEntity {
         self.symbol = symbol
         self.brush = brush
         self.playDelegate = delegate
+        self.opponent = symbol == "X" ? "O" : "X"
     }
     
     func play(grid: [[String]]) { randomMoveIn(grid) }
