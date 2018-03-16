@@ -16,7 +16,7 @@ class SelectAdversaryScene: SKScene {
     var buttonSize: CGSize {
         
         let device = UIDevice.current.userInterfaceIdiom
-        let factor: CGFloat = device == .phone ? 0.3125 : 0.15
+        let factor: CGFloat = device == .phone ? 0.3125 : 0.22
         
         let proportion: CGFloat = 940.0 / 620
         let width = self.size.width * factor
