@@ -48,7 +48,7 @@ class OptionsAction: NSObject {
         optionsLabel.fontName = Fonts.ink
         
         let soundLabel = SKLabelNode(text: "sound")
-        soundLabel.fontSize = sceneFrame.width * factor * 1.15
+        soundLabel.fontSize = sceneFrame.width * factor
         soundLabel.position = CGPoint(x: sceneFrame.midX, y: sceneFrame.height * 0.78)
         soundLabel.fontColor = Colors.green
         soundLabel.zPosition = blankZPos + 2
@@ -110,14 +110,17 @@ class OptionsAction: NSObject {
     
     func setSoundButton() {
         
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.5 : 0.3
+        
         let soundButtonTexture = SKTexture(imageNamed: "\(Images.Buttons.sound)_001")
         let soundButtonProportion = soundButtonTexture.size().height / soundButtonTexture.size().width
-        let soundButtonWidth = sceneFrame.width * 0.5
+        let soundButtonWidth = sceneFrame.width * factor
         let soundButtonSize = CGSize(width: soundButtonWidth, height: soundButtonWidth * soundButtonProportion)
         let soundButtonSprite = SKSpriteNode(texture: soundButtonTexture, color: .clear, size: soundButtonSize)
         let soundButton = CustomButton(sprite: soundButtonSprite)
         soundButton.position = CGPoint(x: sceneFrame.width / 2, y: sceneFrame.height * 0.65)
-        soundButton.zPosition = blankZPos + 1
+        soundButton.zPosition = blankZPos + 2
         let optionSound = OptionsUtil(type: .set_sound, view: scene.view!)
         optionSound.soundDelegate = self
         soundButton.action = optionSound
@@ -136,9 +139,12 @@ class OptionsAction: NSObject {
     
     func setBackButton(imageName: String, pos: CGPoint, type: TypeOfButton) {
         
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 0.75 : 0.5
+        
         let backButtonTexture = SKTexture(imageNamed: imageName)
         let backButtonProportion = backButtonTexture.size().height / backButtonTexture.size().width
-        let backButtonWidth = sceneFrame.width * 0.75
+        let backButtonWidth = sceneFrame.width * factor
         let backButtonSize = CGSize(width: backButtonWidth, height: backButtonWidth * backButtonProportion)
         let backButtonSprite = SKSpriteNode(texture: backButtonTexture, color: .clear, size: backButtonSize)
         let backButton = CustomButton(sprite: backButtonSprite)
@@ -146,7 +152,7 @@ class OptionsAction: NSObject {
         let optionBack = OptionsUtil(type: type, view: scene.view!)
         backButton.action = optionBack
         if type == .hide_options { optionBack.hideDelegate = self }
-        backButton.zPosition = blankZPos + 1
+        backButton.zPosition = blankZPos + 2
         
         scene.addChild(backButton)
         uiElements.append(backButton)

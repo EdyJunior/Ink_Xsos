@@ -54,7 +54,7 @@ class MenuScene: SKScene {
         let playButtonProportion = playButtonTexture.size().height / playButtonTexture.size().width
         
         let device = UIDevice.current.userInterfaceIdiom
-        let factor: CGFloat = device == .phone ? 0.35 : 0.3
+        let factor: CGFloat = device == .phone ? 0.35 : 0.23
         
         let playButtonWidth = scene!.frame.width * factor
         let playButtonSize = CGSize(width: playButtonWidth, height: playButtonWidth * playButtonProportion)
