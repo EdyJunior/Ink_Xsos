@@ -36,5 +36,9 @@ enum Images {
         static let bigBlack      = "big_black_spot"
         static let black         = "black_spot"
         static let option_splash = "option_splash"
+        static let X_wins_splash = "X_wins_splash"
+        static let O_wins_splash = "O_wins_splash"
+        static let you_win_splash = "you_win_splash"
+        static let you_lose_splash = "you_lose_splash"
     }
 }
