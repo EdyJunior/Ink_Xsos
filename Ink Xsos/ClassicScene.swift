@@ -95,25 +95,29 @@ class ClassicScene: GameScene {
         }
     }
     
-    override func endGame() {
+    func endGame() {
         
-        super.endGame()
         if hasAI {
+            var winner = ""
             switch classic.typeOfPlayers {
             case .firstHuman:
-                messageLabel.text = classic.currentPlayer.symbol == "X" ? "You won!" : "You lose.."
                 scoreBoard.score1 += classic.currentPlayer.symbol == "X" ? 1 : 0
                 scoreBoard.score2 += classic.currentPlayer.symbol == "X" ? 0 : 1
+                winner = classic.currentPlayer.symbol == "X" ? Images.Spots.you_win_splash : Images.Spots.you_lose_splash
+                break
             default:
-                messageLabel.text = classic.currentPlayer.symbol == "O" ? "You won!" : "You lose.."
                 scoreBoard.score1 += classic.currentPlayer.symbol == "O" ? 1 : 0
                 scoreBoard.score2 += classic.currentPlayer.symbol == "O" ? 0 : 1
+                winner = classic.currentPlayer.symbol == "X" ? Images.Spots.you_lose_splash : Images.Spots.you_win_splash
             }
+            presentEndAnimation(winner: winner)
         } else {
-            messageLabel.text = "\(classic.currentPlayer.symbol) won!"
             scoreBoard.score1 += classic.currentPlayer.symbol == "X" ? 1 : 0
             scoreBoard.score2 += classic.currentPlayer.symbol == "X" ? 0 : 1
+            let winner = classic.currentPlayer.symbol == "X" ? Images.Spots.X_wins_splash : Images.Spots.O_wins_splash
+            presentEndAnimation(winner: winner)
         }
+        messageLabel.text = "It's over"
         addResetLabel(interval: 2.7)
     }
     
@@ -188,5 +192,27 @@ extension ClassicScene: MatchPresentationManager {
             }
         } else { nowPlay = classic.currentPlayer.symbol }
         messageLabel.text = "It's \(nowPlay) turn!"
+    }
+    
+    func presentEndAnimation(winner: String) {
+        
+        let device = UIDevice.current.userInterfaceIdiom
+        let factor: CGFloat = device == .phone ? 1.0 : 1.0
+
+        let w = scene!.frame.width
+        let sw = w * factor
+        let texture = SKTexture(imageNamed: "\(winner)_001")
+        let proportion = texture.size().height / texture.size().width
+        let endSplatterSize = CGSize(width: sw, height: sw * proportion)
+        let endSplatterPosition = CGPoint(x: w * 0.5, y: scene!.frame.midY)
+        let endSplatter = SKSpriteNode(texture: texture, color: .clear, size: endSplatterSize)
+        endSplatter.position = endSplatterPosition
+        endSplatter.zPosition = self.grid.zPosition + 3
+        addChild(endSplatter)
+        endGameSprites.append(endSplatter)
+        
+        let animationAction = endSplatter.animation(atlasName: winner, duration: 0.8)
+        let playSound = SKAction.playSoundFileNamed(Sounds.end, waitForCompletion: false)
+        endSplatter.run(SKAction.group([animationAction, playSound]))
     }
 }
