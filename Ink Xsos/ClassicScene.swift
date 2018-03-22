@@ -211,7 +211,7 @@ extension ClassicScene: MatchPresentationManager {
         addChild(endSplatter)
         endGameSprites.append(endSplatter)
         
-        let animationAction = endSplatter.animation(atlasName: winner, duration: 0.8)
+        let animationAction = endSplatter.animation(atlasName: winner, duration: 0.5)
         let playSound = SKAction.playSoundFileNamed(Sounds.end, waitForCompletion: false)
         endSplatter.run(SKAction.group([animationAction, playSound]))
     }
