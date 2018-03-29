@@ -20,6 +20,7 @@
 		CE2C6F281FC9F8CB003B30A0 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */; };
 		CE2F998120366AD4009D4C4B /* OptionsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F998020366AD4009D4C4B /* OptionsUtil.swift */; };
 		CE44CDE02038FC420047B5BC /* OptionsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE44CDDF2038FC420047B5BC /* OptionsAction.swift */; };
+		CE5DD4AB2069D41000ACFAEB /* NumericGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DD4AA2069D41000ACFAEB /* NumericGame.swift */; };
 		CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AA1FA89D5800B01022 /* PaintScreen.swift */; };
 		CE7E021820327161008880B0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E021720327161008880B0 /* CustomButton.swift */; };
 		CE824F6D201BFAD5004EDCDB /* ClassicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE824F6C201BFAD5004EDCDB /* ClassicScene.swift */; };
@@ -57,6 +58,7 @@
 		CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		CE2F998020366AD4009D4C4B /* OptionsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsUtil.swift; sourceTree = "<group>"; };
 		CE44CDDF2038FC420047B5BC /* OptionsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsAction.swift; sourceTree = "<group>"; };
+		CE5DD4AA2069D41000ACFAEB /* NumericGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericGame.swift; sourceTree = "<group>"; };
 		CE6404AA1FA89D5800B01022 /* PaintScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintScreen.swift; sourceTree = "<group>"; };
 		CE7E021720327161008880B0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CE824F6C201BFAD5004EDCDB /* ClassicScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicScene.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				CEC34FC1201AB3B6002834B9 /* ClassicGame.swift */,
+				CE5DD4AA2069D41000ACFAEB /* NumericGame.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				CED712BE2023FF9D00E2EF91 /* MenuScene.swift in Sources */,
 				C5D65AEB1FC72D0D00AFA54C /* Sounds.swift in Sources */,
 				CE824F6D201BFAD5004EDCDB /* ClassicScene.swift in Sources */,
+				CE5DD4AB2069D41000ACFAEB /* NumericGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,6 +36,6 @@ class ClassicAI: PlayerEntity {
             }
         }
         let rdm = Int(arc4random_uniform(UInt32(array.count)))
-        _ = playDelegate?.move(row: array[rdm].f, column: array[rdm].s)
+        _ = playDelegate?.move!(row: array[rdm].f, column: array[rdm].s)
     }
 }

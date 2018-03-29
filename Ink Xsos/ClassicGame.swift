@@ -62,19 +62,19 @@ class ClassicGame {
     }
     
     private func checkRow (_ row: Int, for symbol: String) -> Bool {
-        return grid[row][0] == symbol && grid[row][1] == symbol && grid[row][2] == symbol;
+        return grid[row][0] == symbol && grid[row][1] == symbol && grid[row][2] == symbol
     }
     
     private func checkColumn (_ col: Int, for symbol: String) -> Bool {
-        return grid[0][col] == symbol && grid[1][col] == symbol && grid[2][col] == symbol;
+        return grid[0][col] == symbol && grid[1][col] == symbol && grid[2][col] == symbol
     }
     
     private func checkDiagonal1 (for symbol: String) -> Bool {
-        return grid[0][0] == symbol && grid[1][1] == symbol && grid[2][2] == symbol;
+        return grid[0][0] == symbol && grid[1][1] == symbol && grid[2][2] == symbol
     }
     
     private func checkDiagonal2 (for symbol: String) -> Bool {
-        return grid[2][0] == symbol && grid[1][1] == symbol && grid[0][2] == symbol;
+        return grid[2][0] == symbol && grid[1][1] == symbol && grid[0][2] == symbol
     }
     
     func isGameOver () -> MatchState {
