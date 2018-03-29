@@ -8,9 +8,10 @@
 
 import SpriteKit
 
-protocol GridDelegate {
+@objc protocol GridDelegate {
     
-    func touchIn(_ row: Int, _ col: Int)
+    @objc optional func touchIn(_ row: Int, _ col: Int)
+    @objc optional func touchIn(_ row: Int, _ col: Int, _symbol: String)
     func finishedSymbol()
     func finishedGrid()
 }
@@ -62,7 +63,7 @@ class ClassicGrid: SKSpriteNode {
                 if yRel > CGFloat(previous) / 3 && yRel <= CGFloat(i) / 3 { row = 3 - i }
                 previous = i
             }
-            self.gridProtocol?.touchIn(row, col)
+            self.gridProtocol?.touchIn!(row, col)
         }
     }
     

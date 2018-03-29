@@ -8,9 +8,11 @@
 
 import Foundation
 
-protocol PlayDelegate {
+@objc protocol PlayDelegate {
     
     var grid: [[String]] { get set }
     
-    func move (row: Int, column: Int)    
+    @objc optional func move (row: Int, column: Int)
+    
+    @objc optional func move (row: Int, column: Int, symbol: String)
 }
