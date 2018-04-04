@@ -12,6 +12,7 @@ class SelectAdversaryScene: SKScene {
     
     var humanButton: CustomButton!
     var aiButton: CustomButton!
+    var mode: GameMode!
     
     var buttonSize: CGSize {
         
@@ -93,21 +94,25 @@ class SelectAdversaryScene: SKScene {
     }
     
     func humanAction() {
-        
-        guard let view = self.view else { return }
-        
-        let sceneInstance = ClassicScene(size: view.bounds.size)
-        sceneInstance.hasAI = false
-        let transition = SKTransition.fade(with: .white, duration: 1.0)
-        view.presentScene(sceneInstance, transition: transition)
+        presentGame(ai: false)
     }
     
     func aiAction() {
+        presentGame(ai: true)
+    }
+    
+    func presentGame(ai: Bool) {
         
         guard let view = self.view else { return }
         
-        let sceneInstance = ClassicScene(size: view.bounds.size)
-        sceneInstance.hasAI = true
+        let sceneInstance: GameScene
+        switch mode {
+        case .classic:
+            sceneInstance = ClassicScene(size: view.bounds.size)
+        default:
+            sceneInstance = ClassicScene(size: view.bounds.size)
+        }
+        sceneInstance.hasAI = ai
         let transition = SKTransition.fade(with: .white, duration: 1.0)
         view.presentScene(sceneInstance, transition: transition)
     }

@@ -8,11 +8,12 @@
 
 import SpriteKit
 
+enum GameMode { case classic, numeric }
+
 class SelectModeScene: SKScene {
 
     var classicButton: CustomButton!
     var numericButton: CustomButton!
-    var hasAI: Bool!
     
     var buttonSize: CGSize {
 
@@ -62,7 +63,7 @@ class SelectModeScene: SKScene {
         addChild(classicLabel)
         
         let robotLabel = SKLabelNode(fontNamed: Fonts.ink)
-        robotLabel.text = "robot"
+        robotLabel.text = "numeric"
         robotLabel.fontSize = sceneFrame.width * factor
         robotLabel.position = CGPoint(x: sceneFrame.midX, y: size.height * 0.38)
         robotLabel.fontColor = Colors.red
@@ -97,8 +98,8 @@ class SelectModeScene: SKScene {
         
         guard let view = self.view else { return }
         
-        let sceneInstance = ClassicScene(size: view.bounds.size)
-        sceneInstance.hasAI = hasAI!
+        let sceneInstance = SelectAdversaryScene(size: view.bounds.size)
+        sceneInstance.mode = .classic
         let transition = SKTransition.fade(with: .white, duration: 1.0)
         view.presentScene(sceneInstance, transition: transition)
     }
@@ -107,8 +108,8 @@ class SelectModeScene: SKScene {
         
         guard let view = self.view else { return }
         
-        let sceneInstance = ClassicScene(size: view.bounds.size)
-        sceneInstance.hasAI = hasAI!
+        let sceneInstance = SelectAdversaryScene(size: view.bounds.size)
+        sceneInstance.mode = .numeric
         let transition = SKTransition.fade(with: .white, duration: 1.0)
         view.presentScene(sceneInstance, transition: transition)
     }
