@@ -98,8 +98,7 @@ class MenuScene: SKScene {
         self.soundController?.stopSound()
         guard let view = self.view else { return }
         
-        let sceneInstance = SelectAdversaryScene(size: view.bounds.size)
-        //sceneInstance.soundController = self.soundController
+        let sceneInstance = SelectModeScene(size: view.bounds.size)
         let transition = SKTransition.fade(with: .white, duration: 1.0)
         view.presentScene(sceneInstance, transition: transition)
     }
