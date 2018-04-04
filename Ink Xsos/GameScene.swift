@@ -17,6 +17,7 @@ class GameScene: SKScene {
     var grid = ClassicGrid()
     var matchNumber = 0
     var scoreBoard: Scoreboard!
+    var hasAI: Bool!
     
     override func didMove(to view: SKView) {
         

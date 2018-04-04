@@ -26,7 +26,6 @@ class ClassicScene: GameScene {
     
     var playerNumber = 1;
     var classic = ClassicGame()
-    var hasAI: Bool!
     var nodesOfOptions = [SKNode]()
     
     override func didMove(to view: SKView) {
