@@ -20,6 +20,7 @@
 		CE2C6F281FC9F8CB003B30A0 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */; };
 		CE2F998120366AD4009D4C4B /* OptionsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F998020366AD4009D4C4B /* OptionsUtil.swift */; };
 		CE44CDE02038FC420047B5BC /* OptionsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE44CDDF2038FC420047B5BC /* OptionsAction.swift */; };
+		CE5BEDD8206C7B3900876F95 /* SelectModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5BEDD7206C7B3900876F95 /* SelectModeScene.swift */; };
 		CE5DD4AB2069D41000ACFAEB /* NumericGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DD4AA2069D41000ACFAEB /* NumericGame.swift */; };
 		CE6404AB1FA89D5800B01022 /* PaintScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6404AA1FA89D5800B01022 /* PaintScreen.swift */; };
 		CE7E021820327161008880B0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E021720327161008880B0 /* CustomButton.swift */; };
@@ -58,6 +59,7 @@
 		CE2C6F271FC9F8CB003B30A0 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		CE2F998020366AD4009D4C4B /* OptionsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsUtil.swift; sourceTree = "<group>"; };
 		CE44CDDF2038FC420047B5BC /* OptionsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsAction.swift; sourceTree = "<group>"; };
+		CE5BEDD7206C7B3900876F95 /* SelectModeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectModeScene.swift; sourceTree = "<group>"; };
 		CE5DD4AA2069D41000ACFAEB /* NumericGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericGame.swift; sourceTree = "<group>"; };
 		CE6404AA1FA89D5800B01022 /* PaintScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintScreen.swift; sourceTree = "<group>"; };
 		CE7E021720327161008880B0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		CE4908001FAAB39A006D3A59 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CE5BEDD7206C7B3900876F95 /* SelectModeScene.swift */,
 				CE824F6C201BFAD5004EDCDB /* ClassicScene.swift */,
 				CE824F6E201BFBCD004EDCDB /* GameScene.swift */,
 				CED712BD2023FF9D00E2EF91 /* MenuScene.swift */,
@@ -325,6 +328,7 @@
 				C5D65AEB1FC72D0D00AFA54C /* Sounds.swift in Sources */,
 				CE824F6D201BFAD5004EDCDB /* ClassicScene.swift in Sources */,
 				CE5DD4AB2069D41000ACFAEB /* NumericGame.swift in Sources */,
+				CE5BEDD8206C7B3900876F95 /* SelectModeScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
